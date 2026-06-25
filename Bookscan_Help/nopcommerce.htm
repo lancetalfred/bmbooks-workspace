@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Exporting to WooCommerce</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFE8">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Exporting to WooCommerce
+<br>
+</b></span>
+    </td>
+    <td align="right">
+     <font face="Arial" size="2">
+     <a href="cs_250909110244.htm">Previous</a>&nbsp;
+     <a href="cs_281043020001.htm">Top</a>&nbsp;
+     <a href="othersites.htm">Next</a>
+     </font>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Times New Roman; font-size:12pt; color:#000000"><b><u>EXPORTING: WooCommerce
+<br>
+
+<br>
+Note:</u></b><b><i> Uploads cannot be sent by machines running Windows XP.</i></b><b><u>
+<br>
+</u></b>
+<br>
+Select <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Microsoft - Auto-update</span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> / <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Manual update</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">, as preferred.
+<br>
+
+<br>
+<b><u>Initial setup for exporting</u></b>
+<br>
+
+<br>
+<b><u>1. Registering WooCommerce libraries.
+<br>
+</u></b>
+<br>
+For Windows Vista/7/8/8.1/10
+<br>
+Run the supplied batch file: <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">WooLibrary register. Run as Admin.bat</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> by right clicking on it &amp; selecting <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Run as administrator.
+<br>
+</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+
+<br>
+Alternatively, in the Windows destop search bar, type "<span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">cmd</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">".  Right click on <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Command Promp</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">t and select <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Run as Administrator</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">.
+<br>
+Copy &amp; Paste one of the following lines into the command prompt window depending on your version of Windows:
+<br>
+(To check your version, press [Windows]+[E], then in the File Explorer window, open the C:\ drive.  If the <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Program Files (x86)</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> folder<i> </i>is there, you have 64 bit Windows, otherwise you have 32 bit.)
+<br>
+
+<br>
+For 64 bit Windows - C:\windows\microsoft.net\framework\v4.0.30319\regasm "C:\program files (x86)\Bookscan\woolibrary.dll"
+<br>
+For 32 bit Windows: - C:\windows\microsoft.net\framework\v4.0.30319\regasm "C:\program files\Bookscan\woolibrary.dll"
+<br>
+
+<br>
+If you need to unregister the library, please use the appropriate following command:
+<br>
+
+<br>
+For 64 bit Windows: - C:\Windows\Microsoft.net\framework\v4.0.30319\regasm /unregister "C:\program files (x86)\Bookscan\woolibrary.dll"
+<br>
+For 32 bit Windows: - C:\Windows\Microsoft.net\framework\v4.0.30319\regasm /unregister "C:\program files\Bookscan\woolibrary.dll"
+<br>
+
+<br>
+<b><u>3. Set Defaults</u></b>
+<br>
+<b><u>
+<br>
+</u></b>Open the Set Defaults window by right clicking in the <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Web Export </span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">window, then clicking <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Set Defaults</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">.
+<br>
+<b><u>
+<br>
+<img src="e-Web%20Set%20Deafults%20open.jpg" width="787" height="481" border="0" alt="e-Web Set Deafults open">
+<br>
+
+<br>
+</u></b>Set the image path in the <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Small Image Path</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> field to where your images are stored in the Bookscan database.
+<br>
+Set the Jacket  FTP Server to the supplied ftp server path and
+<br>
+Set the Small and Large image Directories to<span style="font-family:Times New Roman; font-size:12pt; color:#7F007F"> /wp-content/uploads/</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+As shown below.
+<br>
+(The Custom Fields &amp; Description field do not matter as they are used for the older e-Web uploads.)
+<br>
+
+<br>
+<img src="e-Web%20Set%20Deafults%20WooCommerce.jpg" width="736" height="518" border="0" alt="e-Web Set Deafults WooCommerce"> 
+<br>
+
+<br>
+Click<span style="font-family:Times New Roman; font-size:12pt; color:#7F007F"> Save(F12)</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> when done.
+<br>
+Click on the <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Export to Web (F9)</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> button.
+<br>
+Leave this window and Bookscan open &amp; go to your web browser.
+<br>
+
+<br>
+<b><u>Web Site Settings</u></b>
+<br>
+
+<br>
+Log into your website with the administrator login &amp; go to <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Users - Add New</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> and create a new administrator login for yourself.  (Please set the <span style="font-family:Times New Roman; font-size:12pt; color:#007F7F">Role</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> to Administrator before clicking <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Add New User</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">.)
+<br>
+
+<br>
+<img src="WooCommerce%20New%20User.jpg" width="1141" height="919" border="0" alt="WooCommerce New User">
+<br>
+
+<br>
+After creating this, go to <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">WooCommerce - Settings</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">. Then select the <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Advanced</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> tab &amp; once the page loads, <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">REST API</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">, then click on <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Add Key.
+<br>
+</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<img src="WooCommerce%20REST%20API.jpg" width="1262" height="755" border="0" alt="WooCommerce REST API">
+<br>
+
+<br>
+Now enter a name for the new key, (eg. Uploads), the email for your admin user, select <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Read/Write</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> from the dropdown selection and click <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Generate API Key.
+<br>
+
+<br>
+</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><img src="WooCommerce%20API%20keys.jpg" width="685" height="335" border="0" alt="WooCommerce API keys">
+<br>
+
+<br>
+Enter the <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Email</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> used to create the new Administrator in the field marked <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Web site user ID:
+<br>
+</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Enter the <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Web Site URL</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> the same as when opening the site in your browser.
+<br>
+Highlight the <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Public key</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> with your mouse, right click on the test &amp; select <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Copy</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">.  
+<br>
+Alt-Tab back to Bookscan and right click in the field marked <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Web Publickey </span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">and select Paste<span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">.
+<br>
+</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Highlight the <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Private key</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> with your mouse, right click on the test &amp; select <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Copy</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">.  
+<br>
+Alt-Tab back to Bookscan and right click in the field marked <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Web Secretkey </span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">and select Paste<span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">.
+<br>
+</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Tick the <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Remember passwords this machine (F3)</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">.  <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">
+<br>
+</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<img src="WooCommerce%20API%20keys2.jpg" width="693" height="138" border="0" alt="WooCommerce API keys2">
+<br>
+<img src="WooCommerce%20Export.jpg" width="608" height="558" border="0" alt="WooCommerce Export">
+<br>
+
+<br>
+The <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Jacket user ID</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> and <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F">Jacket password</span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> will be in the email with your site details.
+<br>
+
+<br>
+You can now close your web browser if you like.  
+<br>
+
+<br>
+Setup is now complete, you can create a manual export by clicking Export (F12).
+<br>
+
+<br>
+e-Comms will automatically update your web site when titles are updated, received or sold whenever it runs.
+<br>
+
+<br>
+</span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+</span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+</span></span></span>
+
+</body>
+</html>

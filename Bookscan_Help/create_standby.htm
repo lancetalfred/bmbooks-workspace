@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Prepare for Standby </title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Database Utilites - Create Standby">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFE8">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:14pt; color:#800000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Preparation for Standby 
+<br>
+</span></span></span>
+    </td>
+    <td align="right">
+     <font face="Arial" size="2">
+     <a href="buildblankdatabase.htm">Previous</a>&nbsp;
+     <a href="cs_281043020001.htm">Top</a>&nbsp;
+     <a href="cs_281043020015.htm">Next</a>
+     </font>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+The Standby functionality of the <span style="font-family:MS SANS SERIF; font-size:10pt; color:#000080"><b>Bookscan</b></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"> allows for terminals that have their databases remotely, (on a different machine on the network), to operate when there is temporary loss of connection to that database. 
+<br>
+
+<br>
+The standby functionality will activate when Bookscan is started and there is no connection to the database.  It will prompt the user to initiate standby when this is the case. 
+<br>
+When connection to the database is reinstated and Bookscan is restarted, it will also prompt the user to ask if they wish to transfer all transactions that took place while in standby back to the main database.  If you choose not to, they will be stored and you will be asked again the each time Bookscan starts until they have been uploaded.
+<br>
+
+<br>
+You can also choose to enter/exit standby by using the <span style="font-family:MS SANS SERIF; font-size:10pt; color:#007F7F"><b>Utilities - Set/Unset Standby </b></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">option.  Again, when you exit standby, if any sales have been made, you will be prompted to upload them.<span style="font-family:MS SANS SERIF; font-size:10pt; color:#007F7F"><b>
+<br>
+</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+</span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:12pt; color:#800000"><b>Preparing for standby
+<br>
+</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Running in standby mode can only work if preparations are made at regular intervals (<b>Suggest weekly</b>). 
+<br>
+This preparing will create a copy of the titles, customers and suppliers etc currently in the database onto the local machine in<span style="font-family:MS SANS SERIF; font-size:10pt; color:#800080"><b> C:\standby directory</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">. 
+<br>
+
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="19"><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></span></span><span style="font-family:SYMBOL; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">To run the preparations on the main menu click <span style="font-family:MS SANS SERIF; font-size:10pt; color:#008080"><b>Utilities</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">, then click <span style="font-family:MS SANS SERIF; font-size:10pt; color:#008080"><b>Create Standby</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="19"><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span><span style="font-family:SYMBOL; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Read the information. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="19"><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span><span style="font-family:SYMBOL; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Then click <span style="font-family:MS SANS SERIF; font-size:10pt; color:#008080"><b>Start</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"> button. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="19"><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span><span style="font-family:SYMBOL; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">This will then create a backup of the information required to run in standby mode, then run a re-index on the backup database.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="19"><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span><span style="font-family:SYMBOL; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">When this finishes click <span style="font-family:MS SANS SERIF; font-size:10pt; color:#008080"><b>OK</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"> button. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></span></span></td></tr></table>
+
+</body>
+</html>

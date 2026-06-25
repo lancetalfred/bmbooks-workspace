@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Loyalty (or Rewards) Cards</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFE8">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#7F0000"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loyalty (or Rewards) cards</b></span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>
+<br>
+</b></span></span></span>
+    </td>
+    <td align="right">
+     <font face="Arial" size="2">
+     <a href="electronicgiftcards.htm">Previous</a>&nbsp;
+     <a href="cs_281043020001.htm">Top</a>&nbsp;
+     <a href="cs_021551280096.htm">Next</a>
+     </font>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Times New Roman; font-size:12pt; color:#000000"><b>This function is now obsolete due to it being abandoned by the retailers.
+<br>
+</b>
+<br>
+Bookscan will now work with Graphicard style loyalty cards as used by A&amp;R and Dymocks.
+<br>
+Note: You will require an Bookscan EFTPOS license to use this feature. Contact Barcode Solutions to obtain one.
+<br>
+
+<br>
+<span style="font-family:Times New Roman; font-size:14pt; color:#000000"><b><i>Overview</i></b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><i>
+<br>
+</i>Customers can be issued with a rewards card that is swiped when they make a transaction.
+<br>
+The total rewardable amount will then be displayed at the end of each sale. Users then swipe the card in the Graphicard terminal and enter the rewardable amount of the sale. If the customer has reached the appropriate reward level, the terminal will issue a voucher giving so many dollars off the next purchase along with any on-the-spot prizes won.
+<br>
+
+<br>
+</span><span style="font-family:Times New Roman; font-size:14pt; color:#000000"><b><i>Setting up loyalty cards</i></b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><i>
+<br>
+</i>Set up a product in the Title Master to be the default rewards card. Use this product to keep track of the rewards cards you have in stock.
+<br>
+Open the Options tab of System options and set the default Rewards Card to be this product code. Also on this tab set the price of the rewards card. E.g. say the cards are $10 when the (rewardable) sale is from zero up to $50, $5 for sales $50 and over and under $100 and free for sale $100 and over. Set the fields as follows:
+<br>
+
+<br>
+Purchase up to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50.00 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$10.00
+<br>
+Purchase below &nbsp;&nbsp;&nbsp;100.00 &nbsp;&nbsp;&nbsp;$50.00
+<br>
+
+<br>
+Selling rewards cards
+<br>
+See the selling special products section above for details. 
+<br>
+
+<br>
+<i>Using a loyalty card
+<br>
+</i>At the end of a transaction that has a rewardable sale amount, the rewards card
+<br>
+popup window will appear before the Tendering window opens. 
+<br>
+
+<br>
+If the customer has a rewards card, swipe the card in the popup window. The window will close and the tendering window will open. When the tendering window closes the Change window will display any change as well as the rewardable amount. This amount should be entered in the Graphicard terminal.
+<br>
+If the customer doesn't have a rewards card and wants to buy one now, click the backtrack button (or press the escape button) and add one to the sale.
+<br>
+If the customer doesn't have a rewards card and doesn't want to one, press the Continue button (F12).</span><span style="font-family:Times New Roman; font-size:14pt; color:#000000"><b><i>
+<br>
+
+<br>
+</i></b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><i>Notes on loyalty cards
+<br>
+</i>Rewards points and card numbers also print on the sale dockets.
+<br>
+Laybys are not rewarded until the final payment is made, though you can scan the card when creating the layby.
+<br>
+
+<br>
+<i>Advantages of using the loyalty card module
+<br>
+</i>Bookscan will control the variable pricing of loyalty card sales.
+<br>
+The rewardable amount of each purchase is calculated and displayed on the screen and is printed on the sale docket.
+<br>
+Products flagged as 'no reward' will not be included in the rewardable total.
+<br>
+If a customer part pays for his purchase using a rewards voucher, this amount is deducted from the rewardable total.
+<br>
+</span><span style="font-family:Times New Roman; font-size:14pt; color:#000000"><b><i>
+<br>
+Selling loyalty cards</i></b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><i>
+<br>
+</i>To sell loyalty cards, you must first set up a product code for them in the master file. <i>See the  section above for details on doing this.
+<br>
+</i>Loyalty card selling prices can vary with the amount of the transaction. For example, you may set the card up to have a standard price of $10. If the customer spends between $50 and $100 in the same transaction, the price may drop to $5. If they spend over $100, the card is free. These prices are set on the Options tab of System Options.
+<br>
+<i>See the Loyalty Cards section below for details on this functionality.
+<br>
+</i>
+<br>
+To sell a loyalty card, enter the loyalty card product code in the Barcode field in the POS window. A small popup window will be displayed. Scan in a blank card's barcode. The price of the card and the rewards dollars so far processed for this sale will be displayed.
+<br>
+</span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+<img src="loyalsell.jpg" width="780" height="349" border="0" alt="loyalsell">
+<br>
+
+<br>
+</span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">If the card is to be free the product will be saved direct to the browser. 
+<br>
+If it has a price it will you will be able to waive the charge by pressing the Waive button in the popup window. 
+<br>
+If the customer makes further purchases in this transaction, the program will change the price of the card.
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+</span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+
+<br>
+</span></span></span>
+
+</body>
+</html>

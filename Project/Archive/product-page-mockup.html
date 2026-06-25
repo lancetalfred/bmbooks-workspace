@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page Mockup — Bruce McKenzie Booksellers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── Scheme 1 — exact theme values ── */
+      --bg:           #FFFFFF;              /* Background */
+      --heading:      #000000;              /* Headings */
+      --text:         rgba(0,0,0,0.812);    /* Text: #000000CF */
+      --link:         #1A0A2E;             /* Links */
+      --link-hover:   #5C0670;             /* Hover links */
+      --border:       rgba(0,0,0,0.059);   /* Borders: #0000000F */
+      /* Primary button */
+      --btn-bg:       #1A0A2E;
+      --btn-text:     #FFFFFF;
+      --btn-hover-bg: #2D0336;
+      /* Secondary button */
+      --sec-text:     #000000;
+      --sec-border:   #000000;
+      --sec-hover-bg: #FAFAFA;
+      --sec-hover-fg: #333333;
+
+      /* ── Supplementary (not in theme, used for mockup only) ── */
+      --text-muted:   rgba(0,0,0,0.45);    /* muted labels / subtext */
+      --white:        #FFFFFF;
+
+      /* ── Aliases kept for readability ── */
+      --purple:       var(--link);
+      --accent:       var(--link-hover);
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--purple);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header__logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .header__nav {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .header__nav a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .header__nav a:hover { color: var(--white); }
+
+    /* ── NAV BAR ── */
+    .nav-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      height: 48px;
+    }
+
+    .nav-bar a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--purple);
+      text-decoration: none;
+      opacity: 0.7;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .nav-bar a:hover { opacity: 1; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      padding: 14px 48px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--link); }
+    .breadcrumb span { opacity: 0.4; }
+
+    /* ── PRODUCT LAYOUT ── */
+    .product {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 52px 48px 80px;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    /* ── LEFT: BOOK COVER ── */
+    .book-cover {
+      position: sticky;
+      top: 32px;
+    }
+
+    .book-cover__image {
+      background: var(--purple);
+      border-radius: 3px;
+      aspect-ratio: 2/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow:
+        -6px 0 0 rgba(0,0,0,0.15),
+        0 20px 60px rgba(26,10,46,0.25),
+        0 4px 16px rgba(26,10,46,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-cover__image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%, rgba(0,0,0,0.15) 100%);
+    }
+
+    .book-cover__image::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 12px;
+      background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.08), transparent);
+    }
+
+    .book-cover__label {
+      font-size: 0.55rem;
+      font-family: 'Open Sans', sans-serif;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 20px;
+    }
+
+    .book-cover__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .book-cover__author {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .book-cover__badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.65rem;
+      padding: 4px 10px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── RIGHT: PRODUCT INFO ── */
+    .product-info {
+      padding-top: 4px;
+    }
+
+    .product-info__category {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .product-info__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--heading);
+      margin-bottom: 10px;
+    }
+
+    .product-info__author {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 400;
+    }
+
+    .product-info__author a {
+      color: var(--purple);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .product-info__author a:hover { color: var(--accent); }
+
+    .product-info__excerpt {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-top: 10px;
+      margin-bottom: 20px;
+      max-width: 70ch;
+    }
+
+    .product-info__price {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      font-family: 'Open Sans', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── AVAILABILITY ROW ── */
+    .availability-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border: 1px solid;
+    }
+
+    .availability-row--instock {
+      border-color: #B8DFC4;
+      background: #F4FAF6;
+    }
+
+    .availability-row--toorder {
+      border-color: #E8D46A;
+      background: #FEFDF0;
+    }
+
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.72rem;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+      flex-shrink: 0;
+    }
+
+    .availability-badge svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    .availability-row--instock .availability-badge {
+      background: #D5EFE0;
+      color: #2D7A4F;
+    }
+
+    .availability-row--toorder .availability-badge {
+      background: #FFF3B0;
+      color: #7A5C00;
+    }
+
+    .availability-shipping {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .availability-shipping svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .availability-shipping__text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ── ADD TO CART ── */
+    .btn-cart {
+      display: block;
+      width: 100%;
+      max-width: 50ch;
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 16px 24px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-cart:hover { background: var(--btn-hover); }
+
+    .btn-wishlist {
+      display: block;
+      width: 100%;
+      background: transparent;
+      color: var(--sec-text);
+      border: 1px solid var(--sec-border);
+      padding: 10px 24px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 32px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .btn-wishlist:hover {
+      background: var(--sec-hover-bg);
+      border-color: var(--sec-hover-fg);
+      color: var(--sec-hover-fg);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+
+    /* ── DESCRIPTION ── */
+    .description__label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .description__text {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .description__readmore {
+      font-size: 0.82rem;
+      color: var(--purple);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .description__readmore:hover { color: var(--accent); }
+
+    /* ── BOOK DETAILS ── */
+    .book-details {
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .book-details__heading {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .book-details__table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .book-details__table tr:last-child td,
+    .book-details__table tr:last-child th {
+      border-bottom: none;
+    }
+
+    .book-details__table th,
+    .book-details__table td {
+      padding: 9px 0;
+      font-size: 0.83rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .book-details__table th {
+      width: 42%;
+      color: var(--text-muted);
+      font-weight: 400;
+      padding-right: 16px;
+    }
+
+    .book-details__table td {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* stock indicators replaced by .availability-row below */
+
+    /* ── FOOTER NOTE ── */
+    .footer-note {
+      background: #F9F9F9;
+      border-top: 1px solid var(--border);
+      padding: 20px 48px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__logo">Bruce McKenzie Booksellers</div>
+    <ul class="header__nav">
+      <li><a href="#">Search</a></li>
+      <li><a href="#">Wishlist</a></li>
+      <li><a href="#">Cart (0)</a></li>
+    </ul>
+  </header>
+
+  <!-- NAV BAR -->
+  <nav class="nav-bar">
+    <a href="#">Fiction</a>
+    <a href="#">Young Adult</a>
+    <a href="#">Kids</a>
+    <a href="#">Non-Fiction</a>
+    <a href="#">The Arts</a>
+    <a href="#">New Zealand</a>
+    <a href="#">Gifts &amp; Stationery</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="#">Home</a>
+    <span>›</span>
+    <a href="#">Fiction</a>
+    <span>›</span>
+    <a href="#">General Fiction</a>
+    <span>›</span>
+    The Midnight Library
+  </div>
+
+  <!-- PRODUCT -->
+  <main class="product">
+
+    <!-- LEFT: Book Cover -->
+    <div class="book-cover">
+      <div class="book-cover__image">
+        <div class="book-cover__label">Bruce McKenzie Booksellers</div>
+        <div class="book-cover__title">The Midnight Library</div>
+        <div class="book-cover__author">Matt Haig</div>
+        <div class="book-cover__badge">Paperback</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Product Info -->
+    <div class="product-info">
+
+      <div class="product-info__category">Fiction · General Fiction</div>
+
+      <h1 class="product-info__title">The Midnight Library</h1>
+
+      <p class="product-info__author">By <a href="#">Matt Haig</a></p>
+
+      <p class="product-info__excerpt">Between life and death there is a library, and within that library, the shelves go on forever. Every book provides a chance to try another life you could have lived.</p>
+
+      <div class="product-info__price">$34.99</div>
+
+      <!-- IN STOCK state -->
+      <div class="availability-row availability-row--instock">
+        <div class="availability-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          In Stock
+        </div>
+        <div class="availability-shipping">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <div class="availability-shipping__text">Ships within 1–2 business days · NZ main centres 2–5 working days</div>
+        </div>
+      </div>
+
+      <!-- AVAILABLE state -->
+      <div class="availability-row availability-row--toorder">
+        <div class="availability-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Available
+        </div>
+        <div class="availability-shipping">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="availability-shipping__text">We'll order this for you · Allow 1–2 business days to process</div>
+        </div>
+      </div>
+
+      <!-- Add to Cart -->
+      <button class="btn-cart">Add to Cart</button>
+      <button class="btn-wishlist">♡ &nbsp; Add to Wishlist</button>
+
+      <hr class="divider">
+
+      <!-- Description -->
+      <div class="description__label">About this book</div>
+      <p class="description__text">
+        Between life and death there is a library, and within that library, the shelves go on forever. Every book provides a chance to try another life you could have lived. To see how things would be if you had made other choices...
+      </p>
+      <a href="#" class="description__readmore">Read more</a>
+
+      <!-- Book Details -->
+      <div class="book-details">
+        <div class="book-details__heading">Book Details</div>
+        <table class="book-details__table">
+          <tbody>
+            <tr>
+              <th>ISBN</th>
+              <td>9781786892737</td>
+            </tr>
+            <tr>
+              <th>Author</th>
+              <td>Matt Haig</td>
+            </tr>
+            <tr>
+              <th>Publisher</th>
+              <td>Canongate Books</td>
+            </tr>
+            <tr>
+              <th>Format</th>
+              <td>Paperback</td>
+            </tr>
+            <tr>
+              <th>Date Published</th>
+              <td>17 February 2020</td>
+            </tr>
+            <tr>
+              <th>Weight</th>
+              <td>320g</td>
+            </tr>
+            <tr>
+              <th>Pages</th>
+              <td>304</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+
+  <div class="footer-note">
+    Mockup only — visualises the proposed product page layout and Book Details block for Bruce McKenzie Booksellers on Shopify (Horizon theme). On mobile, columns stack vertically with the cover image above product details.
+  </div>
+
+</body>
+</html>

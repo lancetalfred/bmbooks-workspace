@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookKeeper for Shopify — UAT</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple-900: #1a0a2e;
+      --purple-700: #3d2366;
+      --purple-500: #5c3a8a;
+      --purple-300: #9b72cf;
+      --purple-100: #ede5f7;
+      --green:      #16a34a;
+      --green-bg:   #dcfce7;
+      --red:        #dc2626;
+      --red-bg:     #fee2e2;
+      --amber:      #d97706;
+      --amber-bg:   #fef3c7;
+      --grey:       #6b7280;
+      --grey-bg:    #f3f4f6;
+      --border:     #e5e7eb;
+      --text:       #111827;
+      --text-muted: #6b7280;
+      --radius:     8px;
+      --sidebar-w:  300px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: #f9fafb;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--purple-900);
+      color: #fff;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      gap: 24px;
+    }
+    header h1 { font-size: 15px; font-weight: 600; white-space: nowrap; }
+    header h1 span { color: var(--purple-300); font-weight: 400; }
+
+    .stats {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-size: 13px;
+    }
+    .stat { display: flex; align-items: center; gap: 6px; }
+    .stat-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .dot-pass   { background: var(--green); }
+    .dot-fail   { background: var(--red); }
+    .dot-skip   { background: var(--amber); }
+    .dot-pending{ background: #9ca3af; }
+
+    .progress-bar-wrap {
+      flex: 1;
+      max-width: 240px;
+      height: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--green);
+      border-radius: 999px;
+      transition: width 0.3s;
+    }
+
+    .header-actions { display: flex; gap: 8px; }
+    .btn-header {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 12px;
+      transition: background 0.15s;
+    }
+    .btn-header:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── LAYOUT ── */
+    .main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ── SIDEBAR ── */
+    aside {
+      width: var(--sidebar-w);
+      background: #fff;
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+
+    /* ── PREREQS ── */
+    .prereq-header {
+      padding: 12px 16px 8px;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+    .prereq-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+    }
+    .prereq-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .prereq-progress {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .prereq-progress.all-done { color: var(--green); }
+    .prereq-list { padding: 4px 0 8px; display: none; }
+    .prereq-list.open { display: block; }
+
+    .prereq-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 16px 7px 20px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: background 0.1s, border-color 0.1s;
+    }
+    .prereq-item:hover { background: #faf5ff; }
+    .prereq-item.active {
+      background: #faf5ff;
+      border-left-color: var(--purple-300);
+    }
+    .prereq-check {
+      width: 18px; height: 18px;
+      border-radius: 4px;
+      border: 2px solid #d1d5db;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px;
+      margin-top: 1px;
+      transition: all 0.15s;
+    }
+    .prereq-check.done {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+    .prereq-item-label { font-size: 12px; line-height: 1.3; }
+    .prereq-item-id    { font-size: 10px; color: var(--text-muted); font-family: monospace; }
+
+    .prereq-cat {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-top: 3px;
+    }
+    .cat-setup    { background: #dbeafe; color: #1d4ed8; }
+    .cat-build    { background: #fce7f3; color: #be185d; }
+    .cat-decision { background: var(--amber-bg); color: var(--amber); }
+    .cat-interim  { background: #d1fae5; color: #065f46; }
+    .cat-planning { background: #ede9fe; color: #5b21b6; }
+
+    .banner-warning {
+      background: #fffbeb;
+      border-bottom: 1px solid #fde68a;
+      padding: 8px 16px;
+      font-size: 12px;
+      color: #92400e;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .banner-warning.visible { display: flex; }
+
+    .sidebar-section { border-bottom: 1px solid var(--border); }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      cursor: pointer;
+      user-select: none;
+      background: #fff;
+      transition: background 0.1s;
+    }
+    .section-header:hover { background: #f9fafb; }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .section-badges {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 999px;
+    }
+    .badge-pass   { background: var(--green-bg);  color: var(--green); }
+    .badge-fail   { background: var(--red-bg);    color: var(--red); }
+    .badge-skip   { background: var(--amber-bg);  color: var(--amber); }
+    .badge-total  { background: var(--grey-bg);   color: var(--grey); }
+
+    .section-tests { display: none; }
+    .section-tests.open { display: block; }
+
+    .test-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px 8px 20px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: background 0.1s, border-color 0.1s;
+    }
+    .test-item:hover { background: var(--purple-100); }
+    .test-item.active {
+      background: var(--purple-100);
+      border-left-color: var(--purple-500);
+    }
+
+    .test-status-icon {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 2px solid #d1d5db;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px;
+    }
+    .test-status-icon.pass   { background: var(--green);  border-color: var(--green);  color: #fff; }
+    .test-status-icon.fail   { background: var(--red);    border-color: var(--red);    color: #fff; }
+    .test-status-icon.skip   { background: var(--amber);  border-color: var(--amber);  color: #fff; }
+    .test-status-icon.pending{ background: #fff; border-color: #d1d5db; }
+
+    .test-item-label {
+      font-size: 12px;
+      line-height: 1.3;
+      color: var(--text);
+    }
+    .test-item-id {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+
+    /* ── DETAIL PANEL ── */
+    .detail {
+      flex: 1;
+      overflow-y: auto;
+      padding: 32px;
+    }
+
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--text-muted);
+      gap: 8px;
+    }
+    .empty-state .icon { font-size: 40px; }
+    .empty-state p { font-size: 15px; }
+
+    .test-detail { max-width: 720px; }
+
+    .test-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .test-id-badge {
+      font-family: monospace;
+      font-size: 12px;
+      background: var(--purple-100);
+      color: var(--purple-700);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .test-section-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .test-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .test-block {
+      margin-bottom: 20px;
+    }
+    .test-block-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .test-block p {
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .steps-list {
+      list-style: none;
+      counter-reset: steps;
+    }
+    .steps-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 10px;
+      padding: 6px 0;
+      line-height: 1.5;
+    }
+    .steps-list li::before {
+      content: counter(steps);
+      min-width: 22px; height: 22px;
+      background: var(--purple-100);
+      color: var(--purple-700);
+      font-weight: 700;
+      font-size: 11px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .why-box {
+      background: #f5f3ff;
+      border: 1px solid #ddd6fe;
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      line-height: 1.7;
+      color: #4c1d95;
+      font-size: 13.5px;
+    }
+
+    .expected-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      line-height: 1.6;
+      color: #166534;
+    }
+
+    /* ── STATUS ACTIONS ── */
+    .status-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .status-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 4px;
+    }
+
+    .btn {
+      padding: 7px 16px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .btn-pass {
+      background: var(--green-bg);
+      color: var(--green);
+      border-color: #86efac;
+    }
+    .btn-pass:hover, .btn-pass.active {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+    .btn-fail {
+      background: var(--red-bg);
+      color: var(--red);
+      border-color: #fca5a5;
+    }
+    .btn-fail:hover, .btn-fail.active {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+    .btn-skip {
+      background: var(--amber-bg);
+      color: var(--amber);
+      border-color: #fde68a;
+    }
+    .btn-skip:hover, .btn-skip.active {
+      background: var(--amber);
+      color: #fff;
+      border-color: var(--amber);
+    }
+    .btn-bug {
+      margin-left: auto;
+      background: #fff;
+      color: var(--red);
+      border-color: #fca5a5;
+    }
+    .btn-bug:hover {
+      background: var(--red-bg);
+    }
+
+    /* ── NOTES ── */
+    .notes-wrap { margin-bottom: 24px; }
+    .notes-wrap textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      font-size: 13px;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 72px;
+      color: var(--text);
+      transition: border-color 0.15s;
+    }
+    .notes-wrap textarea:focus {
+      outline: none;
+      border-color: var(--purple-500);
+    }
+    .notes-save {
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ── BUG LIST ── */
+    .bug-list { margin-top: 4px; }
+    .bug-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--red-bg);
+      border: 1px solid #fca5a5;
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+    }
+    .bug-id {
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--red);
+      white-space: nowrap;
+    }
+    .bug-title { font-size: 13px; font-weight: 600; }
+    .bug-desc  { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .bug-severity {
+      margin-left: auto;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .sev-low      { background: #dbeafe; color: #1d4ed8; }
+    .sev-medium   { background: var(--amber-bg); color: var(--amber); }
+    .sev-high     { background: var(--red-bg); color: var(--red); }
+    .sev-critical { background: var(--red); color: #fff; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px;
+      width: 480px;
+      max-width: 90vw;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .modal h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .modal-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .form-field { margin-bottom: 14px; }
+    .form-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 8px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--text);
+    }
+    .form-field textarea { resize: vertical; min-height: 80px; }
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus {
+      outline: none;
+      border-color: var(--purple-500);
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .btn-cancel {
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 7px 16px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .btn-submit {
+      background: var(--purple-500);
+      color: #fff;
+      border: none;
+      padding: 7px 16px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .btn-submit:hover { background: var(--purple-700); }
+
+    /* ── BUGS PANEL ── */
+    .bugs-panel-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      justify-content: flex-end;
+      z-index: 100;
+    }
+    .bugs-panel-overlay.open { display: flex; }
+    .bugs-panel {
+      width: 480px;
+      max-width: 90vw;
+      background: #fff;
+      height: 100%;
+      overflow-y: auto;
+      padding: 28px;
+      box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+    }
+    .bugs-panel h2 { font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+    .bugs-panel-empty { color: var(--text-muted); font-size: 13px; margin-top: 40px; text-align: center; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 24px 0;
+    }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <h1>BookKeeper for Shopify <span>/ UAT Runner</span></h1>
+  <div class="stats" id="statsBar">
+    <div class="stat"><div class="stat-dot dot-pass"></div><span id="statPass">0 passed</span></div>
+    <div class="stat"><div class="stat-dot dot-fail"></div><span id="statFail">0 failed</span></div>
+    <div class="stat"><div class="stat-dot dot-pending"></div><span id="statPending">0 pending</span></div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-header" onclick="openBugsPanel()">🐛 Bug Log</button>
+    <button class="btn-header" onclick="exportReport()">↓ Export</button>
+  </div>
+</header>
+
+<!-- PREREQ BANNER -->
+<div class="banner-warning" id="prereqBanner">
+  ⚠️ <strong>Before you start:</strong> <span id="prereqBannerText"></span> — complete these in the sidebar first.
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SIDEBAR -->
+  <aside>
+    <div id="prereqSection"></div>
+    <div id="sidebar"></div>
+  </aside>
+
+  <!-- DETAIL -->
+  <div class="detail" id="detail">
+    <div class="empty-state">
+      <div class="icon">📋</div>
+      <p>Select a test case to get started</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- BUG MODAL -->
+<div class="modal-overlay" id="bugModal">
+  <div class="modal">
+    <h2>Log a Bug</h2>
+    <div class="modal-sub" id="bugModalSub"></div>
+    <div class="form-field">
+      <label>Bug Title</label>
+      <input type="text" id="bugTitle" placeholder="Short description of the issue">
+    </div>
+    <div class="form-field">
+      <label>Description</label>
+      <textarea id="bugDesc" placeholder="Steps to reproduce, actual vs expected behaviour..."></textarea>
+    </div>
+    <div class="form-field">
+      <label>Severity</label>
+      <select id="bugSeverity">
+        <option value="low">Low — Minor issue, workaround exists</option>
+        <option value="medium" selected>Medium — Impacts functionality</option>
+        <option value="high">High — Blocking test case</option>
+        <option value="critical">Critical — Data loss or corruption risk</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeBugModal()">Cancel</button>
+      <button class="btn-submit" onclick="submitBug()">Log Bug</button>
+    </div>
+  </div>
+</div>
+
+<!-- BUGS PANEL -->
+<div class="bugs-panel-overlay" id="bugsPanel" onclick="closeBugsPanel(event)">
+  <div class="bugs-panel">
+    <h2>🐛 Bug Log</h2>
+    <div id="bugsPanelContent"></div>
+  </div>
+</div>
+
+<script>
+  let allData        = null;
+  let prereqData     = null;
+  let activeTestId   = null;
+  let activePrereqId = null;
+  let bugTargetId    = null;
+  let notesTimer     = null;
+  let openSections   = new Set();
+  let prereqListOpen = true;
+
+  // ── BOOTSTRAP ─────────────────────────────────────────────────────────────
+
+  async function init() {
+    await refresh();
+  }
+
+  async function refresh() {
+    const [testsRes, prereqRes] = await Promise.all([
+      fetch("/api/tests"),
+      fetch("/api/prerequisites"),
+    ]);
+    allData    = await testsRes.json();
+    prereqData = await prereqRes.json();
+    if (openSections.size === 0 && allData.sections.length > 0) {
+      openSections.add(allData.sections[0].id);
+    }
+    renderPrereqs();
+    renderSidebar();
+    updateStats();
+    if (activePrereqId) renderPrereqDetail(activePrereqId);
+    else if (activeTestId) renderDetail(activeTestId);
+  }
+
+  // ── PREREQUISITES ─────────────────────────────────────────────────────────
+
+  function renderPrereqs() {
+    const el      = document.getElementById("prereqSection");
+    const { prerequisites, total, done } = prereqData;
+    const allDone = done === total;
+
+    // Banner
+    const banner = document.getElementById("prereqBanner");
+    const remaining = total - done;
+    if (!allDone) {
+      banner.classList.add("visible");
+      document.getElementById("prereqBannerText").textContent =
+        `${remaining} prerequisite${remaining > 1 ? "s" : ""} outstanding`;
+    } else {
+      banner.classList.remove("visible");
+    }
+
+    const catLabel = { setup: "Setup", build: "Build", decision: "Decision", interim: "After TC08", planning: "Planning" };
+
+    const items = prerequisites.map(p => `
+      <div class="prereq-item ${p.id === activePrereqId ? 'active' : ''}"
+           onclick="selectPrereq('${p.id}')" id="prereq-item-${p.id}">
+        <div class="prereq-check ${p.done ? 'done' : ''}">
+          ${p.done ? '✓' : ''}
+        </div>
+        <div>
+          <div class="prereq-item-id">${p.id}</div>
+          <div class="prereq-item-label">${p.title}</div>
+          <span class="prereq-cat cat-${p.category}">${catLabel[p.category] || p.category}</span>
+        </div>
+      </div>
+    `).join("");
+
+    const progressText = allDone
+      ? `All done ✓`
+      : `${done} / ${total} done`;
+
+    el.innerHTML = `
+      <div class="prereq-header">
+        <div class="prereq-header-row" onclick="togglePrereqList()">
+          <span class="prereq-title">⚙️ Before You Start</span>
+          <span class="prereq-progress ${allDone ? 'all-done' : ''}" id="prereqProgressText">
+            ${progressText}
+          </span>
+        </div>
+      </div>
+      <div class="prereq-list ${prereqListOpen ? 'open' : ''}" id="prereqList">${items}</div>
+    `;
+  }
+
+  function togglePrereqList() {
+    prereqListOpen = !prereqListOpen;
+    document.getElementById("prereqList").classList.toggle("open");
+  }
+
+  function selectPrereq(prereqId) {
+    activePrereqId = prereqId;
+    activeTestId   = null;
+    renderPrereqs();
+    renderSidebar();
+    renderPrereqDetail(prereqId);
+  }
+
+  function findPrereq(prereqId) {
+    return prereqData.prerequisites.find(p => p.id === prereqId);
+  }
+
+  function renderPrereqDetail(prereqId) {
+    const p = findPrereq(prereqId);
+    if (!p) return;
+    const catLabel = { setup: "Setup task", build: "Build required", decision: "Decision needed", interim: "Do after TC08", planning: "Planning" };
+    const catClass = { setup: "cat-setup", build: "cat-build", decision: "cat-decision", interim: "cat-interim", planning: "cat-planning" };
+
+    document.getElementById("detail").innerHTML = `
+      <div class="test-detail">
+        <div class="test-meta">
+          <span class="test-id-badge">${p.id}</span>
+          <span class="prereq-cat ${catClass[p.category]}">${catLabel[p.category] || p.category}</span>
+        </div>
+        <div class="test-title">${p.title}</div>
+
+        <div class="status-actions">
+          <span class="status-label">Status:</span>
+          <button class="btn btn-pass ${p.done ? 'active' : ''}"
+                  onclick="setPrereqDone('${p.id}', true)">✓ Done</button>
+          <button class="btn btn-skip ${!p.done ? 'active' : ''}"
+                  onclick="setPrereqDone('${p.id}', false)">✗ Not yet</button>
+        </div>
+
+        <div class="test-block">
+          <div class="test-block-label">Why this matters</div>
+          <div class="why-box">${p.why}</div>
+        </div>
+
+        <div class="test-block">
+          <div class="test-block-label">How to complete it</div>
+          <p style="line-height:1.7">${p.how}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  async function setPrereqDone(prereqId, done) {
+    await fetch(`/api/prerequisites/${prereqId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ done }),
+    });
+    // Update local data and re-render without full network refresh
+    const p = findPrereq(prereqId);
+    if (p) p.done = done;
+    prereqData.done = prereqData.prerequisites.filter(p => p.done).length;
+    renderPrereqs();
+    renderPrereqDetail(prereqId);
+  }
+
+  // ── SIDEBAR ───────────────────────────────────────────────────────────────
+
+  function renderSidebar() {
+    const el = document.getElementById("sidebar");
+    el.innerHTML = allData.sections.map((section, si) => {
+      const counts = { pass: 0, fail: 0, skip: 0 };
+      section.tests.forEach(t => { if (counts[t.status] !== undefined) counts[t.status]++; });
+
+      const tests = section.tests.map(t => `
+        <div class="test-item ${t.id === activeTestId ? 'active' : ''}"
+             onclick="selectTest('${t.id}')" id="item-${t.id}">
+          <div class="test-status-icon ${t.status}">${statusIcon(t.status)}</div>
+          <div>
+            <div class="test-item-id">${t.id}</div>
+            <div class="test-item-label">${t.title}</div>
+          </div>
+        </div>
+      `).join("");
+
+      const badgesHtml = [
+        counts.pass ? `<span class="badge badge-pass">${counts.pass}✓</span>` : "",
+        counts.fail ? `<span class="badge badge-fail">${counts.fail}✗</span>` : "",
+        counts.skip ? `<span class="badge badge-skip">${counts.skip}–</span>` : "",
+        `<span class="badge badge-total">${section.tests.length}</span>`,
+      ].join("");
+
+      const isOpen = openSections.has(section.id);
+
+      return `
+        <div class="sidebar-section">
+          <div class="section-header" onclick="toggleSection(this, '${section.id}')">
+            <span class="section-title">${section.id} — ${section.title}</span>
+            <div class="section-badges">${badgesHtml}</div>
+          </div>
+          <div class="section-tests ${isOpen ? 'open' : ''}">${tests}</div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function toggleSection(header, sectionId) {
+    if (openSections.has(sectionId)) openSections.delete(sectionId);
+    else openSections.add(sectionId);
+    header.nextElementSibling.classList.toggle("open");
+  }
+
+  function statusIcon(status) {
+    return { pass: "✓", fail: "✗", skip: "–", pending: "" }[status] || "";
+  }
+
+  // ── STATS ─────────────────────────────────────────────────────────────────
+
+  function updateStats() {
+    const s = allData.stats;
+    document.getElementById("statPass").textContent    = `${s.passed} passed`;
+    document.getElementById("statFail").textContent    = `${s.failed} failed`;
+    document.getElementById("statPending").textContent = `${s.pending} pending`;
+    const pct = s.total ? Math.round((s.passed / s.total) * 100) : 0;
+    document.getElementById("progressFill").style.width = pct + "%";
+  }
+
+  // ── DETAIL ────────────────────────────────────────────────────────────────
+
+  function selectTest(testId) {
+    activeTestId = testId;
+    renderSidebar();
+    renderDetail(testId);
+  }
+
+  function findTest(testId) {
+    for (const section of allData.sections) {
+      for (const test of section.tests) {
+        if (test.id === testId) return { test, section };
+      }
+    }
+    return null;
+  }
+
+  function renderDetail(testId) {
+    const found = findTest(testId);
+    if (!found) return;
+    const { test, section } = found;
+
+    const steps = test.steps.map(s => `<li>${s}</li>`).join("");
+    const bugs  = (test.bugs || []).map(b => `
+      <div class="bug-item">
+        <div>
+          <div class="bug-id">${b.id}</div>
+          <div class="bug-title">${b.title}</div>
+          <div class="bug-desc">${b.description}</div>
+        </div>
+        <span class="bug-severity sev-${b.severity}">${b.severity}</span>
+      </div>
+    `).join("");
+
+    document.getElementById("detail").innerHTML = `
+      <div class="test-detail">
+        <div class="test-meta">
+          <span class="test-id-badge">${test.id}</span>
+          <span class="test-section-label">${section.id} — ${section.title}</span>
+        </div>
+        <div class="test-title">${test.title}</div>
+
+        <div class="status-actions">
+          <span class="status-label">Result:</span>
+          <button class="btn btn-pass ${test.status === 'pass' ? 'active' : ''}"
+                  onclick="setStatus('${test.id}', 'pass')">✓ Pass</button>
+          <button class="btn btn-fail ${test.status === 'fail' ? 'active' : ''}"
+                  onclick="setStatus('${test.id}', 'fail')">✗ Fail</button>
+          <button class="btn btn-skip ${test.status === 'skip' ? 'active' : ''}"
+                  onclick="setStatus('${test.id}', 'skip')">– Skip</button>
+          <button class="btn btn-bug" onclick="openBugModal('${test.id}', '${escHtml(test.title)}')">
+            🐛 Log Bug
+          </button>
+        </div>
+
+        ${test.why ? `
+        <div class="test-block">
+          <div class="test-block-label">Why we test this</div>
+          <div class="why-box">${test.why}</div>
+        </div>` : ""}
+
+        ${test.preconditions ? `
+        <div class="test-block">
+          <div class="test-block-label">Preconditions</div>
+          <p>${test.preconditions}</p>
+        </div>` : ""}
+
+        <div class="test-block">
+          <div class="test-block-label">Steps</div>
+          <ol class="steps-list">${steps}</ol>
+        </div>
+
+        <div class="test-block">
+          <div class="test-block-label">Expected Result</div>
+          <div class="expected-box">${test.expected}</div>
+        </div>
+
+        <div class="test-block notes-wrap">
+          <div class="test-block-label">Notes</div>
+          <textarea id="notesField" placeholder="Observations, actual results, environment details..."
+                    oninput="scheduleNotesSave('${test.id}')">${test.notes || ""}</textarea>
+          <div class="notes-save" id="notesSaveStatus"></div>
+        </div>
+
+        ${bugs ? `
+        <div class="test-block">
+          <div class="test-block-label">Logged Bugs</div>
+          <div class="bug-list">${bugs}</div>
+        </div>` : ""}
+      </div>
+    `;
+  }
+
+  function escHtml(str) {
+    return str.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+  }
+
+  // ── STATUS ────────────────────────────────────────────────────────────────
+
+  async function setStatus(testId, status) {
+    const notes = document.getElementById("notesField")?.value || "";
+    await fetch(`/api/results/${testId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status, notes }),
+    });
+    await refresh();
+  }
+
+  // ── NOTES ─────────────────────────────────────────────────────────────────
+
+  function scheduleNotesSave(testId) {
+    clearTimeout(notesTimer);
+    document.getElementById("notesSaveStatus").textContent = "Saving...";
+    notesTimer = setTimeout(() => saveNotes(testId), 800);
+  }
+
+  async function saveNotes(testId) {
+    const found = findTest(testId);
+    if (!found) return;
+    const notes  = document.getElementById("notesField")?.value || "";
+    const status = found.test.status;
+    await fetch(`/api/results/${testId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status, notes }),
+    });
+    document.getElementById("notesSaveStatus").textContent = "Saved";
+    // Update local data without full re-render
+    found.test.notes = notes;
+    updateStats();
+  }
+
+  // ── BUG MODAL ─────────────────────────────────────────────────────────────
+
+  function openBugModal(testId, testTitle) {
+    bugTargetId = testId;
+    document.getElementById("bugModalSub").textContent = `${testId} — ${testTitle}`;
+    document.getElementById("bugTitle").value    = "";
+    document.getElementById("bugDesc").value     = "";
+    document.getElementById("bugSeverity").value = "medium";
+    document.getElementById("bugModal").classList.add("open");
+    document.getElementById("bugTitle").focus();
+  }
+
+  function closeBugModal() {
+    document.getElementById("bugModal").classList.remove("open");
+    bugTargetId = null;
+  }
+
+  async function submitBug() {
+    const title = document.getElementById("bugTitle").value.trim();
+    if (!title) { alert("Please enter a bug title."); return; }
+    const found     = findTest(bugTargetId);
+    const testTitle = found ? found.test.title : "";
+    await fetch("/api/bugs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        test_id:     bugTargetId,
+        test_title:  testTitle,
+        title:       title,
+        description: document.getElementById("bugDesc").value,
+        severity:    document.getElementById("bugSeverity").value,
+      }),
+    });
+    closeBugModal();
+    await refresh();
+  }
+
+  // ── BUGS PANEL ────────────────────────────────────────────────────────────
+
+  async function openBugsPanel() {
+    const res  = await fetch("/api/bugs");
+    const bugs = await res.json();
+    const el   = document.getElementById("bugsPanelContent");
+
+    if (!bugs.length) {
+      el.innerHTML = '<div class="bugs-panel-empty">No bugs logged yet.</div>';
+    } else {
+      el.innerHTML = bugs.map(b => `
+        <div class="bug-item" style="background:#fff; border-color: var(--border);">
+          <div style="flex:1">
+            <div style="display:flex; gap:8px; align-items:center; margin-bottom:4px;">
+              <span class="bug-id">${b.id}</span>
+              <span style="font-size:11px; color:var(--text-muted);">${b.test_id}</span>
+            </div>
+            <div class="bug-title">${b.title}</div>
+            <div class="bug-desc">${b.description || '—'}</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">
+              ${new Date(b.logged_at).toLocaleString()}
+            </div>
+          </div>
+          <span class="bug-severity sev-${b.severity}">${b.severity}</span>
+        </div>
+      `).join("");
+    }
+    document.getElementById("bugsPanel").classList.add("open");
+  }
+
+  function closeBugsPanel(e) {
+    if (e.target === document.getElementById("bugsPanel")) {
+      document.getElementById("bugsPanel").classList.remove("open");
+    }
+  }
+
+  // ── EXPORT ────────────────────────────────────────────────────────────────
+
+  async function exportReport() {
+    const res  = await fetch("/api/tests");
+    const data = await res.json();
+    const bres = await fetch("/api/bugs");
+    const bugs = await bres.json();
+    const s    = data.stats;
+
+    const now = new Date().toLocaleString();
+    let md = `# BookKeeper for Shopify — UAT Report\n`;
+    md += `Generated: ${now}\n\n`;
+    md += `## Summary\n\n`;
+    md += `| | Count |\n|---|---|\n`;
+    md += `| ✅ Passed  | ${s.passed}  |\n`;
+    md += `| ❌ Failed  | ${s.failed}  |\n`;
+    md += `| ⏭️ Skipped | ${s.skipped} |\n`;
+    md += `| ⏳ Pending | ${s.pending} |\n`;
+    md += `| **Total**  | **${s.total}** |\n\n`;
+
+    for (const section of data.sections) {
+      md += `## ${section.id} — ${section.title}\n\n`;
+      for (const t of section.tests) {
+        const icon = { pass:"✅", fail:"❌", skip:"⏭️", pending:"⏳" }[t.status] || "⏳";
+        md += `### ${icon} ${t.id} — ${t.title}\n`;
+        md += `**Status:** ${t.status.toUpperCase()}\n`;
+        if (t.notes) md += `**Notes:** ${t.notes}\n`;
+        md += "\n";
+      }
+    }
+
+    if (bugs.length) {
+      md += `## Bug Log\n\n`;
+      bugs.forEach(b => {
+        md += `### ${b.id} [${b.severity.toUpperCase()}] — ${b.title}\n`;
+        md += `**Test:** ${b.test_id}\n`;
+        if (b.description) md += `**Description:** ${b.description}\n`;
+        md += `**Logged:** ${new Date(b.logged_at).toLocaleString()}\n\n`;
+      });
+    }
+
+    const blob = new Blob([md], { type: "text/markdown" });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement("a");
+    a.href     = url;
+    a.download = `bookkeeper-uat-report-${new Date().toISOString().slice(0,10)}.md`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // ── RESET ─────────────────────────────────────────────────────────────────
+
+  async function resetConfirm() {
+    if (!confirm("Reset all test results? This cannot be undone.")) return;
+    await fetch("/api/reset", { method: "POST" });
+    activeTestId = null;
+    await refresh();
+    document.getElementById("detail").innerHTML = `
+      <div class="empty-state">
+        <div class="icon">📋</div>
+        <p>Select a test case to get started</p>
+      </div>`;
+  }
+
+  init();
+</script>
+</body>
+</html>

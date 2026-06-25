@@ -1,0 +1,387 @@
+{
+  "TC01": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-27T21:54:56.903169"
+  },
+  "TC02": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-27T21:55:45.865608"
+  },
+  "TC03": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-27T21:55:56.674062"
+  },
+  "TC04": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-27T21:56:39.127936"
+  },
+  "TC05": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-27T21:57:10.223796"
+  },
+  "TC06": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-27T21:57:40.048514"
+  },
+  "TC07": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-27T21:58:26.974149"
+  },
+  "TC08": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T09:44:25.365445"
+  },
+  "TC09": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T09:44:37.409403"
+  },
+  "TC10": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T09:59:44.074638"
+  },
+  "TC11": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T10:01:47.077728"
+  },
+  "TC12": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T10:02:51.161004"
+  },
+  "TC13": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T14:00:30.286916"
+  },
+  "TC14": {
+    "status": "pass",
+    "notes": "The SKU is found under product > Inventory > More Details > SKU",
+    "timestamp": "2026-04-28T14:02:51.957755"
+  },
+  "TC15": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T14:05:24.968839"
+  },
+  "TC16": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T14:13:56.547629"
+  },
+  "TC17": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T14:21:02.366503"
+  },
+  "TC18": {
+    "status": "pass",
+    "notes": "1. Where descriptions come from currently:\nSame source as cover images \u2014 BookData/Nielsen via Ebility. When a book is mapped to the web list, Ebility pulls the publisher blurb from BookData and writes it into the BLURB field in PUBLISHER.DBF. That's what gets synced to WooCommerce as the product description.\n\n2. Where stored locally:\nPUBLISHER.FPT on the shop machine alongside PUBLISHER.DBF in Z:\\bookscan\\SABSSAVE\\. The .FPT file is the memo file that actually holds the BLURB text \u2014 the .DBF just has a pointer to it. Louisa's zip only contained the .DBF files, not the .FPT files, which is why descriptions are empty in our local tests.\n\nWhen the sync runs on the shop machine, dbfread will automatically find PUBLISHER.FPT in the same directory and the BLURB field will populate correctly.\n\nSo TC18 is a conditional pass \u2014 empty locally by design, will work in production. Worth confirming during the Chrome Remote Desktop session that PUBLISHER.FPT exists in Z:\\bookscan\\SABSSAVE\\.",
+    "timestamp": "2026-04-30T10:28:48.465975"
+  },
+  "TC19": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T14:25:53.272639"
+  },
+  "TC20": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T14:27:56.154863"
+  },
+  "TC21": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T14:29:33.024732"
+  },
+  "TC22": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T14:35:28.554346"
+  },
+  "TC23": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T14:35:48.144704"
+  },
+  "TC24": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-28T14:36:51.422187"
+  },
+  "TC25": {
+    "status": "pass",
+    "notes": "Expected result should be DD/MM/YYYY.",
+    "timestamp": "2026-04-30T10:29:22.035460"
+  },
+  "TC26": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T10:39:33.426344"
+  },
+  "TC27": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T10:42:22.571604"
+  },
+  "TC28": {
+    "status": "pass",
+    "notes": "Steps are Inventory > More details > 'Continue selling when out of stock' checked",
+    "timestamp": "2026-04-30T11:10:09.457620"
+  },
+  "TC29": {
+    "status": "pass",
+    "notes": "This is exactly the gap TC29 is testing. The fix depends on Louisa's answer about what drives the backorder setting in WooCommerce. Until then we have two options:\n\nDefault to deny for stock=0 products \u2014 safer, no accidental purchases, but might block legitimate backorders\nKeep continue for all \u2014 matches Louisa's original \"Available to order\" preference, but allows purchase on products that shouldn't be orderable\nSince the product is in draft right now it doesn't matter \u2014 customers can't see it anyway. The inventory policy only becomes relevant when it's published/active.\n\nMark TC29 as a conditional pass with the note that inventory_policy for stock=0 products needs to be revisited once Louisa confirms the backorder source. Want to move to S5?",
+    "timestamp": "2026-04-30T11:19:43.848456"
+  },
+  "TC30": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T11:36:22.819420"
+  },
+  "TC31": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T11:37:03.867952"
+  },
+  "TC32": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T11:44:23.789070"
+  },
+  "TC33": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T11:54:56.782016"
+  },
+  "TC34": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T11:59:56.361640"
+  },
+  "TC36": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:01:54.211125"
+  },
+  "TC37": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:02:13.266870"
+  },
+  "TC38": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:02:29.409674"
+  },
+  "TC39": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:19:40.405950"
+  },
+  "TC35": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:08:18.014444"
+  },
+  "TC40": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:27:21.375947"
+  },
+  "TC41": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:33:15.754540"
+  },
+  "TC42": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:33:17.375645"
+  },
+  "TC43": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:33:21.810214"
+  },
+  "TC44": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:33:28.435275"
+  },
+  "TC45": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:33:35.884658"
+  },
+  "TC46": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-04-30T12:33:41.367067"
+  },
+  "TC47": {
+    "status": "pass",
+    "notes": "search by title works, author name and ISBN does not as expected. Need to insrall searchanise first whichwe wont do on the dev site.  -Conditional pass",
+    "timestamp": "2026-05-02T16:00:26.671901"
+  },
+  "TC48": {
+    "status": "skip",
+    "notes": "Mark TC48 as deferred and test shipping on the live store instead \u2014 the live store already has NZ + DHL configured correctly",
+    "timestamp": "2026-05-02T16:03:35.076485"
+  },
+  "TC49": {
+    "status": "skip",
+    "notes": "C49 as Deferred \u2014 to be tested on live store. The live store already has NZ zones + DHL Express configured and confirmed working. Testing them there is more meaningful anyway since it'll be in NZD and against real carrier rates.",
+    "timestamp": "2026-05-02T16:07:35.719432"
+  },
+  "TC50": {
+    "status": "skip",
+    "notes": "defer - test on live store",
+    "timestamp": "2026-05-02T16:20:39.798626"
+  },
+  "TC51": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-02T16:28:19.616116"
+  },
+  "TC52": {
+    "status": "pass",
+    "notes": "TC51 \u2014 Pass.\n\nThe branding difference is expected \u2014 the dev store has never had the Horizon theme configured (colours, typography, logo etc.). All of that lives on the live store. It doesn't affect any of the remaining UAT tests so no action needed there.",
+    "timestamp": "2026-05-02T16:29:23.527125"
+  },
+  "TC53": {
+    "status": "skip",
+    "notes": "Deferred \u2014 Phase 2 (inbound order sync not yet built)",
+    "timestamp": "2026-05-02T16:35:27.581250"
+  },
+  "TC54": {
+    "status": "skip",
+    "notes": "Deferred \u2014 Phase 2 (inbound order sync not yet built)",
+    "timestamp": "2026-05-02T16:35:37.809066"
+  },
+  "TC55": {
+    "status": "skip",
+    "notes": "Deferred \u2014 Phase 2 (inbound order sync not yet built)",
+    "timestamp": "2026-05-02T16:35:40.808683"
+  },
+  "TC56": {
+    "status": "skip",
+    "notes": "TC56, TC57, TC58 all need Searchanise installed \u2014 defer those to the live store.",
+    "timestamp": "2026-05-02T16:36:35.785008"
+  },
+  "TC57": {
+    "status": "skip",
+    "notes": "TC56, TC57, TC58 all need Searchanise installed \u2014 defer those to the live store.",
+    "timestamp": "2026-05-02T16:36:40.127179"
+  },
+  "TC58": {
+    "status": "skip",
+    "notes": "TC56, TC57, TC58 all need Searchanise installed \u2014 defer those to the live store.",
+    "timestamp": "2026-05-02T16:36:42.475764"
+  },
+  "TC59": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-02T16:44:40.513925"
+  },
+  "PC06": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-03T07:24:06.266166"
+  },
+  "PC02": {
+    "status": "pass",
+    "notes": "Token saved in .md file and onenote > bmbooks",
+    "timestamp": "2026-05-03T07:26:41.881216"
+  },
+  "PC01": {
+    "status": "pass",
+    "notes": "PC1 in the production config checklist is specifically the SHOPIFY_STORE_URL setting in bookscan_sync.py \u2014 that's already set to bruce-mckenzie-booksellers.myshopify.com and that's actually correct. The sync script always talks to the API via the myshopify.com URL regardless of what custom domain is attached \u2014 even after bmbooks.co.nz is pointed at Shopify, the API endpoint stays the same.",
+    "timestamp": "2026-05-03T07:27:06.530292"
+  },
+  "PC03": {
+    "status": "pass",
+    "notes": "Pending shop machine",
+    "timestamp": "2026-05-23T05:32:27.585504"
+  },
+  "PC04": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-03T07:27:28.497747"
+  },
+  "PC05": {
+    "status": "pass",
+    "notes": "Pending shop machine",
+    "timestamp": "2026-05-23T05:32:51.610593"
+  },
+  "PC07": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-03T07:27:57.160502"
+  },
+  "PC08": {
+    "status": "pass",
+    "notes": "(37,998 products, 0 errors)\n",
+    "timestamp": "2026-05-03T07:28:07.126904"
+  },
+  "TC60": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-17T09:13:52.930849"
+  },
+  "TC61": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-17T09:13:55.607342"
+  },
+  "TC62": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-17T09:13:56.843146"
+  },
+  "TC63": {
+    "status": "pass",
+    "notes": "There are 2,512 products where vendor = Bruce McKenzie Booksellers",
+    "timestamp": "2026-05-17T16:20:45.895544"
+  },
+  "TC64": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-17T09:14:02.526121"
+  },
+  "TC65": {
+    "status": "fail",
+    "notes": "Images do not look sharp, we need to manually test pulling images from Neilson",
+    "timestamp": "2026-05-17T09:41:58.670423"
+  },
+  "TC66": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-17T09:42:09.586543"
+  },
+  "TC67": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-17T09:42:12.790781"
+  },
+  "TC68": {
+    "status": "pass",
+    "notes": "",
+    "timestamp": "2026-05-17T09:42:19.378607"
+  },
+  "TC69": {
+    "status": "pending",
+    "notes": "have shared in claude chat\nok for tc67  step 5 - i can seee that the category tags appear for the categories setup in woocommerce, i don't see these categories in bookscan. Can you confirm how where this mapping is coming from\ne.g. 9781441906021\ntags include: Science, General Science\n\nok first discrepancy - 9789401419703 vendor lists Lannoo Publishers in shopify, this appears in the Imprint box in bookscan, the publisher box is empty.\n\nsecond - 9781509857364 \nvendor is Pan Macmillan, bookscan imprint box is \"Two Hoots\" and publisher box is empty\n\nthis is interesting 9781775438267 \nin bookscan. - the binding field in blank \nhowever in shopify - type is \"BG\"",
+    "timestamp": "2026-05-17T09:43:26.464938"
+  }
+}

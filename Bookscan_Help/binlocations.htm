@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Bin locations</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Bin locations,Warehouse locations,Locations,Bins,Putting away lists">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFE8">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:14pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:14pt; color:#7F0000"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bin locations</b></span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>
+<br>
+</b></span></span></span>
+    </td>
+    <td align="right">
+     <font face="Arial" size="2">
+     <a href="warehousing_repricing.htm">Previous</a>&nbsp;
+     <a href="cs_281043020001.htm">Top</a>&nbsp;
+     <a href="cs_081140340221.htm">Next</a>
+     </font>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Times New Roman; font-size:12pt; color:#000000">The bin locations option forms part of the warehousing module. It allows you to map your warehouse locations using different bin types (say standard, oversize, fast sellers etc) and automatically assigns an appropriate picking location to each product as it is received into stock. After receiving stock, you can print a 'putting away' report listing the received stock against it locations. Note that the location mapping is one to one: one location per product.
+<br>
+
+<br>
+<span style="font-family:Times New Roman; font-size:14pt; color:#000000"><b>Setting up</b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b>System Options</b>
+<br>
+In System Options, select the Options tab and tick the "Use bin locations" checkbox. 
+<br>
+
+<br>
+<b>Location Types</b>
+<br>
+Open the Bin Location Types window from the main menu: Tables/Authority Tables/Warehouse Bin Locations/Bin Types.
+<br>
+</span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"><img src="bintypes.jpg" width="386" height="380" border="0" alt="bintypes">
+<br>
+The default bin location (which has an empty bin code field) will have been automatically created for you.
+<br>
+Add any other bin types you require.
+<br>
+If some bin types are related to the shape of the product, you should map the bin type against the binding. In the example below, the binding  'Outsize' has been mapped against the 'OS' bin type code.
+<br>
+
+<br>
+<img src="binbind.jpg" width="565" height="212" border="0" alt="binbind"> 
+<br>
+
+<br>
+Now when automatically allocating a bin for products with this binding, it will be an 'Oversize' bin.
+<br>
+
+<br>
+Warehouse bin location mapping
+<br>
+Warehouse locations should be in the format row, shelf and column slot: 99XX-9. For example 04AG-3 represents the bin in row 4, shelf AG and column slot 3. 
+<br>
+Now you need to set up your warehouse bin locations. 
+<br>
+<b><i>Excel method</i></b>
+<br>
+The easiest way to do this is to set them up in Excel in two columns: bin number and bin type. This way you can use Excel's auto-numbering and other features.
+<br>
+
+<br>
+<img src="binexcel.jpg" width="197" height="205" border="0" alt="binexcel">
+<br>
+
+<br>
+The above example shows locations standard (or default) locations 77QQ-1 and  77QQ-4 .and. oversize locations 77QQ-2 and  77QQ-3.
+<br>
+To load the file open the Warehouse Mapping window from the main menu: </span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Tables/Authority Tables/Warehouse Bin Locations/Bin Locations. Click on the Load CSV File button and select the csv file. The BinLocs table will fill with the bin locations and display in the browser on the left.
+<br>
+
+<br>
+<img src="binlocs.jpg" width="697" height="473" border="0" alt="binlocs">
+<br>
+<b><u>Alternate method</u></b>
+<br>
+You can create locations in the Bin Locations window. 
+<br>
+
+<br>
+<img src="bincreate.jpg" width="215" height="198" border="0" alt="bincreate">
+<br>
+
+<br>
+Enter the row, shelf and slot ranges and select the required bin type. Press the Create Location button. The BinLocs table will fill with the range of bin locations and display in the browser on the left.
+<br>
+
+<br>
+<b>Editing locations</b>
+<br>
+The bin locations browser can display in three modes: all, allocated and unallocated. 
+<br>
+<b><i>Unallocated view</i></b>
+<br>
+When unallocated locations are displayed you can: 
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></span></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Delete locations - select the locations in the browser and click the Delete Locations button.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Change the bin types- select the locations in the browser, select the new bin type in the left-side combo box and click the Change Bin Type button.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b><i>Allocated view</i></b>
+<br>
+When unallocated locations are displayed, the right side browser is enabled and displays the selected location's product. You can remove the product from the location by clicking the Remove ISBN button. 
+<br>
+
+<br>
+</span><span style="font-family:Times New Roman; font-size:14pt; color:#000000"><b>Allocating stock to a location</b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+
+<br>
+<b>Master file</b>
+<br>
+You can manually add, change or remove a location in the Details tab of  the Title Master window.
+<br>
+
+<br>
+<img src="binmaster.jpg" width="558" height="368" border="0" alt="binmaster">
+<br>
+
+<br>
+The Locations field is read only. To edit it, press the F3 key to open the Bin Allocation window.
+<br>
+<b><i>Editing a location</i></b>
+<br>
+For title that have already been allocated a bin number, the Bin allocation window will display the following:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></span></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The current location.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The bin type of that location.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">A browser listing the available locations for the selected bin type. Changing the bin type in the Bin Type combo box will change the display in the browser.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The 'Move to' field will display the first available alternate location if you wish to move locations.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">As you select a different bin in the browser, it will display in the 'Move to' field.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">To change the location to that field, click the Save (F12) button.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">To remove the product from the current location, select the Remove from location (F5) button and click the Save F12 button.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b><i>Allocating a location</i></b>
+<br>
+If a title has not been allocated a bin location:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></span></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The current location will display 'No location set'.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The Bin Type field will display the bin type mapped against that product's binding. It it is not mapped the default bin type will be displayed.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">A browser lists the available locations for the selected bin type. Changing the bin type in the Bin Type combo box will change the display in the browser.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The 'Move to' button will be re-captioned to 'Set Location' and the text field will display the next available location for the selected bin type.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">As you select a different bin in the browser, it will display in the 'Set Location' field.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000">To allocate the product to the selected location, click the Save (F12) button.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b>Receiving</b>
+<br>
+In the Receiving window, bin locations will be automatically allocated against unallocated products. You can also re-allocate a bin location here.
+<br>
+
+<br>
+<img src="binreceiv.jpg" width="634" height="380" border="0" alt="binreceiv">
+<br>
+
+<br>
+When a product code is entered in the edit line, the program check if a bin had been allocated to that product. If it has, it displays the location in the 'Loc' field; otherwise it allocates the next available location mapped against that product's binding and displays it in the 'Loc' field. 
+<br>
+
+<br>
+You can change this location by pressing the F11 key and opening the Bin Allocation window. As in the Title Master you can allocate a different location by selecting it in the Available Locations browser. 
+<br>
+
+<br>
+In the example above, the product's binding has been mapped against the default bin type. To allocate it to a 'fast movers' bin instead, select 'Fast movers' in the bin type combo box. The Available Locations browser will change to display 'fast movers' locations only and the Set Location field will display the first available bin. Click the Save Changes (F12) button to allocate the product to the new location.
+<br>
+
+<br>
+In the main, stores people can ignore the Locations field and let just let the computer do the allocating.
+<br>
+
+<br>
+<b>Receiving EDI Orders</b>
+<br>
+In the Receiving EDI Orders window, bin locations will be automatically allocated against unallocated products. If you wish you could change the alloaction after saving the stock into the receiving window or change it in the Title Master.
+<br>
+
+<br>
+<b>Putting away lists</b>
+<br>
+After receiving stock, and before posting it, you should print putting away lists. This will list all the received stock from a selected supplier, in bin location orders:
+<br>
+
+<br>
+<img src="binputaway.jpg" width="756" height="116" border="0" alt="binputaway">
+<br>
+The report can be printed from the main menu: Purchasing/Receiving/Receiving Reports/Putting Away Report. You can also print it when printing the GRN report.
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+</span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+
+<br>
+
+<br>
+</span></span></span>
+
+</body>
+</html>

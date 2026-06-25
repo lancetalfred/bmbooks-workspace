@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Sales Report - Special Order </title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Reports - Special Order">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+
+
+<span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:14pt; color:#800000">Sales Report:&nbsp;&nbsp;&nbsp;Special Order
+<br>
+</span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:14pt; color:#FF0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-family:MS SANS SERIF; font-size:8pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:8pt; color:#808000"><b>Command-line execution enabled</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:8pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:8pt; color:#00FF00"><b>.
+<br>
+</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;
+<br>
+</span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000">&nbsp;&nbsp;&nbsp;Purpose:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Report the status of a specific special order.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+&nbsp;&nbsp;&nbsp;</span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000">Parameters:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Order-number, option to include/exclude filled orders.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+&nbsp;&nbsp;&nbsp;</span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000"><b>Command-line Parameters:</b></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;        /SAL_SOO    /&lt;WantPreview&gt;    /&lt;OrderNo&gt;  /&lt;ExcludeSupplied&gt;
+<br>
+
+<br>
+&nbsp;&nbsp;&nbsp;SAL_SOO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;Identifies the report to be run.
+<br>
+&nbsp;&nbsp;&nbsp;WantPreview&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;/Y gives a preview, /N avoids it, /? will let the user choose.
+<br>
+&nbsp;&nbsp;&nbsp;OrderNo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;Number identifying the special order to be printed.
+<br>
+&nbsp;&nbsp;&nbsp;ExcludeSupplied&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;/Y excludes orders which have been supplied, else use /N.
+<br>
+&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;</span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000">Output:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Letterhead, Order-date, Title, Author, Quantity outstanding, Comments.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;</span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000">Report-form Variables reset at runtime:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Licensee&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;Name and all variables starting with "L_" (address data).
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;        
+<br>
+
+<br>
+</span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:12pt; color:#008000"><b>See also:</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000">&nbsp;&nbsp;&nbsp;<span style="font-family:MS SANS SERIF; font-size:12pt; color:#008000"><a href=selection_controls.htm>Selection Controls,</a></span></span></span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:12pt; color:#008000">  </span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"> </span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:12pt; color:#008000"><a href=executing_reportscan_from_the_.htm>Executing Report Writer From The Command Line</a></span></span></span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:12pt; color:#008000">
+<br>
+</span></span></span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:14pt; color:#800000">
+<br>
+</span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+
+<br>
+</span></span></span>
+
+</body>
+</html>

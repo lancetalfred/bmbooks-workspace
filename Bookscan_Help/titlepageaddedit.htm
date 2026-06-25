@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Title Page Add/Edit</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Title Master - Title Page API,Title Master - Product Updating">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFE8">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#7F0000"><b>&nbsp;&nbsp;&nbsp;Title Page Finding / Updating</b></span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>
+<br>
+</b></span></span></span>
+    </td>
+    <td align="right">
+     <font face="Arial" size="2">
+     <a href="deletingtitles.htm">Previous</a>&nbsp;
+     <a href="cs_281043020001.htm">Top</a>&nbsp;
+     <a href="bookfindonlinesearches.htm">Next</a>
+     </font>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Times New Roman; font-size:14pt; color:#000000"><b><u>Using Title Page with Bookscan
+<br>
+</u></b><span style="font-family:Times New Roman; font-size:12pt; color:#000000">There is a service provided for Title Page subscribers that allow the use of the Title Page API, which enables a more automated way of retrieving data from their service without manually opening their website. 
+<br>
+
+<br>
+<b>Title Page Limitations
+<br>
+</b>There is a limited amount of information that this Title Page (API) service will search and retrieve:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Searching: You can only search the Title Page (API) using ISBN13. There is currently no Embedded, Title or Author type searching.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Data fields retrieved: Title, Author, Author Role, Supplier, Status, Price, Supplier Stock Level, Supplier Order Level, Publisher Ship Date.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<i>Notes
+<br>
+</i><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">As listed, this service does not retrieve all the data that would normally come in from an ONIX file downloaded from Title Page website. This is a limitation on Title Page's side. We are retrieving everything available.  If you wish to use Bookscan as a springboard to your website, with jacket images and the like, it would be best to use Nielsen Bookdata, ONIX files from suppliers or Title Page's website as your primary source of data, as they contains more data. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Title page's Supplier Order Level and Supplier Stock level fields do not get saved into Bookscan, but will be visible when using this Title Page API through Bookscan.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Title page's Supplier field, just as in the ONIX import window, does not automatically link with the suppliers contained in your own Supplier Master. You will need to do the linking up yourself (as will be explained below). 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b>Setup 
+<br>
+</b>Before you can use the Title Page API features in Bookscan, you will first need to ensure your account with Title Page has this feature enabled. It is not enabled by default and you have to contact Title Page to enable it. We've no idea why! 
+<br>
+Open the Titles tab of System Options and click on the Title Page Set Up button. Enter your Title Page Username and Password and save them.
+<br>
+
+<br>
+</span><span style="font-family:Times New Roman; font-size:14pt; color:#000000"><b>Updating Existing Titles
+<br>
+</b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">This method of updating can be done anywhere throughout the program where you can view the Title Master. It is used to update price and availability
+<br>
+Open the Title Master and display the Details tab.
+<br>
+<img src="titlepageupdate.jpg" width="729" height="146" border="0" alt="titlepageupdate">
+<br>
+Click on the Web (F9) button.
+<br>
+The Web Search window will open.
+<br>
+<img src="tmweb.jpg" width="339" height="209" border="0" alt="tmweb">
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Ensure that Title Page (F6) is selected and click the Login (F12) button. Bookscan will attempt to log in to the Title Page web site.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">A normal course of it running will show these messages (in order); 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="128"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Wingdings; font-size:12pt; color:#000000">&#167;</span></td><td><span style="font-family:Wingdings; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Connecting to Title Page
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="128"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Wingdings; font-size:12pt; color:#000000">&#167;</span></td><td><span style="font-family:Wingdings; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Requesting data for: (ISBN)
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="128"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Wingdings; font-size:12pt; color:#000000">&#167;</span></td><td><span style="font-family:Wingdings; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Success!: data found for : (ISBN)
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="128"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">If you don't succeed in logging in, the window will show 'failed' and a detailed failure message will display.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">If the log in succeeds, Bookscan will retrieve an update file for the title and the Title Page Update window will open:
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><img src="titlepageupdate2.jpg" width="638" height="404" border="0" alt="titlepageupdate2">
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The fields coloured blue display what is currently in your master file. The fields coloured black are from Title Page except the Set supplier field which displays your current primary supplier.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Clicking the Update (F12) button will cause the program to overwrite this fields that display a tick against them. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">To stop a field from updating, click on the tick to remove it.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b><i>Title
+<br>
+</i></b>If the checkbox beside the Title field is checked, the master file title field will be updated. Ticking the 'Upper case' checkbox will cause it to save in upper case.
+<br>
+
+<br>
+<b><i>Contributor</i></b>:
+<br>
+If the checkbox beside the Author field is checked, the Author field in the Title Master will be updated. The Role field is the role the contributor plays with this product. The field next to it is the description of that role. A01 is (principal) author. If the incoming contributor role is not this, you may choose to not update the Author field. 
+<br>
+
+<br>
+<b><i>Supplier
+<br>
+</i></b>Title page's Supplier field can't be mapped to Bookscan's supplier master. You will need to do the linking up yourself.
+<br>
+The Supplier Name field shows the supplier as recorded by Title Page. The blue field below it shows the primary supplier in your master file. 
+<br>
+The Set Supplier combo box will also default to the Bookscan supplier. It's here that you can manually set the Bookscan supplier to be the same as the Title Page supplier.
+<br>
+
+<br>
+<b><i>Status
+<br>
+</i></b>The Availability field displays the ONIX status as recorded by Title Page. The blue field below it shows the status in your master file. If you have mapped your status fields to Onix fields (or if your statuses use the Onix standard), the Set Status combo box will default to the Title Page status. If you haven't done the mapping you will need to set the Status field manually.
+<br>
+
+<br>
+<b><i>Publisher shipping date
+<br>
+</i></b>If the publisher/distributor is out of stock and have nominated an expected shipping date, it will be displayed in the Pub Ship Date field. This will update the corresponding field in the title master.
+<br>
+
+<br>
+<b><i>Pricing
+<br>
+</i></b>The Sell Price and Retail Price fields display the Title Page (Australian) prices with the master file price in blue, beneath them. The master file prices will update when you click the Update (F12) button. If you wish, you can manually key a different Sell or Retail price in these fields, or un-tick the checkboxes to cause the prices not to update. 
+<br>
+<i>Note: Below the Retail field is the price type for the Title Page prices. Standardly, the prices are 'retail price including tax'. If it is something other than this, you will need to take it in consideration when updating</i>. 
+<br>
+
+<br>
+<b><i>Supplier Availability
+<br>
+</i></b><i>This information is for information only; the data is not imported into Bookscan.
+<br>
+</i><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">On hand &#150; indicates whether the supplier has stock.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">On order - indicates if the supplier (Yes/No) has stock on order. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+</span><span style="font-family:Times New Roman; font-size:14pt; color:#000000"><b><u>Adding new titles using the Title Page API
+<br>
+</u></b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+</span><span style="font-family:Times New Roman; font-size:14pt; color:#000000"><b>Title Master 
+<br>
+</b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">If an ISBN search in the Find Title window fails to find a product in the master file, the program will open the Web Search window from where you can search the TitlePage web site for the product. 
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">In the Web Search ensure the Title Page radio button is selected and click the Log in (F12) button.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The Title Page login window will display. Bookscan will attempt to log in to the Title Page web site.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">A normal course of it running will show these messages (in order); 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="128"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Wingdings; font-size:12pt; color:#000000">&#167;</span></td><td><span style="font-family:Wingdings; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Connecting to Title Page
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="128"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Wingdings; font-size:12pt; color:#000000">&#167;</span></td><td><span style="font-family:Wingdings; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Requesting data for: 9781841593067
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="128"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Wingdings; font-size:12pt; color:#000000">&#167;</span></td><td><span style="font-family:Wingdings; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Success!: data found for : 9781841593067
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="128"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">If you don't succeed in logging in, the window will show 'failed' and a detailed failure message will display.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">If the log in succeeds, Bookscan will retrieve an update file for the title and the Title Page Update window will open:
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><img src="titlepagemain.jpg" width="636" height="402" border="0" alt="titlepagemain">
+<br>
+<i>Note that the window is slightly different from the update window shown earlier &#150; the only optional import fields are the status and sell price.
+<br>
+</i>
+<br>
+<b><i>Notes
+<br>
+</i></b><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The ISBN, Title, Author and Retail fields will always be imported to the master file. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Note that you can overtype these fields in the window if you wish. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Ticking the 'Upper case' checkbox will cause the title to save in upper case.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The Role field is the role the contributor plays with this product. The field next to it is the description of that role. A01, for example, is (principal) author. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b><i>Supplier
+<br>
+</i></b>Title page's Supplier field can't be mapped to Bookscan's supplier master. You will need to do the linking up yourself. The Supplier Name field shows the supplier as recorded by Title Page. The Set Supplier combo box will be empty. It's here that you can manually set the Bookscan supplier to be the same as the Title Page supplier.
+<br>
+
+<br>
+<b><i>Status
+<br>
+</i></b><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The Availability field displays the ONIX status as recorded by Title Page. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">If you have mapped your status fields to Onix fields (or if your statuses use the Onix standard), the Set Status combo box will default to the Title Page status. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">If you haven't the field will be blank and you will have to set the Set Status field manually. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Unticking the checkbox to the right of the Set Status field, will prevent the master status from being updated.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b><i>Publisher shipping date
+<br>
+</i></b>If the publisher/distributor is out of stock and have nominated an expected shipping date, it will be displayed in the Pub Ship Date field. This will update the corresponding field in the title master.
+<br>
+
+<br>
+<b><i>Pricing
+<br>
+</i></b>The Sell Price and Retail Price fields display the Title Page (Australian) price. Unticking the checkbox to the right of the Sell Price field, will prevent the master sell price from being updated.
+<br>
+<i>Note: Below the Retail field is the price type for the Title Page prices. Standardly, the prices are 'retail price including tax'. If it is something other than this, you will need to take it in consideration when updating</i>. 
+<br>
+
+<br>
+<b><i>Supplier Availability
+<br>
+</i></b><i>This information is for information only; the data is not imported into Bookscan.
+<br>
+</i><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">On hand &#150; indicates whether the supplier has stock.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">On order - indicates if the supplier (Yes/No) has stock on order. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+
+<br>
+</span></span></span>
+
+</body>
+</html>

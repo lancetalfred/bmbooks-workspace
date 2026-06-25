@@ -1,0 +1,16 @@
+{% assign default_groups = robots.default_groups %}
+{% for group in default_groups %}
+{{ group.user_agent }}
+{% for rule in group.rules %}
+{{ rule }}
+{% endfor %}
+
+{% endfor %}
+User-agent: *
+Disallow: /*?filter*
+Disallow: /*?sort*
+Disallow: /collections/all
+Disallow: /collections/*%2B*
+Disallow: /collections/*+*
+
+Sitemap: {{ shop.secure_url }}/sitemap.xml

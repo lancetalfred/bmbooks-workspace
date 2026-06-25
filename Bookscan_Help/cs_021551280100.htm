@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>End of Day</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="End of Day - Summary,End of Day - X Report,End of Day - Closing,End of Day - Posting">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFE8">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Times New Roman; font-size:16pt; color:#000000"><b><u>&nbsp;&nbsp;&nbsp;</u></b><span style="font-family:Times New Roman; font-size:16pt; color:#7F0000"><b>DAILY SALES HOUSEKEEPING
+<br>
+</b></span></span></span>
+    </td>
+    <td align="right">
+     <font face="Arial" size="2">
+     <a href="cs_101601480230.htm">Previous</a>&nbsp;
+     <a href="cs_281043020001.htm">Top</a>&nbsp;
+     <a href="cs_081140340207.htm">Next</a>
+     </font>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"><b><img src="warning.jpg" width="30" height="29" border="0" alt="warning"> </b><span style="font-family:MS SANS SERIF; font-size:16pt; color:#000000"><b>Important:</b></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"><b> &nbsp;&nbsp;&nbsp;Close all windows within Bookscan 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on all terminals before proceeding.
+<br>
+</b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+Each day you need to close sales for the day to prepare your banking. If you do your banking more than once a day, you will need to run this process each time.  
+<br>
+
+<br>
+</span><span style="font-family:Times New Roman; font-size:16pt; color:#000000"><b>End of day overview</b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><b>
+<br>
+</b>The end of day process is controlled in the <span style="font-family:Times New Roman; font-size:12pt; color:#007F7F"><b>Sales / Daily</b></span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> window and consists of several steps:
+<br>
+
+<br>
+<i>Printing the X report</i><b><i>
+<br>
+</i></b>As sales are made during the day the transactions are saved to a file called sales.dbf. The <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F"><b>X report</b></span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><b> </b>or the daily sales<span style="font-family:Times New Roman; font-size:12pt; color:#7F007F"><b> Graphic</b></span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> report will get its data from this file.
+<br>
+
+<br>
+<i>Closing sales
+<br>
+</i>Closing sales copies all the data from the sales file into a file called psales.dbf and empties the sales.dbf file, ready for the next day's transactions. 
+<br>
+<b>Important:</b> to ensure all the day's transactions are completed, all terminals must be set back to the main menu before closing sales. Normal business can resume immediately after the closing is complete &#150; this should be a very short time.
+<br>
+
+<br>
+<i>Printing the daily sales and banking reports
+<br>
+</i>The <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F"><b>All sales</b></span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> (sales by item) and <span style="font-family:Times New Roman; font-size:12pt; color:#7F007F"><b>Cashbook</b></span></span></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> reports use the psales.dbf file for their data.
+<br>
+
+<br>
+<i>Posting sales
+<br>
+</i>Posting sales copies the data in the psales.dbf file into the sales history files, specifically saleline.dbf (financial data) and salehist.dbf (item sales). It also updates various summary files including period (usually weekly), monthly and annual sales files. Once these updates are done psales.dbf is emptied.
+<br>
+
+<br>
+CLOSING AND POSTING SALES
+<br>
+Open the Daily Sales window from the main menu: click on Sales/Daily.
+<br>
+This window will guide you through the end of day process, remembering where you are up to in the process and ensure that you complete all the compulsory steps.
+<br>
+As you complete each step, the system will display a tick in the checkbox shown against each process.
+<br>
+</span><span style="font-family:Times New Roman; font-size:16pt; color:#000000">
+<br>
+<b>Step by step guide to end of day processing
+<br>
+
+<br>
+<img src="salesdaily.jpg" width="796" height="496" border="0" alt="salesdaily">
+<br>
+</b></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b>Step 1:&nbsp;&nbsp;&nbsp;Print X reports
+<br>
+</b><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">An X report is a summary of the day's takings by transaction type for all registers. The report gets its data from the daily sales table - sales.dbf.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">You can choose to print the report in summary format or in detail; use the Summary Format check box below the X Report button to set this flag.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">On the Sales tab of System Options, there are two more options you can set up:
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Split register takings: setting this flag will report the sales takings for each register. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Split store takings: if your store is divided into sections, say General and Children's, you can set the register names in each area to reflect this by adding a prefix, e.g. GReg1, Greg2 and CReg3.  With the split store takings flag set, the takings will be subtotaled for each area.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">At the bottom left of the Daily Sales window there is a checkbox to print this report on the docket printer. Otherwise the report prints to your standard printer. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"> 
+<br>
+You can also run a graphic sales report here. 
+<br>
+
+<br>
+<b>Step 2:&nbsp;&nbsp;&nbsp;Close sales
+<br>
+</b><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">You will need exclusive access to the sales file to run this short routine. So ensure that all terminals have no Bookscan windows open. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Click on the Close sales button. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">As soon as sales are closed you may begin trading again. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">The date of the last close is shown below the button.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b>Step 3:&nbsp;&nbsp;&nbsp;Print sales and cash reports
+<br>
+</b><i>Note that these reports can only be printed after closing sales and before posting!
+<br>
+</i>Click on the appropriate buttons to print the All Sales and Cash Book reports.
+<br>
+<b><i>All sales report
+<br>
+</i></b>This report is a list of all the day's sales by item. The data is taken from the psales.dbf table.
+<br>
+You can order the report by either:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Supplier
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Sales Department
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Other options are:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Summary or details format
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Total on ISBN: when this flag is set the report will show total sales for each product. When not set, each sale it listed.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Consignment sales: when set, the report will also include consignment sales.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Consolidation (department order only): this special set up is where you have prefixed your department codes by a single letter to split them into groups. In this case, the report is sorted by these groups. E.g. you have departments A100,A101, A102, B100, B101 etc. The report will show all 'A' departments first then 'B's etc, subtotaling on each grouping.  
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">&nbsp;&nbsp;&nbsp; 
+<br>
+<b><i>Cash book report
+<br>
+</i></b>This report is a list of all the day's sales transactions by transaction type. The data is taken from the psales.dbf table.
+<br>
+Options here are:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Summary or details format
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">A Banking List: with this flag set, the report will also print a banking list showing the cheques taken that day.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Split stores: splits the report up in register groups, similar to the X report (see above).
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Split register takings: setting this flag will report the sales takings for each register. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b>Step 4:&nbsp;&nbsp;&nbsp;Post sales
+<br>
+</b>After reconciling your takings, click on the Post Sales button to conclude the process. The psales.dbf file will be copied into the sales history files and used to update the various summary files including the period, monthly and annual sales files. Once these updates are done psales.dbf is emptied.
+<br>
+
+<br>
+</span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"> </span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+</span></span></span>
+
+</body>
+</html>

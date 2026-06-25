@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Audit Window</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFE8">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Audit Window</b><b>
+<br>
+</b></span>
+    </td>
+    <td align="right">
+     <font face="Arial" size="2">
+     <a href="localsystemsettings.htm">Previous</a>&nbsp;
+     <a href="cs_281043020001.htm">Top</a>&nbsp;
+     <a href="settingupsecurity.htm">Next</a>
+     </font>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">In this window you can see the contents of the audit log.  Print a date range from it and purge old audit records.
+<br>
+
+<br>
+When an operator performs a task that creates transaction, the operator code is recorded against the transaction ( e.g. an invoice or a cash sale). However not all tasks result in the creation of a transaction, for example deleting a special order or closing sales for the day. In these cases a record is created in the audit log and the date, time, operator, register and the details of the task are recorded. <span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+</span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+
+<br>
+<img src="audit.jpg" width="791" height="480" border="0" alt="audit">
+<br>
+
+<br>
+If it gets too large you will be prompted to purge it for better performance any window that writes to it.  (Particularly noticed as lag between making a sale &amp; the docket printing.)
+<br>
+
+<br>
+To <b>Purge</b> the archive of old records, select a date at least one month in the past, then click on the <span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#7F007F"><b>Purge</b></span></span></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"> button.  This will mark all the records in the file up to that day as deleted.  To remove them fully run <span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#007F7F"><b><a href=pack_tables.htm>Pack Tables</a></b></span></span></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"><b> </b>from the <span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#007F7F"><b>Utilities / Database Utilities</b></span></span></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"> menu.  This removes the deleted records and will restore the system performance.
+<br>
+
+<br>
+To Print records, select a date range and then click on the <span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#7F007F"><b>Print (F9)</b></span></span></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"> button.
+<br>
+
+<br>
+To see transactions made by a particular operator, select their code from the drop down list.  <i>You must have </i><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#007F7F"><b><i>Use operator IDs</i></b></span></span></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"><i> selected in the </i><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#007F7F"><b><i><a href=cs_081140340181.htm>Sales</a></i></b></span></span></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"><i> tab of the </i><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#007F7F"><b><i>System Options </i></b></span></span></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"><i>to use this.</i>
+<br>
+
+<br>
+print preview allows you to preview the report and choose whether or not you print it.
+<br>
+</span></span></span>
+
+</body>
+</html>

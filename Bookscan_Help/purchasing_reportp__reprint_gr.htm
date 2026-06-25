@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Purchasing Reports - Reprint GRNs </title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Reports - Purchasing Reprint GRN">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+
+
+<span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:14pt; color:#800000">Purchasing Report:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reprint GRN(s)
+<br>
+</span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+
+<br>
+&nbsp;&nbsp;&nbsp;</span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000">Purpose:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Prints goods received notes, for goods which have not yet been posted into stock.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+&nbsp;&nbsp;&nbsp;</span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000">Parameters:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Supplier(s).
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+&nbsp;&nbsp;&nbsp;</span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000">Output</span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000"> (subject to system settings)</span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000">:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">ISBN, Title, Qty, PO#, Inv Cost, Sell Price, Discount and tax components.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;        Subtotals are by supplier and invoice-number.
+<br>
+&nbsp;&nbsp;&nbsp;        Section 2 reports Titles Not Supplied / Unfilled Special Orders.
+<br>
+&nbsp;&nbsp;&nbsp;        Section 3 prints requisition slips.
+<br>
+&nbsp;&nbsp;&nbsp;        Section 4 prints special order slips.
+<br>
+&nbsp;&nbsp;&nbsp;        Section 5 prints (special order) letters to customers.
+<br>
+&nbsp;&nbsp;&nbsp;        Author, Binding and more can be readily added  (see <span style="font-family:MS SANS SERIF; font-size:10pt; color:#008000"><a href=modifying_system_reports.htm>Modifying System Reports</a></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">).
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+&nbsp;<br>
+</span></span></span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;</span><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000">Report-form Variables reset at runtime:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:14pt; color:#000000"></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">cTaxName&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;GST or VAT (used in column-labelling).
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="78"></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;         Also, various flags determining which sections of the report may be omitted.
+<br>
+
+<br>
+</span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:12pt; color:#008000"><b>See also:</b></span></span></span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000">&nbsp;&nbsp;&nbsp;<span style="font-family:MS SANS SERIF; font-size:12pt; color:#008000"><a href=selection_controls.htm>Selection Control</a></span></span></span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:12pt; color:#008000">s</span></span></span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000">.
+<br>
+</span></span></span>
+
+</body>
+</html>
