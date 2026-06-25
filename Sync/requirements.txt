@@ -1,0 +1,4 @@
+dbfread==2.0.7
+requests==2.31.0
+schedule==1.2.1
+winotify==1.1.0

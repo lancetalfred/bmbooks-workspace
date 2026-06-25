@@ -1,0 +1,808 @@
+BMBOOKS SESSION CONTEXT — Last updated: 25 May 2026
+====================================================
+
+ABOUT THIS FILE
+---------------
+Paste this at the start of a new Claude conversation to restore full context.
+
+
+PROJECT OVERVIEW
+----------------
+Client: Bruce McKenzie Booksellers (bmbooks.co.nz)
+Owner: Louisa McKenzie (books@bmbooks.co.nz)
+Contact: Lance Alfred (IT / product manager)
+Location: Palmerston North, New Zealand
+Store type: Independent bookstore — NZ + Australia primary online markets, ships internationally
+
+Current platform: WordPress + WooCommerce (still live — not yet cut over)
+Target platform: Shopify — SYNC LIVE. ~34,500 products uploaded, all in Draft. Pre-go-live testing next.
+75 smart collections live. Dropdown navigation live (7 nav items). Homepage built. Gift card live.
+BookKeeper GUI built (pending deployment to shop machine). Blocking go-live items cleared.
+
+Hosting: A2 via Shanti (Barcode Solutions) reseller — $1,080 NZD/year
+Domain: Managed by Abbey at Black Sheep Design
+CDN: Cloudflare (Lance's account, free plan)
+Bookscan/Ebility: Product catalog sync — 40,000 products. Shanti is CEO of Bookscan AND hosting reseller.
+Ebility confirmed as Shopify-compatible. Connector setup email sent to Shanti 5 April 2026.
+Ebility e-coms module: runs every 2 hours (configurable to 30 min). Syncs: orders to suppliers (EDI), inbound electronic invoices, website stock/product updates (WooCommerce → Shopify), nightly data to NielsenBookScan.
+Web export mapping: module inside Ebility maps categories/products to the website. Needs review when Shopify connector goes live.
+Belinda: manages firewall at the shop — may be needed for remote access setup.
+Louisa accesses Ebility remotely via RDP to the shop machine.
+
+Brand: Colour #1A0A2E (dark purple — corrected from initial #430451), white background
+Typography: Playfair Display (headings), Open Sans (body)
+Site title: Bruce McKenzie Booksellers
+NZBN: 9429038229015
+Store password (temporary): sewvia
+
+Location note: BMBooks shares the same building as the Palmerston North City Library —
+they are next-door tenants. "Library" is the #1 GBP search term (272 searches).
+BMBooks does NOT sell second hand books.
+Social accounts: Instagram (@brucemckenziebooks), Facebook (BruceMcKenzieBooksellers), LinkedIn
+
+
+SHOPIFY STORE — SETUP STATUS
+-----------------------------
+Store URL: https://bruce-mckenzie-booksellers.myshopify.com
+Store created under books@bmbooks.co.nz
+
+DONE:
+- Store settings: NZD, Metric, Auckland timezone, NZ address
+- Markets: New Zealand (primary), International (AU, NZ, UK, US — confirmed by Louisa)
+- Shipping zones:
+    NZ: Collect In Store (free), North Island $7.99, South Island $10.99,
+        Rural North Island $11.99, Rural South Island $15.99
+        Transit: 3-5 business days
+    International: DHL Express carrier-calculated + $0 handling fee
+    Free shipping over $100: DISABLED (Louisa's preference)
+- Taxes: Not collecting (correct for NZ books, pending accountant confirmation for international)
+- Policies: Privacy Policy, Return & Refund Policy, Shipping Policy, Terms of Service (customised)
+- NZBN added to Terms of Service
+- Customer accounts: new-style accounts with login links enabled
+- Marketing opt-in: pre-checked at checkout
+- Shopify Payments: bank/IRD entered — verification documents submitted 7 April (Step 5 of 5 — pending Shopify review)
+- Phone number: confirmed and updated
+- Horizon theme: fully configured
+    - Colors: #1A0A2E dark purple (Scheme 1 + Scheme 6)
+    - Typography: Playfair Display (headings), Open Sans (body)
+    - Page layout: Wide
+    - Buttons: Primary style (solid)
+    - Cart (drawer), Product cards, Badges, Search, Variant pickers all configured
+    - Logo: B monogram (transparent PNG) uploaded to theme and checkout
+    - Favicon: set
+    - Custom CSS (current full ruleset):
+        .footer-content .menu__heading__default { font-weight: 700; font-size: 1em; }
+        .add-to-cart-button { max-width: 50ch; }
+        .resource-list__carousel .card-gallery { aspect-ratio: 700 / 1077 !important; }
+        .resource-list__carousel .product-media__image { object-fit: cover !important; width: 100%; height: 100%; }
+        .variant-option__select { border-color: rgba(0,0,0,0.4); border-width: 1.5px; border-radius: 4px; }
+        label[for^="Option-"] { font-weight: 700; color: #1A0A2E; }
+- Homepage built:
+    - Announcement bar: "Open 7 days · Palmerston North · Free in-store pickup"
+    - Header: B monogram logo, dark purple background, white nav links
+    - Hero: store interior photo, "Bruce McKenzie Booksellers" heading,
+            tagline "Palmerston North's independent bookshop...", Browse Books button (Primary)
+    - Info banner: "Can't find what you're looking for? Call 06 356 9922..."
+    - Newsletter section: "Subscribe to Bruce's Newsletter"
+    - Featured collections (6 live): New Releases (Manual), Bestsellers (Best selling), Fiction, Kids, New Zealand, Gifts & Stationery
+    - Footer: dark purple #1A0A2E background, 3 columns:
+        Visit Us (address, hours, contact details, Opening hours link)
+        Browse (placeholder — populate after Bookscan)
+        Customer Service (About Us, Visit Us, Contact Us, Shipping Policy,
+                         Returns & Refund Policy, Privacy Policy, Terms of Service)
+    - Social icons in footer: Instagram, Facebook, LinkedIn
+- Pages created:
+    - About Us (store history, BAANZ Lifetime Achievement Award, 65-year career)
+    - Visit Us (full opening hours, closed days, Google Maps embed,
+               "next door to the Palmerston North City Library" added)
+    - Contact Us (contact details + contact form)
+- 404 page: custom heading "Looks like this page has wandered off"
+- SEO basics set:
+    - Homepage: meta title "Bruce McKenzie Booksellers | Palmerston North Bookshop"
+    - About Us, Visit Us, Contact Us: meta titles and descriptions set
+- Settings > Brand: logo, primary colour (#1A0A2E), secondary (#FFFFFF),
+    slogan, short description, social links all set
+- Checkout branding: #1A0A2E accent and buttons, B monogram logo
+- Email domain authentication: DKIM/SPF DNS records added via Cloudflare (propagating)
+- Email notifications branded (#1A0A2E buttons):
+    Order confirmation ✓, Shipping confirmation ✓, Ready for local pickup ✓
+    Remaining (low priority): Order refund, Order canceled, Customer account welcome,
+    Customer account invite, Abandoned checkout
+- Abandoned checkout email: set up and ACTIVATED
+    Subject: "You left something behind at Bruce McKenzie Booksellers"
+    Heading: "You left some books behind"
+- Searchanise Search & Filter: fully configured
+    - Synonyms added (manga variants, author name variants, format variants, NZ spelling)
+    - Product field weights set
+    - Filters: Price + Availability expanded; Size, Discount, Color, Vendor collapsed
+    - Collection filter tree: Hidden (requires collections — activate after Bookscan sync)
+    - Plan: Free trial (~10 days remaining as of 7 April). Pro plan needed post-sync (~$295 NZD/month)
+- Wishlist Plus by Swym: installed on live theme, free plan, header launcher active
+- Collection SEO copy prepared for 8 collections (see KEY FILES below)
+- Go-live checklist created (see KEY FILES below)
+- Google Business Profile: updated
+    - Description updated (library building mention added)
+    - Website URL updated to https://bmbooks.co.nz
+    - Location corrected (city added)
+    - Christmas Day closed added
+    - Social profiles: Instagram, Facebook, LinkedIn linked
+    - Hours confirmed correct
+    - 4.8 stars, 221 reviews, 5,473 profile views (Jan-Apr 2026)
+    - Top GBP search terms: library (272), op shop (175), bookstore (108)
+    - 72% mobile traffic
+
+
+LOUISA CALL — 7 April 2026 3:30pm NZ — COMPLETED
+-------------------------------------------------
+Outcomes:
+1.  Shopify Payments docs: submitted during call ✓
+2.  Email verification: resolved — domain auth auto-verified sender email ✓
+3.  Policies: sign-off still pending (Return & Refund, Shipping)
+4.  Book categories: not discussed — pending
+5.  Out of stock: backorder YES. Label "Available to order" (no lead time text).
+    Out-of-print removal: same Bookscan/Ebility process as WooCommerce.
+    Future task (low priority): investigate removing out-of-print books directly from Shopify.
+6.  New Arrivals: manual curation by Louisa. No auto date-based labelling.
+7.  Starshipit: login email = books@bmbooks.co.nz. Password to follow (on different computer).
+8.  International handling fee: changed $2.00 → $0 (not $2 — deterrent, packaging not expensive)
+9.  Contact channels: all four kept (phone, text, email, form).
+    Add note to text number: "Text only — this number is not monitored for calls."
+    Contact form goes to books@bmbooks.co.nz — Louisa's inbox only.
+10. GBP special hours: Louisa manages this herself.
+11. Hero photo: not urgent — will happen eventually.
+12. Brand colour: #1A0A2E confirmed by Louisa ✓
+13. Google account: bmbooksellers@gmail.com — Lance has access. Use for GA, Cloudflare, backups.
+
+
+SHANTI / EBILITY — RESOLVED (abandoned)
+-----------------------------------------
+shopifylibrary.dll confirmed absent from shop machine. Shanti unresponsive to Louisa and Lance.
+Custom Python sync script (bookscan_sync.py) built as full replacement — reads Bookscan DBFs directly.
+Production sync completed May 15, 2026. Shanti path permanently abandoned.
+
+
+WAITING ON LOUISA
+------------------
+- Binding codes email reply — 28 unknown codes, top 10 listed, asked for label + show/hide (sent 25 May 2026)
+- Question E reply — NOWEB flag: Option 1 (follow all 16 codes) vs Option 2 (OP/RP/RUC only)
+- Backorder source — does she set out-of-stock in Bookscan or does it happen automatically?
+- eShip password (login: books@bmbooks.co.nz — Louisa uses eShip, NOT Starshipit)
+- High-res store interior photo (not urgent)
+- Full wordmark logo from Abbey at Black Sheep Design
+
+
+POST-BOOKSCAN SYNC — ACTION ITEMS
+-----------------------------------
+DONE (awaiting product activation):
+- Build navigation menu with book categories ✓ (75 collections, 7 dropdown nav items, Manawatu standalone)
+- Build featured collections and category browse sections on homepage ✓ (6 sections live)
+- Populate Browse footer column with real category links ✓
+- Verify Searchanise product field weights ✓ (Author + ISBN confirmed)
+
+PENDING (after bulk product activation — Draft → Active):
+- Run Searchanise Force Re-indexation (Dashboard > Force re-indexation) — do NOT run before activation
+- Activate Searchanise Collection filter tree
+- Enable Searchanise filters: Tags (author/genre), Product type (format), Collections
+- Set up Searchanise Metafields (Author, ISBN, Publisher)
+- Choose Searchanise plan: Pro (~$295 NZD/month for up to 50k products)
+
+
+BOOKKEEPER GUI — STATUS (25 May 2026)
+--------------------------------------
+Files: Sync/bookkeeper_gui.py (tkinter), Sync/Sync Now.bat
+bookscan_sync.py changes: --once flag + sync.lock lock file
+Deployment target: Z:\BookKeeper\ (move from C:\BookKeeper\ to Z: for backup safety)
+Status: Built + syntax OK. Log polling unconfirmed on Mac (system Tk dark mode issue). Deploy to Windows shop machine for final test.
+Task Scheduler: run "python Z:\BookKeeper\bookscan_sync.py --once" every 2 hours
+
+
+ACTION ITEMS — TECHNICAL
+--------------------------
+- Domain connection at go-live — coordinate with Abbey at Black Sheep Design
+- Email domain authentication propagation — set 7 April, allow 48hrs
+- Move UpdraftPlus backup to bmbooksellers@gmail.com Google Drive (BLOCKED — 2FA on bmbooksellers@gmail.com goes to unknown number, confirm with Louisa)
+- Transfer Cloudflare to bmbooksellers@gmail.com (BLOCKED — same 2FA issue)
+- Shopify Payments 2FA + bank account — Lance added his mobile as second 2FA device on bmbooksellers@gmail.com (May 3, 2026). No longer blocked.
+- Confirm phone number on bmbooksellers@gmail.com with Louisa — unblocks Shopify Payments, Cloudflare, UpdraftPlus
+- eShip (NZ Post) Shopify connection — post go-live (eShip > Integrations > Add Integration > Shopify). Login: books@bmbooks.co.nz. NOTE: NOT Starshipit — Louisa uses eShip directly.
+- Set up Shopify gift cards: COMPLETED — denominations $30, $40, $50, $60, $80, $100. Data-driven: $90 never sold, $10/$20 negligible volume. ✓
+- Cover image for Settings > Brand (waiting for high-res photo)
+- Bookscan IS the in-store POS system (confirmed via screen share — handles POS, inventory, EDI ordering, NielsenBookScan reporting, website sync)
+- Export full WooCommerce order history CSV: COMPLETED — 2,396 orders, $137,344 NZD total ✓
+- Export key financial reports (revenue by year): COMPLETED — BMBooks_Revenue_By_Year.xlsx ✓
+- Download UpdraftPlus full site backup before cancelling hosting
+- Do NOT cancel Shanti hosting until 3–6 months post go-live
+- BookData out-of-print ISBN check: COMPLETED — 3,258 out-of-print books identified. BMBooks_OutOfPrint.xlsx sent to Louisa. She to review and remove from Ebility.
+- Future task (low priority): transfer GA ownership to books@bmbooks.co.nz (when Louisa ready to manage it)
+
+COMPLETED — 8 April 2026
+--------------------------
+- International handling fee → $0 ✓
+- Contact Us text number note added ✓
+- DMARC record added to Cloudflare DNS ✓
+- Searchanise: Hide out-of-stock OFF, Show at end OFF ✓
+- Email templates branded #1A0A2E: Order refund, Order canceled, Customer account welcome, Customer account invite ✓
+- Footer Customer Service heading CSS confirmed applied ✓
+- Google Analytics confirmed connected under bmbooksellers@gmail.com ✓
+- Starshipit → CORRECTED: Louisa uses eShip (NZ Post) directly, not Starshipit ✓
+- eShip confirmed: has native Shopify integration (Integrations > Add Integration > Shopify) ✓
+- WooCommerce customer export completed: 2,123 customers, saved to BMBooks_WooCommerce_Customers_Apr2026.csv ✓
+- WooCommerce analytics reviewed: gift vouchers = 21% of revenue, NZ Fiction #1 category, Local/Manawatu Authors #3 ✓
+- International shipping problem identified: WooCommerce shows "Shipping Costs To Be Advised" — not calculated at checkout. Shopify DHL carrier rates fix this. ✓
+- Louisa email sent: progress update + 6 action items + timeline ✓
+- Category data email sent to Louisa: data-backed navigation recommendation ✓
+- BookData out-of-print audit completed: 37,076 ISBNs checked, 3,258 out-of-print identified ✓
+    - 1,508 definite (publisher OP, no longer supplied, cancelled)
+    - 1,750 uncertain (not available, reason unspecified)
+    - BMBooks_OutOfPrint.xlsx sent to Louisa for review ✓
+- End-of-session workflow streamlined: replaced Notion + ChatGPT with 4 directly maintained markdown files ✓
+- New files created: BMBooks_Action_Items.md, BMBooks_Release_Notes.md ✓
+
+COMPLETED — 11 April 2026
+--------------------------
+- File reorganisation: all BMBooks files moved to /Documents/Claude/BMBooks/ with Project/, Reports/, Content/, Legacy/ subfolders ✓
+- Louisa Teams call recorded — Ebility e-coms mechanics confirmed via screen share ✓
+- Chrome Remote Desktop set up as screen sharing solution (TeamViewer blocked on Lance's work laptop) ✓
+- Lance attempted call to Shanti — Shanti cancelled it ✓
+- Louisa briefed on Shanti situation — she is chasing directly ✓
+
+COMPLETED — 9 April 2026
+--------------------------
+- Shopify gift cards set up: $30, $40, $50, $60, $80, $100 ✓
+- DHL international shipping confirmed working on Basic plan (Shopify's own DHL integration) ✓
+- DHL handling fee confirmed $0 ✓
+- WooCommerce order history exported: 2,396 orders, $137,344 NZD ✓
+- Revenue by year for IRD: BMBooks_Revenue_By_Year.xlsx ✓
+- WooCommerce refunds exported: 51 refunds, $2,481 NZD — mostly out-of-stock issues ✓
+- Coupon codes checked: none exist ✓
+- Product reviews checked: 7 reviews (all positive) — not worth migrating ✓
+- All page links checked: footer, navigation, 404 all working ✓
+- Louisa followed up Shanti via text — no response yet ✓
+
+
+CURRENT STATE — as of 22 May 2026
+-----------------------------------
+PHASE 1 SYNC: COMPLETE
+- 34,493 unique products on Shopify (live store). All in Draft status.
+- CSTATUS/DEPT filters active: ~2,329 intentional exclusions (OP/RP/RUC + AAA/VOU/FRE/TOK).
+- 40 duplicates from restart cycles removed by dedupe.py (May 14).
+- Inventory confirmed healthy on all products (May 15).
+- Collections verified: Fiction 9,783 · Non-Fiction 12,620 · Kids 6,115 · The Arts 3,206 · Young Adult 794 · NZ 3,287 · Gifts 1,646.
+- Smart collection tag rules confirmed matching DBF CATNAME values exactly.
+
+COMPLETED — 22 May 2026
+-----------------------
+- Product page — availability row (Custom Liquid block): live on store. In Stock: green badge + truck icon + "Ships within 1–2 business days · NZ main centres 2–5 working days". Available: yellow badge + clock icon + "We'll order this for you · Allow 1–2 business days to process". max-width: 70ch. Uses variant.inventory_management + inventory_quantity to determine state. ✓
+- Product page — description excerpt (Custom Liquid block): 35-word excerpt with Read more / Read less toggle. Full description shown when expanded. max-width: 70ch. Font 0.88rem, line-height 1.7. No SEO impact (full description still in DOM). ✓
+- Product page — Book Details styling: heading uppercase 0.875rem, labels rgba(0,0,0,0.812) bold, values rgba(0,0,0,0.812). Border-top separator. max-width implied by theme column. ✓
+- Product page — Google Reviews trust badge (Custom Liquid block, under Book Details): 4.8 stars (CSS clip technique), 221 reviews, Google G SVG logo, "Leave a review ↗" link. Place ID: ChIJ37N-otGyQW0RMQCftItkz4E. Hardcoded — needs periodic manual update. ✓
+- Homepage — Google Reviews Rockets widget: installed and configured. Title "What Our Readers Say". 223 Google reviews displayed as auto-sliding carousel. ✓
+- Wishlist button (product page): secondary outlined style, max-width: 50ch, aligned right under Add to Cart via .swym-custom-pdp-button { max-width: 50ch; margin-left: auto; } in Shopify Custom CSS. Swym Advanced Settings CSS override applied. ✓
+- Wishlist header count bubble: changed from purple (--color-primary-button-background) to red (#E53935) with white text via Swym Advanced Settings CSS. In progress — confirm on live site.
+- Horizontal scroll (Google Reviews Rockets): diagnosed via getBoundingClientRect() console script. Root cause: .grp-entangle--root uses max-width: 100vw + padding: 20px with no box-sizing: border-box. CSS override attempts inconclusive. Added to Low Priority action items for post go-live fix.
+- Low Priority action items added: breadcrumbs (nice to have, BookHero reference, Custom Liquid section approach documented), recommended products image size (CSS approach TBD), horizontal scroll fix.
+
+COMPLETED — 19 May 2026
+-----------------------
+- Author name bug fixed in bookscan_sync.py: Bookscan stores "LASTNAME FIRSTNAME" → was displaying "Wells Martha". New _format_author() helper reverses to "Martha Wells". Handles multi-word last names (DE VRIES JAN → Jan De Vries) and comma format. Author is in product_hash() so next delta sync auto-fixes all affected products. Pending deploy to shop machine.
+- Product page layout/spacing fixed by Lance directly in theme editor (product information section settings). ✓
+- Wishlist button restyled to secondary via Wishlist Plus app Advanced Settings (colour overrides in app dashboard). ✓
+- Product page improvements applied to live Shopify store (Horizon theme, Scheme 1):
+    - Author line (Custom Liquid block): "By Martha Wells" — author name in #1A0A2E, 0.9rem
+    - Delivery message (Custom Liquid block): truck SVG icon + "Ships within 1–2 business days · NZ main centres 2–5 working days"
+    - Book Details table (Custom Liquid block): ISBN, Author, Publisher, Format, Date Published, Weight, Pages
+    - Price resized: Price block Typography Preset → Heading 3
+    - Sale price label removed: Price block "Show sale price first" → OFF
+- Image aspect ratio set: Horizon theme → Product Card → Portrait, Product page → Contain ✓
+- Stock status investigation: Horizon built-in Inventory block does not work correctly for BMBooks — shows "In Stock" for zero-stock books (inventory_policy: continue). Decision: replace with Custom Liquid block.
+- Availability row designed in mockup (Memo/product-page-mockup.html) — BookHero-inspired layout: status badge (left) + shipping info (right) on one row.
+    - In Stock: green badge (#EAF5EE/#2D7A4F) + truck icon + "Ready to ship · Ships within 1–2 business days"
+    - Available to Order: yellow badge (#FFFCE0/#8A6B00) + truck icon + "We'll order this for you · Allow 1–2 business days to process"
+    - Pending: Louisa sign-off on copy + confirm supplier lead time → then wire into live Custom Liquid block
+
+COMPLETED — 16–18 May 2026
+---------------------------
+- image_replace.py DONE 2026-05-18 01:02 NZT. Final: Replaced 34,278 · Skipped 111 · Errors 103.
+  Source breakdown: large 25,190 · catalog 9,209 · medium 44.
+- image_retry.py run: 102/103 errors fixed. 1 failure (9780995117563 — zero-byte catalog file).
+  Manually resolved: no_cover.jpg added via Shopify Admin → product 7906805219406.
+- Script fixes applied to image_replace.py: upload-before-delete order (was deleting old image
+  before confirming upload succeeded — 101 products briefly had no image), Shopify response body
+  logging, per-product skip reason logging.
+- image_retry.py created (Sync/) for targeted 422 retry with product ID lookup.
+- Horizon theme image settings updated: Product Card → Portrait aspect ratio,
+  Product page → Contain media fit, Constrain to screen height on, Extend to edge off.
+- Image quality investigation: Open Library has gaps, Google Books caps at 128×196px.
+  Nielsen BookData is correct long-term source (active subscription BFNZ035, publisher-quality covers).
+  Nielsen portal + API confirmed DOWN 2026-05-18 (outage). Post-launch task: when recovered,
+  capture API endpoint via Fiddler, wire into bookscan_sync.py for the 9,209 catalog-thumbnail products.
+- Both CV versions completed and LinkedIn profile fully updated (2026-05-16).
+- BookData OOP audit: Louisa's team doing per-book CSTATUS cleanup (ongoing).
+
+IN PROGRESS:
+- Post-sync 6: UAT spot-check (TC60–TC69) — partially complete. Findings so far below.
+- BookData OOP audit: Louisa's team doing per-book CSTATUS cleanup (ongoing).
+- Author name fix: written in bookscan_sync.py (2026-05-19) — pending deploy to shop machine.
+- Wishlist header count bubble: changed to red (#E53935) with white text via Swym Advanced Settings CSS — confirm looks correct on live site.
+
+NEXT STEPS (in order):
+A. Next session:
+   - Deploy updated bookscan_sync.py to shop machine (C:\BookKeeper\) → run delta sync to fix author names on all live products
+   - Complete Post-sync 6 UAT spot-check (TC60–TC69 in UAT runner at localhost:5001)
+   - Send binding codes email to Louisa (drafted — awaiting send)
+   - Fix blank-publisher vendor on 2,512 products (vendor = "Bruce McKenzie Booksellers")
+   - Ask Louisa: category source of truth + backorder setting source
+   - Walk Louisa through order fulfillment workflow
+   - Choose Searchanise plan (Pro ~$295 NZD/month)
+B. Pre-go-live testing (all checkout flows, mobile, email notifications)
+C. Go-live: bulk-activate Draft → Active, domain cutover, eShip connection
+
+POST-SYNC 6 UAT — FINDINGS SO FAR (17 May 2026):
+- TC62 Vendor mapping confirmed: Shopify Vendor comes from PUBLISHER.DBF → PUBLISHER field
+  (NOT Bookscan's UI Imprint or Publisher dropdown — those are separate internal fields).
+  e.g. 9789401419703 → "Lannoo Publishers" ✓; 9781509857364 → "Pan Macmillan" ✓
+- TC64 Binding codes: raw codes showing in Product type for unmapped codes (e.g. "BG" on 9781775438267).
+  Root cause: BINDING_MAP is incomplete — 28 codes unmapped, ~390 products affected.
+  Fix: one-line change to fallback (show "Unknown (BG)" instead of "BG") + email Louisa for full mapping.
+  Binding code inconsistency: BINDING_MAP covers 20 known codes → readable labels; 28 unknown codes
+  pass through raw. User wants consistent format. Recommendation: change fallback to
+  f"Unknown ({binding_code})" immediately, complete BINDING_MAP once Louisa responds to email.
+- TC67 Category tags: confirmed sourced from WEBLIST.DBF MAINCAT/SUBCAT → WEBMAINCAT/WEBSUBCAT name lookup.
+  NOT from Bookscan's internal Category field (e.g. "ASTRON ASTRONOMY"). BIC subject not synced.
+  e.g. 9781441906021: Bookscan Category=ASTRON ASTRONOMY, tags=["Science","General Science"] — correct.
+- Binding codes email to Louisa drafted (28 unknown codes, ~390 products, top 10 by frequency listed).
+
+KEY TECHNICAL NOTES:
+- Image paths on shop machine: Z:\bookscan\Catalog\LargeImages\ (NOT Z:\bookscan\LargeImages\ — common mistake)
+- bookscan_sync.py: resolve_image() now cascades LargeImages → MediumImages → Catalog → placeholder
+- All scripts at C:\BookKeeper\ on shop machine. Python 3.14, dependencies installed.
+- Do NOT run bookscan_sync.py while image_replace.py is running (API rate conflict).
+- sync_state.json on shop machine: will repopulate correctly on next delta run.
+
+
+COMPLETED — May 12–16, 2026
+-----------------------------
+- Chrome Remote Desktop access to shop machine established (Belinda, May 11) ✓
+- Python 3.14 + dependencies (dbfread, requests, schedule) installed on shop machine at C:\BookKeeper\ ✓
+- Created metafield definitions in live Shopify store — all 6 (bookscan.isbn, author, pages, publication_date, cstatus, department). bookscan.pages recreated as Single line text after Integer-type mismatch caused 422 errors on every HarperCollins book ✓
+- CSTATUS + DEPARTMENT filters added to bookscan_sync.py (STATUS_EXCLUDE = {OP, RP, RUC}, DEPARTMENT_EXCLUDE = {AAA, VOU, FRE, TOK}) ✓
+- find_by_sku rewritten from REST to GraphQL — fixed duplicate-product creation bug on sync restarts ✓
+- Production sync deployed: 34,493 unique products on live Shopify store (May 15) ✓
+- no_cover.jpg placeholder uploaded to Shopify Files CDN ✓
+- dedupe.py run: 40 duplicates across 32 SKUs removed (May 14) ✓
+- diagnose_inventory.py run: all 4 sample failing SKUs confirmed healthy — no fix needed (May 15) ✓
+- Collection counts verified: all in expected ranges, all 19 NZ collection tag rules confirmed matching DBF CATNAME values (May 15) ✓
+- image_replace.py written: one-off script replacing all 34k product images with LargeImages (257×400) versions. Also updated bookscan_sync.py resolve_image() to cascade LargeImages → MediumImages → Catalog + add filename field ✓
+- Action items file completely restructured from colour-coded priority sections to milestone-based phases (In Progress → Phase A → B → C → Go-Live → Post-Go-Live → Phase 2 → Phase 3). 9 duplicates/stale items removed or merged ✓
+- OOP CSV blocklist removed from bookscan_sync.py — replaced by Louisa's team per-book CSTATUS cleanup ✓
+
+COMPLETED — 6 May 2026
+------------------------
+- e-Bility release notes reviewed (v5.00.65a → 6.00.02g) — key findings for BMBooks sync:
+    CSTATUS field in MASTER.DBF confirmed as the status field (from release notes 5.0068d custom fields list)
+    Status codes confirmed via Louisa call:
+        ATT = Active → SYNC
+        NYPA = Not yet published → SYNC (Louisa wants these on)
+        MLIP = (to confirm) → likely SYNC
+        TLE = (to confirm) → possibly SYNC
+        OP = Out of print → DO NOT SYNC
+        RP = Reprinting (available, unknown when) → DO NOT SYNC
+        RMC = Under consideration (may reprint, basically OP) → DO NOT SYNC
+    Department filter needed — these departments must be excluded from sync:
+        AAA = unpredictable/variable pricing books (risk: customer orders at stale price, BMBooks wears loss)
+        One other (sounded like GFA) — Louisa to confirm via email
+    Additional MASTER.DBF fields available we're not currently syncing: series, illustrat, dimension, webkeyword, webcustom
+    CSTATUS filter NOT YET IMPLEMENTED in bookscan_sync.py — pending field name verification on shop machine
+- Louisa call — out of print / status codes conversation:
+    Confirmed OP is a status code, NOT a binding code (binding = PB, HB, TP etc.)
+    Louisa's current process: sells last copy → changes status to OP in Bookscan title master
+    RP = actually being reprinted, will be available but unknown when — treat same as OP on website
+    RMC = under consideration, basically OP but may reprint — treat same as OP on website
+    Status field visible in Bookscan: Tables → Title Master → STATUS field
+- Action items from Louisa call:
+    Louisa to email: full status code list + departments to exclude from website
+    Verify CSTATUS field on shop machine (print field names from MASTER.DBF)
+    Show Louisa how the sync tool works (she wants to see it)
+    Louisa to demo how books are added via Nielsen/title page upload (separate session)
+- Nielsen price sync gap identified (existing problem, not new):
+    Bookscan pulls price from Nielsen on first book add only
+    Price updates from Nielsen are NOT automatic — manual trigger only
+    Risk: stale price on Shopify → customer pays old price → BMBooks wears difference on reorder
+    NOT in scope now — flag as future improvement
+- Memo folder created at bmbooks-workspace/Memo/ for side conversations
+    Memo saved: 2026-05-06_louisa-status-codes.md
+    e-Bility release notes saved: Memo/Release_notes_v5.00.65a-6.00.02g.doc
+
+
+COMPLETED — 5 May 2026
+-----------------------
+- First full sync launched on shop machine — 38,490 products, cover images from Z:\bookscan\catalog ✓
+- CATALOG_IMAGE_PATH bug fixed (was None, needed r"Z:\bookscan\catalog") ✓
+- Chrome Remote Desktop permanent access established (bmbooksellers@gmail.com on shop machine) ✓
+- Phase 2 architecture fully confirmed via live DBF inspection:
+    WEBORDHD.DBF = web order header (customer + address + totals)
+    WEBORDLN.DBF = web order lines (ISBN, title, qty, price)
+    Both tables currently empty — WooCommerce middleware gone
+    Writing here lets Bookscan process orders natively (NielsenBookScan, EDI, financials all correct)
+    Do NOT write to MASTER.ONHAND directly — this was the original plan, now confirmed wrong
+    DBF write library needed: pip install dbf
+- BMBooks_Phase2_Plan.md fully rewritten with confirmed architecture, field mapping, UAT plan
+- inbound.md rewritten with confirmed architecture and full field mapping
+- C: drive on shop machine: 118GB total, 43GB used by Outlook mail — flag to Louisa, low priority cleanup
+
+COMPLETED — 3 May 2026
+-----------------------
+- Lance added mobile to bmbooksellers@gmail.com 2FA — no longer needs Louisa present for live store access ✓
+- PC06 metafield definitions created via API (create_metafields.py) — bookscan.author, bookscan.isbn, bookscan.pages, bookscan.publication_date ✓
+- PC07 confirmed done (custom app created May 2) ✓
+- Shopify Payments: accepting payments ACTIVE ✓. Payouts blocked — bank account not yet linked (needs Louisa's account number — get Tuesday) ✓
+- Package profiles created: small paperback (21×14×3cm), standard hardback (25×17×4cm), large/multiple (35×25×10cm). Confirm dimensions with Louisa pre-go-live ✓
+- 11 collections created with SEO copy via API (create_collections.py):
+    Smart: Fiction, Young Adult, Kids, Non-Fiction, The Arts, New Zealand, Gifts & Stationery, New Releases, Bestsellers
+    Custom (Louisa curates): Staff Picks, NZ Authors
+    All empty until sync runs Tuesday ✓
+- Main navigation menu updated: Fiction, Young Adult, Kids, Non-Fiction, The Arts, New Zealand, Gifts & Stationery, Contact. Home removed (logo handles it) ✓
+- Footer Browse menu created and assigned in theme editor ✓
+- Homepage collection sections added: New Releases, Fiction, Kids, Staff Picks (carousel, Heading 3) ✓
+- Search empty state set to Fiction ✓
+- 9 URL redirects created: /product-category/* → /collections/*, /shop → /collections/all ✓
+- Wordmark logo created in Figma, B monogram kept as header logo ✓
+- BMBooks_The_Story.md created — cinematic narrative of the project for job interviews/posts ✓
+
+COMPLETED — 30 April 2026 (order workflow session)
+----------------------------------------------------
+- Louisa online order fulfillment workflow confirmed:
+    Current flow: customer buys → Louisa manually enters full WEB SALE in Bookscan (name, address, every line item) → 2-hour sync deducts stock → Shopify updates
+    CRITICAL: it's not just a stock adjustment — Louisa creates a complete sale record in Bookscan (customer details + all line items). Her exact words: "we physically have to cut and paste every fucking line."
+    This happens for every online order. Single biggest ongoing manual cost.
+    International orders frequently fall through on WooCommerce (no calculated rates) — Shopify DHL fixes this.
+- Bookscan import mechanism confirmed: Louisa mentioned "we import titles" → Bookscan already has file-based import support. INVESTIGATE: does it support sales/transactions? If so, generating a compatible import file from Shopify orders = lower risk than direct DBF writes.
+- Phase 2 architecture correction: inbound sync must create proper Bookscan SALE RECORDS, not just deduct MASTER.ONHAND directly. Direct ONHAND write leaves no sale history → breaks NielsenBookScan reporting, Bookscan financials, EDI.
+- Phase 2 priority escalated: more urgent than originally scoped. Investigate Bookscan import format before DBF write approach.
+- inbound.md and changelog.md updated with the above findings.
+
+COMPLETED — 30 April – 2 May 2026
+-----------------------------------
+- UAT S7 edge cases completed ✓
+    TC35: $0 price syncs without error (Sound Horse Bible) ✓
+    TC36: 0 stock syncs, allows ordering ✓ (pass from prior evidence)
+    TC37: No description syncs without crash ✓ (pass from prior evidence — FPT not local)
+    TC38: No publisher syncs — vendor defaults to store name (Shopify behaviour). Conditional pass. Post-UAT bulk update task added.
+    TC39: Unknown binding code passes through as-is (CS code on Wipe Off book) ✓
+    TC40: Duplicate ISBN dedup — higher stock record wins (9781394368785, stock=1 selected over stock=0) ✓
+    390 products with 28 unknown binding codes identified — pass through as-is, review with Louisa post-sync
+- UAT S8 error handling: TC41–TC43 all PASS (verified from log evidence — non-fatal 404s, batch continues, state file preserved) ✓
+- UAT S9 log file: TC44–TC46 all PASS (49 run blocks, per-product ISBN+title lines, summary on every run) ✓
+- UAT S10 end-to-end purchase: TC47 conditional pass (title search works; author/ISBN need Searchanise), TC48–TC50 deferred to live store (shipping not configured on dev), TC51 PASS (Bogus Gateway test order), TC52 PASS (order confirmation email), TC53 deferred Phase 2 (inbound order sync not built) ✓
+- UAT S11 in-store sale: TC54–TC55 deferred Phase 2 ✓
+- UAT S12 Searchanise: TC56–TC58 deferred to live store; TC59 PASS (Fiction smart collection auto-populated from tags) ✓
+- UAT S13 production config: PC01 ✓, PC02 ✓, PC04 ✓, PC07 ✓, PC08 ✓; PC06 pending (metafields in live store); PC03+PC05 pending shop machine ✓
+- Shopify account clarification:
+    Live store (bruce-mckenzie-booksellers.myshopify.com) = bmbooksellers@gmail.com (2FA on Louisa's iPhone)
+    Dev store (bmbooks-dev.myshopify.com) = lance.t.alfred@gmail.com (Shopify Partners — LA Digital)
+    books@bmbooks.co.nz = store contact email only, no Shopify account
+- Legacy custom apps deprecated January 1, 2026 — Dev Dashboard is now only option
+- Live store custom app created in Dev Dashboard: Client ID stored in .env
+- get_token.py created — one-time Python OAuth script to retrieve permanent shpat_ token without running a web server. Stored in Sync/
+- bookscan_sync.py updated: SHOPIFY_STORE_URL = bruce-mckenzie-booksellers.myshopify.com, MAX_PRODUCTS = None
+- Production dry run confirmed against live store: 37,998 products, 37,659 changed, 339 unchanged, 0 errors
+- Category navigation structure finalised (Option 3 revised, benchmarked against Whitcoulls + Booktopia):
+    Top nav: Fiction · Young Adult · Kids · Non-Fiction · The Arts · New Zealand · Gifts & Stationery
+    All Bookscan MAINCAT/SUBCAT auto-assign via smart collection tag rules
+    Editorial collections (Staff Picks, New Releases, NZ Authors, Bestsellers) curated by Louisa
+- Smart collections decision: tags already synced per product → create smart collections post-sync, no script changes needed
+- "Sync Now.bat" desktop shortcut planned for shop machine (manual trigger for Louisa pre-GUI)
+- Order fulfillment workflow walkthrough added as pre-go-live training task for Louisa
+- Known gaps:
+    TC29: all products allow backorder (inventory_policy: continue) — pending Louisa's answer on who sets "do not allow"
+    Vendor blank = store name (Shopify default) — post-UAT bulk update task added
+    390 products with unknown binding codes — pass through raw, review with Louisa
+
+COMPLETED — 28 April 2026
+--------------------------
+- Cover image sync wired into bookscan_sync.py ✓
+    Strategy: HEAD-check <ISBN>-1.jpg first (WooCommerce product image), fall back to <ISBN>.jpg
+    Images passed as src URL — Shopify fetches server-side, no local files needed in production
+    Only uploads image on CREATE — existing images untouched on UPDATE
+    If neither URL resolves, Shopify's built-in placeholder is used automatically
+    Custom "no cover" image to replace placeholder post-UAT (Louisa has image)
+- download_images.sh created — downloads cover images for 20 UAT ISBNs ✓
+    20/20 found: 17 used -1 variant, 3 fell back to original
+- published_scope: "web" fix added to sync script ✓
+    Products were defaulting to POS-only sales channel. Added "published_scope": "web" to payload.
+    Bulk fix applied to 20 test products in dev store admin.
+- 20 products confirmed visible on dev store storefront (bmbooks-dev.myshopify.com) ✓
+    Images displaying correctly in product grid and product pages
+    Catalog browsable at /collections/all
+- KNOWN FINDINGS from dev store review:
+    Descriptions empty in local test — PUBLISHER.FPT and MASTER.FPT not included in Louisa's zip.
+    These memo files store BLURB and MTABSTRACT. Will work correctly on shop machine where FPT files exist.
+    CRITICAL: FPT files MUST be copied alongside DBF files when deploying to shop machine.
+    Image ratio inconsistency — different source image dimensions cause uneven product grid.
+    Fix: Horizon theme → Product grid → Image ratio → Portrait (2:3). Post-UAT task.
+    Low-res images — some WooCommerce source images are small/low quality (e.g. 8KB).
+    Post-production task: audit all 38k ISBN image URLs, flag under 15KB, generate replacement CSV.
+- Cover image source finalised ✓
+    Ebility automatically downloads cover art to Z:\bookscan\catalog\ on the shop machine
+    when a book is mapped to the web list. Files named <ISBN>.jpg (no suffix variants).
+    Confirmed via screenshot from Louisa — 29 April 2026.
+    Production config: set CATALOG_IMAGE_PATH = r"Z:\bookscan\catalog" in bookscan_sync.py
+    Images uploaded to Shopify as base64 attachment (stored on Shopify CDN — safe after WordPress shutdown)
+    WooCommerce URL kept as fallback for local testing and transition period
+    Custom "no cover" placeholder: Louisa has image — upload post-UAT
+- UAT test cases in progress — TC13 onwards (field mapping verification)
+
+COMPLETED — 27 April 2026
+--------------------------
+- UAT runner (uat_runner.py) fixed — was running from stale path /Users/lalfred/bmbooks-workspace/; restarted from correct path /Users/lalfred/Projects/bmbooks-workspace/UAT/ ✓
+- UAT runner now running at http://127.0.0.1:5001 (Flask/Python IPv4); Docusaurus docs at http://localhost:5001 (Node IPv6) ✓
+- UAT prerequisites expanded to 9 items (was 8):
+    P06: recategorized "interim" — must be done after TC08, not before testing starts
+    P07: updated with DBF file locking test instructions (test with Excel on shop machine during Chrome Remote Desktop session)
+    P08: updated with cPanel image download approach — confirmed WooCommerce images ARE named by ISBN (e.g. 9780007149698.jpg). ~20-30 images needed for UAT sample batch. Instructions added.
+    P09 (new): Plan the production sync window — full 38k sync = ~26 hours at Shopify rate limit (1.6 req/sec). Must run overnight/weekend. Set MAX_PRODUCTS = None first.
+- UI improvements to UAT runner: added "interim" (green) and "planning" (purple) category badges; removed Reset button ✓
+- TC01–TC07 all PASSED from a single dry run (27 April 2026):
+    TC01: Dry run executes without errors ✓
+    TC02: Correct product count logged (37,998 active web ISBNs) ✓ — note: expected value in test should say 37,998 not ~38,013
+    TC03: Deduplication logged (15 duplicate ISBN records → 37,998 unique) ✓
+    TC04: Product cap applied (MAX_PRODUCTS=20 confirmed) ✓
+    TC05: Products listed in dry run output (20 real books with titles, prices, stock) ✓
+    TC06: No API calls made during dry run ✓
+    TC07: State file NOT created on dry run (sync_state.json absent confirmed) ✓
+- Inbound order sync (P07) design discussion:
+    WooCommerce handled inbound via Barcode Solutions' Heroku middleware (they owned DBF writes)
+    Option A: Write to MASTER.DBF directly — needs file locking safety check on shop machine
+    Option B: min(bookscan_qty, shopify_qty) at sync time — avoids DBF writes, but breaks on restocks
+    Architecture doc confirms intended approach is DBF writes (Option A) — file locking must be tested first
+- Cover images confirmed: WooCommerce/cPanel images ARE named by ISBN — multiple sizes per book (WordPress resizing, not a bug) — originals (no size suffix) are the ones to download ✓
+
+COMPLETED — 14–23 April 2026
+------------------------------
+- Duplicate ISBN deduplication added to bookscan_sync.py ✓
+    13 duplicate ISBN groups found (15 extra records). Dedup logic: keep record with highest stock, tiebreak on price.
+    Full list saved: BMBooks_Duplicate_ISBNs.csv (added to action items as low priority — not blocking sync)
+- Vendor fallback "BMBooks" fixed ✓
+    92.4% of web products have real publisher name. 7.6% (2,883) now sync with blank vendor instead of "BMBooks"
+    Dev store: 40 products patched directly via API. Script updated for all future syncs.
+- Dev store batch updated ✓
+    All 162 products (with matched ISBNs) refreshed with latest script changes
+- Remote access to shop machine — NOT YET RESOLVED ✓
+    FortiClient VPN (IPSec/IKEv1) incompatible with Mac — IKEv1 not supported on macOS FortiClient
+    GlobalProtect (Palo Alto) also running on Lance's Mac — blocks other VPN clients
+    Belinda (IT contact at BMBooks) confirmed: only supports Windows for VPN/RDP
+    TeamViewer blocked on Lance's work laptop
+    Chrome Remote Desktop proposed — awaiting Belinda's response
+    Next step: Belinda to install Chrome Remote Desktop on shop machine
+
+COMPLETED — 13 April 2026 (evening)
+-------------------------------------
+- Bookscan DBF database fully inspected — 5 key files analysed ✓
+    MASTER.DBF: 133,752 records — main product catalog (ISBN, TITLE, AUTHOR, SELL_PRICE, ONHAND, BINDING, YEAR, MTABSTRACT)
+    PUBLISHER.DBF: 132,494 records — per-product publisher details (PUBLISHER, PAGES, PUB_DATE, WEIGHT, BLURB) joined on ISBN
+    WEBLIST.DBF: 38,013 active records — web filter (INACTIVE=False = listed on website)
+    STOCK.DBF: 0 records — empty; stock is in MASTER.ONHAND
+    WEBMAINCAT/WEBSUBCAT.DBF: category lookup tables (Fiction, History And Politics, Crime Fiction etc.)
+    PUBLISH.DBF: supplier code lookup (PENG→Penguin, ALLI→Alliance) — not needed for sync
+- Field mapping confirmed (correcting skeleton's educated guesses):
+    Stock → MASTER.ONHAND (not STOCK.DBF)
+    Web filter → WEBLIST.INACTIVE=False (not a WEB field on MASTER)
+    Publisher, pages, pub date, weight, blurb → PUBLISHER.DBF (joined on ISBN)
+    Binding codes: PB=Paperback, HB=Hardback, TP=Trade Paperback, PF=Picture Flat, BO=Board Book, +14 more
+- bookscan_sync.py rewritten as production script ✓
+    Reads MASTER + PUBLISHER + WEBLIST (3-file join on ISBN)
+    Delta sync: MD5 hash of 7 key fields → sync_state.json. Changed products only.
+    CLI: --dry-run (no API calls), --full (override delta)
+    Binding code → human-readable label mapping
+    inventory_policy: continue (Available to order when out of stock)
+    Products created as draft
+- Local test confirmed: 38,013 products load, 37,923 with price, 9,857 in stock ✓
+    Note: descriptions empty in local test — .FPT memo files not in zip. Will work on shop machine.
+- Dev store test CONFIRMED ✅
+    Run 1: Created 20, Errors 0
+    Idempotency run (--full): Created 0, Updated 20, Errors 0
+    Fahrenheit 451 verified: price $22.99, SKU 9780006546061, stock 2, weight 230g, type Paperback, vendor HarperCollins Publishers, all 4 metafields ✅
+    Author fix: BRADBURY RAY → Bradbury Ray (.title() applied) ✅
+    Inventory 404 on update = non-fatal dev store quirk (stock set correctly at creation)
+    bookscan_sync.py is PRODUCTION READY
+- Auto-tagging added to bookscan_sync.py ✓
+    Products tagged with Bookscan category data (WEBMAINCAT + WEBSUBCAT)
+    Two tags per product: main category + sub-category
+    e.g. Fahrenheit 451 → "Fiction, Science Fiction and Fantasy"
+    Makes building Shopify collections trivial — just filter by tag
+- Phase 2 plan created: BMBooks_Phase2_Plan.md ✓
+    Covers inbound order sync, sync GUI, cover images
+    DBF write safety must be investigated before inbound sync
+    Cover images: try Bookscan catalog folder first, fall back to Open Library API
+- Go-live checklist updated ✓
+    Shopify Payments marked done, Shanti connector replaced with real deployment steps
+    Cloudflare/UpdraftPlus transfers marked won't do
+- Action items fully cleaned up ✓
+    High Priority: nothing blocking
+    Shanti items abandoned/done, audiobooks dropped, UpdraftPlus/Cloudflare resolved
+- Next steps (in order):
+    1. Send email to Louisa — dev store review (draft ready)
+    2. Book Chrome Remote Desktop session with Louisa — Python install on shop machine (~20 min)
+    3. Before that session: create metafield definitions in live store + create custom app (5 scopes)
+    4. Set MAX_PRODUCTS = None + update 3 config lines in bookscan_sync.py
+    5. Run first production sync against live store
+
+COMPLETED — 13 April 2026
+--------------------------
+- DMARC rua updated: lance.t.alfred@gmail.com → bmbooksellers@gmail.com (Cloudflare DNS) ✓
+- Phishing email warning issued to Louisa — fake cPanel "Database Synchronization Error" email ✓
+- Shopify product image dimensions confirmed for suppliers: JPG, 1500×2250px minimum, 2:3 portrait ratio ✓
+- Password manager (1Password/Bitwarden) added to post-go-live action items ✓
+- FULL SYNC ARCHITECTURE CONFIRMED — Option B (custom Python, shop machine) ✓
+    - Shanti completely off critical path — shopifylibrary.dll absent, unresponsive
+    - Sync runs ON the shop machine (always on) — no cloud server, no Google Drive
+    - Outbound: Python reads Bookscan DBF → pushes to Shopify Admin API (delta only)
+    - Inbound: Python polls Shopify orders → deducts stock from Bookscan DBF (Phase 2)
+    - GUI: tkinter desktop app — "Synchronize Now" button, live activity log, summary stats (Phase 2)
+    - Same UX as current Bookscan eComms > Synchronize button
+    - Windows Task Scheduler for automated 2-hour background sync
+    - Email sent to Louisa 13 April — asked for Z:\bookscan *.dbf search screenshot
+- Shopify POC FULLY CONFIRMED — ALL TESTS PASSED ✓
+    - Shopify Partners dev store created: bmbooks-dev.myshopify.com
+    - Legacy custom app "Bookscan Sync" created — scopes: write_products, read_products, write_inventory, read_inventory, read_locations
+    - WooCommerce SQL export (wp4n_ prefix): 40 valid products, 10 skipped (vouchers)
+    - poc_shopify_sync.py built, debugged, and confirmed working
+    - Run 1: Created 9, Updated 1, Errors 0
+    - Idempotency run: Created 0, Updated 10, Errors 0
+    - Stock change test: changed #1 Dad Book stock 4→7, confirmed in Shopify ✓
+    - All fields verified against WooCommerce: title, price ($40), SKU (ISBN), weight (303g), product type (Hardback), description, inventory ✓
+    - Metafield definitions created in dev store (bookscan.author, bookscan.isbn, bookscan.pages, bookscan.publication_date) ✓
+    - Metafields confirmed saving: 10/10 ISBN, 9/10 author, 8/10 pub date, 7/10 pages (partial = correct, some books lack these in description) ✓
+    - inventory_policy: continue added — out-of-stock books show as "Available to order" ✓
+    - Package profiles noted for pre-go-live: set up 2-3 profiles (small/standard/large) in Settings → Shipping → Packages for accurate DHL volumetric rates ✓
+    - Note for production: variant replacement (no variant ID on update) works for our use case — inventory_quantity updates correctly via variant payload
+- DLL files (WooLibrary.dll, WooCommerce.NET.dll, WooLibrary.tlb) received from Louisa and fully analysed ✓
+    - WooCommerce.NET.dll = open source library (WooCommerceNET by XiaoFaye, MIT licence, GitHub)
+      Barcode Solutions did NOT write this — they just used a public library
+    - WooLibrary.dll = Barcode Solutions' entire contribution: ONE class, ONE method (SendAPIClientRequest)
+      A 4-function HTTP wrapper (get/post/put/delete). No secret sauce whatsoever.
+    - shopifylibrary.dll does not exist — confirmed absent. Shanti has not started building it.
+    - viiLibrary.dll present (31/10/2023) — unknown platform, not relevant to our work
+    - Conclusion: building our own Python replacement is straightforward.
+      The WooCommerce integration was minimally complex. Shopify's API is better documented.
+- Field mapping confirmed for Python sync script ✓
+    ISBN→sku, Title→title, Author→metafield, Blurb→body_html, Price→variants[0].price,
+    Stock→inventory_quantity, Publisher→vendor, Binding→product_type,
+    Pub date/Pages/Weight→metafields, Web flag→status (active/draft)
+- Shanti confirmed completely unresponsive — no reply to email OR text from Louisa ✓
+- Decision confirmed: custom Python sync script is the path forward ✓
+- Software comparison completed: Bookscan vs CirclePOS ✓
+    CirclePOS = NZ company (Christchurch), integrated website, strong NZ customer base,
+    good support. Two questions to verify: NZ EDI coverage and NielsenBookScan NZ.
+    Long-term recommendation pending Louisa's input.
+- Scenario table built: full before/after comparison for all Louisa workflows ✓
+- Plain-language explanation built for Louisa ✓
+
+COMPLETED — 12 April 2026
+--------------------------
+- Bookscan/Ebility architecture fully mapped via screen share ✓
+    - e-Comms tabs explored: General, Connection, Multi Store, Sales Export, EDI, eWeb
+    - Modules tab: NO Shopify option. Available: WooCommerce (active), BigCommerce, eWeb, Other
+    - Bookscan website confirms Shopify IS advertised as supported platform
+    - WooCommerce REST API keys: Book Hub (ID:7) = Ebility sync, Starshipit Integration (ID:6) = eShip
+    - WooCommerce webhooks: 3 active → booksellers-155024375aa1.herokuapp.com (Barcode Solutions Heroku middleware)
+    - Bookscan database format: dBASE/FoxPro (.DBF files) in Z:\bookscan
+    - Bookscan confirmed as in-store POS (handles POS, inventory, EDI, NielsenBookScan, website sync)
+- Gleebooks (Sydney) researched — uses CircleSoft Circle POS, not Shopify ✓
+- Decision made: build custom Bookscan DBF → Shopify sync script as workaround ✓
+- Shopify dev store to be set up for testing (Shopify Partners free dev store) ✓
+- Message drafted for Louisa re: Shanti (Shopify module not in software, but on website) ✓
+- Message drafted for Louisa re: DBF files — find via *.dbf search, upload to shared Google Drive ✓
+- Z:\bookscan folder structure confirmed via screenshot ✓
+    - Z:\bookscan is the DATA directory (all subfolders, no DLLs)
+    - Key subfolders: catalog (likely product DBF files), Web (web export destination),
+      EDI, LOG, ARCHIVE, Backup, SalesBackup, MarcFiles, Reports, Downloads
+    - shopifylibrary.dll will NOT be here — it lives on local C: drive of the machine running Bookscan
+- Bookscan help docs reviewed (all files sent by Louisa) ✓
+    - woolibrary.dll = WooCommerce connector, installed at C:\Program Files (x86)\Bookscan\
+    - shopifylibrary.dll would be the Shopify equivalent — needs to exist on local C: drive
+    - CSV export (F9) available as alternative sync path: ISBN, Title, Author, Price, Stock, Publisher,
+      Pub date, Binding, Status, Blurb, Pages, Weight, Height, Width
+    - Web flag in Tables > Authority Tables > Status controls which products sync to website
+- Email sent to Louisa (12 April) ✓
+    - Explained woolibrary.dll / shopifylibrary.dll architecture in plain language
+    - Asked her to call Shanti today for a specific date
+    - Asked for screenshot of C:\Program Files (x86)\Bookscan\ (looking for shopifylibrary.dll)
+    - Asked for screenshot of Z:\bookscan\catalog\ (product DBF files for sync script)
+- C:\Program Files (x86)\Bookscan\ confirmed via screenshot ✓
+    - WooLibrary.dll CONFIRMED — 7 KB, dated 4/10/2020
+    - WooCommerce.NET.dll CONFIRMED — 438 KB, dated 4/10/2020
+    - shopifylibrary.dll DOES NOT EXIST — confirmed absent from machine
+    - viiLibrary.dll present — 8 KB, dated 31/10/2023 (newer than WooLibrary — unknown platform)
+    - Conclusion: Shanti cannot enable Shopify via settings. The DLL must be built and installed.
+      This explains why he has been unresponsive — it is a non-trivial development task.
+    - Custom Python workaround (Option B) is confirmed as the right parallel path.
+
+ACTION ITEMS — WORKAROUND (Bookscan → Shopify custom sync)
+-----------------------------------------------------------
+- Louisa to search Z:\bookscan for *.dbf files and screenshot results
+- Lance to identify which DBF files contain product/stock/titles data
+- Louisa to copy identified DBF files to shared Google Drive folder
+- Lance to set up Shopify Partners dev store for testing
+- Lance to build Python script: read Bookscan DBF → push to Shopify Admin API
+- Test against dev store, then point at live Shopify store
+- Run on 2-hour schedule matching current e-Comms sync
+
+ACTION ITEMS — SEO
+-------------------
+- Non-branded keyword strategy: research done, collection SEO copy written and ready
+- Request backlinks from:
+    Palmerston North City Library (next-door neighbour — strong opportunity)
+    Palmerston North City Council business directory
+    Booksellers Association of Aotearoa NZ (update award winners page to link to bmbooks.co.nz)
+    NZ Book Month
+    Local media coverage
+
+
+ACTION ITEMS — STRATEGIC
+-------------------------
+- Cancel Shanti hosting contract (after go-live confirmed stable)
+- Build Figma design guidelines (after Shopify theme settled)
+- Google Merchant / Shopping setup
+- Blog strategy — content targeting non-branded searches
+
+
+WORDPRESS SITE — CURRENT STATE
+--------------------------------
+- Imagify: DEACTIVATED — caused CPU 110% spike on 24 March. Do not reactivate.
+- LiteSpeed Cache: installed, page caching DISABLED (inode risk). CSS/JS minification on.
+- inode usage: 549,060 / 600,000 (91.5%) — monitor weekly
+- lscache folder location: /home/bmbooksconz/lscache/ (server-level, not in public_html)
+    Can purge via: LiteSpeed Cache > Manage > Purge All
+- Redirection plugin: rule ^/product/(.*) -> / was set up then DISABLED (was catching live products)
+- robots.txt updated: blocks /?s=, /?post_type=product&, /page/
+- All 110 WooCommerce categories updated in Yoast (descriptions, keyphrases, SEO titles)
+- No further WordPress SEO work planned — all remaining issues resolve on Shopify
+- WooCommerce REST API integrations active:
+    GoSweetSpot (courier — last accessed March 2025)
+    Book Hub / Ebility (Bookscan connector — last accessed April 2026)
+    eShip/NZ Post (shipping fulfilment — NOT Starshipit. eShip pulls "completed" orders via WooCommerce REST API v3. Writeback: order note with tracking.)
+    Uploads (last accessed April 2026)
+
+
+COST SUMMARY
+------------
+WordPress (current):  $3,352 NZD/year + domain
+Shopify Basic:        ~$2,619 NZD/year + domain
+Annual saving:        ~$733 NZD/year
+Bookscan:             $1,800 NZD/year (unchanged on both platforms)
+
+
+KEY FILES
+----------
+Root workspace:         /Users/lancealfred/Projects/bmbooks-workspace/
+
+── Project/ (updated each session)
+Session context:        Project/BMBooks_Session_Context.txt
+Action items:           Project/BMBooks_Action_Items.md  ← primary roadmap, milestone-based phases
+Release notes:          Project/BMBooks_Release_Notes.md
+Go-live checklist:      Project/BMBooks_GoLive_Checklist.md
+Architecture:           Project/BMBooks_Architecture.md
+Phase 2 plan:           Project/BMBooks_Phase2_Plan.md
+
+── Sync/ (Python scripts — also deployed to C:\BookKeeper\ on shop machine)
+Production sync:        Sync/bookscan_sync.py            ← main outbound sync (DBF → Shopify)
+Image replacement:      Sync/image_replace.py            ← one-off, currently running
+Inventory diagnostic:   Sync/diagnose_inventory.py       ← read-only, run to check inventory state
+Dedupe script:          Sync/dedupe.py                   ← run once after backfill
+DBF files (local):      Sync/SABSSAVE/                   ← ~200 files, local copy for testing
+Sync state:             Sync/sync_state.json             ← delta tracking (on shop machine at C:\BookKeeper\)
+Image replace state:    Sync/image_replace_state.json    ← resumability state (on shop machine)
+Sync log:               Sync/bookscan_sync.log
+Image replace log:      Sync/image_replace.log
+
+── Content/
+Collection SEO copy:    Content/BMBooks_Collection_SEO.txt
+
+── Reports/
+Customer export (Apr):  Reports/BMBooks_WooCommerce_Customers_Apr2026.csv
+Orders export (Apr):    Reports/BMBooks_WooCommerce_Orders_Apr2026.csv
+Refunds export (Apr):   Reports/BMBooks_WooCommerce_Refunds_Apr2026.csv
+Revenue by year:        Reports/BMBooks_Revenue_By_Year.xlsx
+Out-of-print list:      Reports/BMBooks_OutOfPrint.xlsx
+Duplicate ISBNs:        Project/BMBooks_Duplicate_ISBNs.csv

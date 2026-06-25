@@ -1,0 +1,1846 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<BODY>
+<OBJECT type="text/site properties">
+	<param name="FrameName" value="$hmcontent">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Welcome to Bookscan">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Welcome ">
+	<param name="Local" value="cs_281043020001.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="How do I ?">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="howdoi.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Updating Bookscan">
+	<param name="Local" value="installupgradee_bility.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Setup for Pacsteam ordering/Invoices">
+	<param name="Local" value="setupforpacsteamorderingin.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Download Files">
+	<param name="Local" value="downloadfiles.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Save Attachments from Emails">
+	<param name="Local" value="saveattachmentsfromemails.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Updating Bookscan License file">
+	<param name="Local" value="updatinge_bilitylicensefile.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Setup Windows User Accounts">
+	<param name="Local" value="setupwindowsuseraccounts.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Draft Order">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Summary ">
+	<param name="Local" value="cs_281043020009.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Draft Purchase Orders  - minimum stock method">
+	<param name="Local" value="cs_281043020019.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Draft Purchase Orders - Sales Based Replenishment">
+	<param name="Local" value="draftpurchaseorders_sales.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchase Order Entry ">
+	<param name="Local" value="cs_081140340210.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Leading Edge: PO Import">
+	<param name="Local" value="leadingedgepoimport.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchase Order Enquiry">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Enquire on Purchase Orders ">
+	<param name="Local" value="purchaseorderenquiry.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Incoming">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Summary ">
+	<param name="Local" value="cs_281043020042.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Detailed Steps ">
+	<param name="Local" value="cs_281043020039.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pricing in Receiving">
+	<param name="Local" value="pricingcalculators.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Buy back (Buy Back Module) ">
+	<param name="Local" value="cs_081140340205.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="EDI Invoices">
+	<param name="Local" value="ediinvoices.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Goods Inwards History">
+	<param name="Local" value="goodsinwardshistory.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Returns">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Returns Summary">
+	<param name="Local" value="cs_021551280129.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Returns - Detailed Procedures">
+	<param name="Local" value="cs_021551280060.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Return Enquiry">
+	<param name="Local" value="returnenquiry.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Returns authorisation">
+	<param name="Local" value="returnsauthorisation.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Transfers">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Store Transfers - Out ">
+	<param name="Local" value="cs_021551280062.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Store Transfer - In ">
+	<param name="Local" value="cs_021551280139.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Import From Disk">
+	<param name="Local" value="importfromdisk.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Synchronisation (Manual)">
+	<param name="Local" value="titlesynchronisation(manual).htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Store Transfer - Reports ">
+	<param name="Local" value="cs_021551280140.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Kits">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Kits ">
+	<param name="Local" value="cs_021551280063.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Cash sales">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="EFTPOS Utilities">
+	<param name="Local" value="eftposutilities.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Point of Sale Basics">
+	<param name="Local" value="cs_081140340203.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Point of Sale Options ">
+	<param name="Local" value="cs_021551280058.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Point of Sale - Transaction Types">
+	<param name="Local" value="pointofsalett.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Returns ">
+	<param name="Local" value="cs_021551280059.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Laybys - Creating ">
+	<param name="Local" value="cs_021551280117.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Vouchers">
+	<param name="Local" value="vouchers.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Electronic Gift Cards">
+	<param name="Local" value="electronicgiftcards.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Loyalty (or Rewards) Cards">
+	<param name="Local" value="rewardscards.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Special orders">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creating &amp; Selling ">
+	<param name="Local" value="cs_021551280096.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Enquire ">
+	<param name="Local" value="cs_021551280093.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Delete ">
+	<param name="Local" value="cs_021551280095.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Unknown titles">
+	<param name="Local" value="cs_021551280094.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Print ">
+	<param name="Local" value="cs_021551280098.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purge ">
+	<param name="Local" value="cs_021551280099.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Laybys">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creating ">
+	<param name="Local" value="cs_021551280117.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Enquiries ">
+	<param name="Local" value="laybys___enquiries.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Invoices">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Order Entry">
+	<param name="Local" value="orderentry.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Web Orders - e-Web">
+	<param name="Local" value="weborders_earlierwebsites.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Web Orders - earlier web sites">
+	<param name="Local" value="cs_250909110248.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="EDI customer orders (Wholesale)">
+	<param name="Local" value="edicustomerorders.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Enquiry ">
+	<param name="Local" value="cs_021551280124.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Reprinting ">
+	<param name="Local" value="cs_021551280125.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Quote / Pro Forma Enquiry">
+	<param name="Local" value="cs_021551280123.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Quotations">
+	<param name="Local" value="cs_021551280126.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Approval">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creating ">
+	<param name="Local" value="cs_021551280054.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Managing approvals">
+	<param name="Local" value="cs_021551280086.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Printing ">
+	<param name="Local" value="cs_021551280089.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purging ">
+	<param name="Local" value="cs_021551280085.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Consignment">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Consignments Inwards ">
+	<param name="Local" value="cs_081140340212.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Consignment Outwards ">
+	<param name="Local" value="cs_101601480230.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="End of Day">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="End of Day">
+	<param name="Local" value="cs_021551280100.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Vouchers">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Vouchers ">
+	<param name="Local" value="cs_081140340207.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Accounts">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtors">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Summary ">
+	<param name="Local" value="cs_021551280136.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Setting up ">
+	<param name="Local" value="cs_081140340187.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Enquire ">
+	<param name="Local" value="cs_081140340190.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtors End of Month">
+	<param name="Local" value="debtors_end_of_month.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Email Statements Setup">
+	<param name="Local" value="emailstatementssetup.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Year end ">
+	<param name="Local" value="cs_081140340191.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creditors">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Summary ">
+	<param name="Local" value="cs_021551280135.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Enquiries ">
+	<param name="Local" value="cs_081140340195.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Transactions ">
+	<param name="Local" value="cs_081140340194.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Setting up ">
+	<param name="Local" value="cs_081140340196.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="End of month ">
+	<param name="Local" value="cs_081140340193.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Accounts Export">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Export to MYOB ">
+	<param name="Local" value="myob.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Setting up MYOB export">
+	<param name="Local" value="settingupmyobexport.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Exporting to MYOB">
+	<param name="Local" value="exportingtomyob.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchases &amp; suppliers">
+	<param name="Local" value="purchases.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Invoices &amp; customers">
+	<param name="Local" value="invoicescustomers.htm">
+</OBJECT>
+</UL>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Modules">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Web Sites">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Standard web sites">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Web Export ">
+	<param name="Local" value="cs_250909110244.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Exporting to WooCommerce">
+	<param name="Local" value="nopcommerce.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Exporting to Other Sites">
+	<param name="Local" value="othersites.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Web Category Mapping">
+	<param name="Local" value="webcategorymapping.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Mailout">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Mailout ">
+	<param name="Local" value="customer_reports___mailout.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Catalogues">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Catalogues">
+	<param name="Local" value="catalogues.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Reward Programs">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Rewards Programs ">
+	<param name="Local" value="customer_rewards.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Academic">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Academic module ">
+	<param name="Local" value="cs_101601480218.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Warehousing">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Summary ">
+	<param name="Local" value="warehousing_summary.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pick Slips Control ">
+	<param name="Local" value="warehousing_picking.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Packing &amp; Despatch ">
+	<param name="Local" value="warehousing_packing.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Backorders">
+	<param name="Local" value="warehousing_backorder_release.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Repricing Backorders ">
+	<param name="Local" value="warehousing_repricing.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Bin locations">
+	<param name="Local" value="binlocations.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pre-Pack">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Module ">
+	<param name="Local" value="cs_081140340221.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Setting Up ">
+	<param name="Local" value="cs_081140340230.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Booklists ">
+	<param name="Local" value="cs_081140340222.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Ordering ">
+	<param name="Local" value="cs_081140340226.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Overs and Unders ">
+	<param name="Local" value="cs_081140340227.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Year Rollover ">
+	<param name="Local" value="cs_081140340229.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stock Take">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Integrity Check ">
+	<param name="Local" value="integritycheck.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Summary ">
+	<param name="Local" value="stocktake_summary.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Preparing">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake - Prepare Database ">
+	<param name="Local" value="stocktake_prepare.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake - Prepare Stock ">
+	<param name="Local" value="stocktake_stock.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake - Preparing Portable Scanners ">
+	<param name="Local" value="stocktake_prep_port.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Counting stock">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Counting at the Terminal">
+	<param name="Local" value="stocktake_count.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Counting with Portable Scanners">
+	<param name="Local" value="stocktake_count_port.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Download from Portable Scanners">
+	<param name="Local" value="stocktake_download.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake - Data Error Report ">
+	<param name="Local" value="stocktake_dataerror.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Finalising ">
+	<param name="Local" value="stocktake_finalise.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Ticketing">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Tickets: Getting Started">
+	<param name="Local" value="ticketmaintenance.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creating a Schedule of Shows">
+	<param name="Local" value="creatingscheduleshows.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Ticket Sales">
+	<param name="Local" value="ticketsales.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Ticket Reservations">
+	<param name="Local" value="ticketreservations.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Marketing">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Marketing">
+	<param name="Local" value="cs_081140340208.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Tables">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Master">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Master Summary ">
+	<param name="Local" value="title_master_summary.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Tab Pages">
+	<param name="Local" value="titletabpages.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Master Search ">
+	<param name="Local" value="cs_021551280105.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Add Title ">
+	<param name="Local" value="cs_081140340145.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Deleting Titles">
+	<param name="Local" value="deletingtitles.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Page Add/Edit">
+	<param name="Local" value="titlepageaddedit.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Nielsen Bookdata Searches">
+	<param name="Local" value="bookfindonlinesearches.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Bowker BIP">
+	<param name="Local" value="bowkerbip.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Master">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Summary ">
+	<param name="Local" value="cs_111228300238.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Add Customer ">
+	<param name="Local" value="cs_081140340155.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Search ">
+	<param name="Local" value="cs_111228300239.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Groom ">
+	<param name="Local" value="maintain_customer.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Archiving">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Archive titles ">
+	<param name="Local" value="cs_081140340199.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pricing">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Quantity Discounts">
+	<param name="Local" value="pricing.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Promotions ">
+	<param name="Local" value="cs_081140340165.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Promotional Customer Prices">
+	<param name="Local" value="promotionalcustomerprices.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pricing - Imprint Matrix ">
+	<param name="Local" value="cs_101601480250.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Master">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Summary ">
+	<param name="Local" value="imprints.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Add Supplier ">
+	<param name="Local" value="cs_081140340151.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Search ">
+	<param name="Local" value="cs_250909110239.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Imprint Master">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Imprint Master ">
+	<param name="Local" value="cs_250909110241.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Category">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Introduction ">
+	<param name="Local" value="cs_081140340160.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Managing (Add/Edit) ">
+	<param name="Local" value="cs_081140340163.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Global changes ">
+	<param name="Local" value="cs_081140340161.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Department">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage -  Department ">
+	<param name="Local" value="cs_250909110242.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Authority Tables">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Branches">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage - Branches ">
+	<param name="Local" value="cs_081140340169.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Reps">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage - Sales Rep Master ">
+	<param name="Local" value="cs_250909110243.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Currencies">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage - Currencies ">
+	<param name="Local" value="cs_081501130255.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Binding">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage - Bindings ">
+	<param name="Local" value="cs_081501130258.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Publishers">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage - Publisher ">
+	<param name="Local" value="cs_081501130257.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Transaction types">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Transaction types">
+	<param name="Local" value="transactiontypes.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Surcharges on credit cards">
+	<param name="Local" value="surchargesoncreditcards.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Carriers">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Carriers">
+	<param name="Local" value="cs_081501130253.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Return Reasons">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Returns Reasons ">
+	<param name="Local" value="cs_081501130254.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Status">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage - Status ">
+	<param name="Local" value="cs_081501130256.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Subjects / KLA">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage - Subjects KLA ">
+	<param name="Local" value="cs_081501130252.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Schools">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage - Schools ">
+	<param name="Local" value="cs_081501130251.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Marketing">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage - Marketing Types ">
+	<param name="Local" value="cs_081140340208.htm">
+</OBJECT>
+</UL>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Utilities">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Import">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Imports ">
+	<param name="Local" value="title_import.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Export">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Exports ">
+	<param name="Local" value="cs_250909110246.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Calculator">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="On Screen Calculator ">
+	<param name="Local" value="cs_021551280046.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Database Utilities">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Maintenance - Customer Groom ">
+	<param name="Local" value="maintain_customer.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Copy Out Tables">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Copy Out Tables">
+	<param name="Local" value="copyouttables.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pack Tables">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pack Tables ">
+	<param name="Local" value="pack_tables.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Backup Data Files">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Backup Data Files ">
+	<param name="Local" value="cs_081140340201.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Re-index">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Database Reindexing ">
+	<param name="Local" value="cs_081140340200.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Structure Update">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Database Structure Update ">
+	<param name="Local" value="structure_update.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Integrity Check">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Integrity Check ">
+	<param name="Local" value="integritycheck.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Archive Maintenance">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Archive Maintenance">
+	<param name="Local" value="archivemaintenance.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Build Blank Database">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Build Blank Database">
+	<param name="Local" value="buildblankdatabase.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Create Standby">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Prepare for Standby ">
+	<param name="Local" value="create_standby.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="System Options">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="System Setup (System Options) ">
+	<param name="Local" value="cs_281043020015.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Local System Settings">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Local System Setup">
+	<param name="Local" value="localsystemsettings.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Security">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Audit Window">
+	<param name="Local" value="auditwindow.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Setting up security">
+	<param name="Local" value="settingupsecurity.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Manage operators ">
+	<param name="Local" value="cs_081140340170.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Barcodes">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Printing Title Barcodes ">
+	<param name="Local" value="printing_title_barcodes.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Labels">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Print Customer Labels ">
+	<param name="Local" value="print_customer_labels.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Labels">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Print Supplier Labels ">
+	<param name="Local" value="print_supplier_labels.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Report summary">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Contents ">
+	<param name="Local" value="contents.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Report Writer Properties ">
+	<param name="Local" value="reportscan_properties.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Report Parameters ">
+	<param name="Local" value="report_parameters.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Processing ">
+	<param name="Local" value="processing.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Existing reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Approval reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Approvals Report - Summary ">
+	<param name="Local" value="approvals_report_m_summary.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Approvals Report - 14 Or More Days Unfilled ">
+	<param name="Local" value="approvals_report_m_14_or_more_.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Approvals Report - All ">
+	<param name="Local" value="approvals_report__m__all.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Approvals Report - Customer ">
+	<param name="Local" value="approvals_report__m__customer.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Approvals Report - Returns Receipt ">
+	<param name="Local" value="approvals_report__m__returns_r.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Approvals Report - Single ">
+	<param name="Local" value="cs_070909510158.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Academic reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Academic Reports - Booklists ">
+	<param name="Local" value="academic_reports_m_booklists.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Academic Reports - Courses ">
+	<param name="Local" value="academic_reports_m_courses.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Academic Reports - Department ">
+	<param name="Local" value="academic_reports_m_department.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Academic Reports - Lecturers ">
+	<param name="Local" value="academic_reports_m_lecturers.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Academic Reports - Texts ">
+	<param name="Local" value="academic_reports_m_texts.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creditor reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creditor Reports - Summary ">
+	<param name="Local" value="creditors_reports.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creditor Reports - All ">
+	<param name="Local" value="creditor_reports_m_all.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creditor Reports - Cash Requirement ">
+	<param name="Local" value="creditor_reports_m_cash_requir.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creditor Reports - Due Report ">
+	<param name="Local" value="creditor_reports_m_due_report.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creditor Reports - Journals ">
+	<param name="Local" value="creditor_reports_m_journals.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creditor Reports - Payments ">
+	<param name="Local" value="creditor_reports_m_payments.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creditor Reports - Purchases ">
+	<param name="Local" value="cs_070909510099.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creditor Reports - Trial Balance ">
+	<param name="Local" value="creditor_reports__m__trial_bal.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Reports - Summary ">
+	<param name="Local" value="customer_reports.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Reports - All ">
+	<param name="Local" value="customer_reports_m_all.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Reports - Best Customers ">
+	<param name="Local" value="customer_reports_m_best_custom.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Reports - Individual ">
+	<param name="Local" value="customer_reports_m_individual.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Reports - Most Profitable ">
+	<param name="Local" value="customer_reports_m_most_profit.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Customer Reports - Quantity / Cost ">
+	<param name="Local" value="customer_reports__m__quantity_.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtor reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtor Reports - Summary ">
+	<param name="Local" value="debtor_reports.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtor Reports - All ">
+	<param name="Local" value="debtor_reports_m_all.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtor Reports - Banking List ">
+	<param name="Local" value="debtor_reports_m_banking_list.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtor Reports - Commissions ">
+	<param name="Local" value="debtor_report_m_commissions.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtor Reports - Journals ">
+	<param name="Local" value="debtor_reports_m_journals.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtor Reports - Master List ">
+	<param name="Local" value="debtor_reports_m_master_list.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtor Reports - Payments ">
+	<param name="Local" value="debtor_reports_m_payments.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtor Reports - Sales ">
+	<param name="Local" value="debtor_report_m_sales.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Debtor Reports - Tax Totals ">
+	<param name="Local" value="debtor_reports_m_tax_totals.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="DebtorReports - Trial Balance ">
+	<param name="Local" value="debtor_reports__m__trial_balan.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Department reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Department Reports - Summary ">
+	<param name="Local" value="departmental_reports.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Department Reports - Movement Details ">
+	<param name="Local" value="department_report_m_movement_d.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Department Reports - Movement Summary ">
+	<param name="Local" value="department_report_m_movement_s.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Department Reports - Sales ">
+	<param name="Local" value="department_report_m_sales.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Department Reports - Weekly ">
+	<param name="Local" value="department_report_m_weekly.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Department Reports - Purchases ">
+	<param name="Local" value="departmental_report_m_purchase.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Department Reports - YTD Sales ">
+	<param name="Local" value="department_report_m_ytd_sales.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Other reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Other Reports ">
+	<param name="Local" value="other_reports.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Other Reports - Promo Titles ">
+	<param name="Local" value="other_reports_m_promo_titles.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pre-pack reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pre-pack Reports - Booklist Totals ">
+	<param name="Local" value="prempack_reports_m_booklist_to.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pre-pack Reports - Codes ">
+	<param name="Local" value="prempack_reports_m_codes.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pre-pack Reports - Items ">
+	<param name="Local" value="prempack_reports_m_items.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pre-pack Reports - Publish ">
+	<param name="Local" value="prempack_reports_m_publish.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pre-pack Reports - School ">
+	<param name="Local" value="prempack_reports_m_school.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pre-pack Reports - Totals ">
+	<param name="Local" value="prempack_reports_m_totals.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Pre-pack Reports - Back-orders ">
+	<param name="Local" value="prempack_reports_m_backmorders.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports ">
+	<param name="Local" value="purchasing_reports.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - All ">
+	<param name="Local" value="purchasing_reports_m_all.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - All Credit Claims ">
+	<param name="Local" value="purchasing_reports_m_all_credi.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Back Order/Supplier ">
+	<param name="Local" value="purchasing_reports_m_back_orde.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Back Orders ">
+	<param name="Local" value="purchasing_reports_m_back_ord1.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Credit Claim ">
+	<param name="Local" value="purchasing_reports_m_credit_cl.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Draft Returns ">
+	<param name="Local" value="purchasing_reports_m_draft_ret.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Goods Received History ">
+	<param name="Local" value="purchasing_reports_m_goods_rec.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - PO Number ">
+	<param name="Local" value="purchasing_report__m__po_numbe.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - PO Slips ">
+	<param name="Local" value="purchasing_reportp_po_slips.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Regenerate ">
+	<param name="Local" value="purchasing_reports_m_regenerat.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Reprint GRNs ">
+	<param name="Local" value="purchasing_reportp__reprint_gr.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - RetAuth ">
+	<param name="Local" value="purchasing_reportp_retauth.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Supplier ">
+	<param name="Local" value="purchasing_reports_m_supplier.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Transfer Reprint ">
+	<param name="Local" value="purchasing_reports_m_transfer_.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Transfers In ">
+	<param name="Local" value="purchasing_reports_m_transfers.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Purchasing Reports - Transfers Out ">
+	<param name="Local" value="purchasing_reports_m_transfer1.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Reports ">
+	<param name="Local" value="sales_reports.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Special orders">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - All Special Orders (Customer) ">
+	<param name="Local" value="sales_report__m__all_special_o.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Special Order ">
+	<param name="Local" value="sales_report__m__special_order.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Overdue Special Orders ">
+	<param name="Local" value="sales_report_m_overdue_special.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Special Order By Customer Category ">
+	<param name="Local" value="sales_report__m__special_orde1.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Special Order Status By Customer ">
+	<param name="Local" value="sales_report__m__special_orde2.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Special Orders Not Found ">
+	<param name="Local" value="sales_report__m__special_orde3.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - All Special Orders ">
+	<param name="Local" value="sales_report_m__all_special_or.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="End of day">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Cash Book ">
+	<param name="Local" value="sales_report_m_cash_book.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Daily All ">
+	<param name="Local" value="sales_report_m_daily_all.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Daily Cash Book ">
+	<param name="Local" value="sales_report_m_daily_cash_book.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Daily Graph ">
+	<param name="Local" value="sales_report_m_daily_graph.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - X Report ">
+	<param name="Local" value="sales_report__m__x_report.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Laybys">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - All Laybys ">
+	<param name="Local" value="sales_report_m_all_laybys.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Layby Payments ">
+	<param name="Local" value="sales_report_m_layby_payments.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Overdue Laybys ">
+	<param name="Local" value="sales_report_m_overdue_laybys.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Category">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Multiple Categories ">
+	<param name="Local" value="sales_report_m_multiple_catego.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Single Category ">
+	<param name="Local" value="sales_report_m_single_category.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="History">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - All History ">
+	<param name="Local" value="sales_report_m_all_history.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Department Levy ">
+	<param name="Local" value="sales_report_m_department_levy.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Graph Global History ">
+	<param name="Local" value="sales_report_m_graph_global_hi.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Period Sales ">
+	<param name="Local" value="sales_report_m_period_sales.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - YTD ">
+	<param name="Local" value="sales_report_m_ytd.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Monthly">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Monthly Commission ">
+	<param name="Local" value="sales_report_m_monthly_commiss.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Nett Monthly ">
+	<param name="Local" value="sales_report_m_nett_monthly.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Quantities Sold ">
+	<param name="Local" value="sales_report_m_quantities_sold.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales reports- other">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Best Sellers ">
+	<param name="Local" value="sales_report_m_best_sellers.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Department ">
+	<param name="Local" value="sales_report_m_department.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Imprint ">
+	<param name="Local" value="sales_report_m_imprint.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Lifetime ">
+	<param name="Local" value="sales_report_m_lifetime.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Marketing ">
+	<param name="Local" value="sales_report_m_marketing.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Operator Sales ">
+	<param name="Local" value="sales_report_m_operator_sales.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Quotations ">
+	<param name="Local" value="sales_report_m_quotations.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Reprint Invoices ">
+	<param name="Local" value="sales_report_m_reprint_invoice.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Supplier ">
+	<param name="Local" value="sales_report_m_supplier.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Sales Report - Vouchers ">
+	<param name="Local" value="cs_070909510167.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creating reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Creating Reports ">
+	<param name="Local" value="creating_reports.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Report Form ">
+	<param name="Local" value="report_form.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Modifying reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Modifying System Reports ">
+	<param name="Local" value="modifying_system_reports.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake Reports - summary ">
+	<param name="Local" value="stocktake_reports.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake Report - Consignment ">
+	<param name="Local" value="stocktake_report_m_consignment.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake Reports - Department ">
+	<param name="Local" value="stocktake_reports_m_department.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake Reports  -  Negative ">
+	<param name="Local" value="stocktake_reports__m__negative.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake Report  -  Overs ">
+	<param name="Local" value="stocktake_report__m__overs.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake Report  -  Stocktake-count Errors ">
+	<param name="Local" value="stocktake_report__m__stocktake.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake Report - Stock List ">
+	<param name="Local" value="stocktake_report_m_stock_list.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake Report - Stocktake Listing ">
+	<param name="Local" value="stocktake_report_m_stocktake_l.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Stocktake Report - Unders ">
+	<param name="Local" value="stocktake_report_m_unders.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Reports - summary ">
+	<param name="Local" value="supplier_reports.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Report - Movement Details ">
+	<param name="Local" value="supplier_report_m_movement_det.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Report - Movement Summary ">
+	<param name="Local" value="supplier_report_m_movement_sum.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Report - Orders ">
+	<param name="Local" value="supplier_report_m_orders.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Report - Receipts ">
+	<param name="Local" value="supplier_report_m_receipts.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Report - Sales ">
+	<param name="Local" value="supplier_report_m_sales.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Report - Weekly ">
+	<param name="Local" value="supplier_report_m_weekly.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Supplier Report - YTD Sales ">
+	<param name="Local" value="supplier_report_m_ytd_sales.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Reports -summary ">
+	<param name="Local" value="title_reports.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - Author ">
+	<param name="Local" value="title_report_m_author.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - Buyers ">
+	<param name="Local" value="title_report_m_buyers.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - By Title ">
+	<param name="Local" value="title_report_m_by_title.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - Category ">
+	<param name="Local" value="title_report_m_category.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - Department ">
+	<param name="Local" value="title_report_m_department.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - Hotlist ">
+	<param name="Local" value="title_report_m_hotlist.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - Imprint ">
+	<param name="Local" value="title_report_m_imprint.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - On Hold ">
+	<param name="Local" value="title_report_m_on_hold.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - On Order ">
+	<param name="Local" value="title_report_m_on_order.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - Sales ">
+	<param name="Local" value="title_report_m_sales.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - Status ">
+	<param name="Local" value="title_report_m_status.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Title Report - Supplier ">
+	<param name="Local" value="title_report_m_supplier.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Valuation reports">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Valuation Reports  -  All ">
+	<param name="Local" value="valuation_reports__m__all.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Valuation Report  -  Aged Stock ">
+	<param name="Local" value="valuation_report__m__aged_stoc.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Valuation Report  -  Department (single) ">
+	<param name="Local" value="valuation_report__m__departmen.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Valuation Report  -  Departments (all) ">
+	<param name="Local" value="valuation_report__m__departme1.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Valuation Report  -  Errors ">
+	<param name="Local" value="valuation_report__m__errors.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Valuation Report -  Supplier ">
+	<param name="Local" value="valuation_report_m__supplier.htm">
+</OBJECT>
+</UL>
+</UL>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="e-Comms">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="e-Comms Configuration ">
+	<param name="Local" value="cs_081140340232.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="e-Comms Operation ">
+	<param name="Local" value="cs_081140340233.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="e-Comms Trouble Shooting ">
+	<param name="Local" value="cs_081140340236.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="e-Comms Customer Configuration ">
+	<param name="Local" value="cs_081140340237.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="e-Comms Supplier Configuration ">
+	<param name="Local" value="cs_081140340240.htm">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" width="180" height="40">
+  <!-- Book icon -->
+  <rect x="2" y="6" width="26" height="28" rx="3" fill="#5c3a8a"/>
+  <rect x="6" y="6" width="22" height="28" rx="2" fill="#9b72cf"/>
+  <line x1="10" y1="14" x2="24" y2="14" stroke="#1a0a2e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="10" y1="19" x2="24" y2="19" stroke="#1a0a2e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="10" y1="24" x2="20" y2="24" stroke="#1a0a2e" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="36" y="17" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="bold" fill="#1a0a2e" letter-spacing="0.3">BookKeeper</text>
+  <text x="37" y="31" font-family="-apple-system, sans-serif" font-size="9.5" fill="#5c3a8a" letter-spacing="0.5">for Shopify</text>
+</svg>

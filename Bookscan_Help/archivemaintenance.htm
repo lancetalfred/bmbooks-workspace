@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Archive Maintenance</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Database Utilites - Archive Maintenance (Invoices / Sales History etc)">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFE8">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>&nbsp;&nbsp;&nbsp;</b><span style="font-family:Helvetica,Arial; font-size:12pt; color:#7F0000"><b>Archive Maintenance</b></span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>
+<br>
+</b></span></span></span>
+    </td>
+    <td align="right">
+     <font face="Arial" size="2">
+     <a href="integritycheck.htm">Previous</a>&nbsp;
+     <a href="cs_281043020001.htm">Top</a>&nbsp;
+     <a href="buildblankdatabase.htm">Next</a>
+     </font>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#7F0000"><b>Archiving sales records </b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+The Archive Maintenance window is located from the main menu of Bookscan, <span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b>Utilities -&gt; Archives </b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">or through<span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b> Utilities -&gt; Database Utilities -&gt; Archive Maintenance</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">. 
+<br>
+
+<br>
+In this window you will be able to Archive/Purge/Retrieve most of the following, but it is important that you read carefully how these work and the best way to do it. 
+<br>
+
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></b></span></span></b></span></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>Invoice Header Records</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> - Invoices headers for invoices older than they need to be readily accessible
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></b></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>Invoice Line Records</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> - Run following archiving old invoice headers to remove the corresponding lines of the invoice
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></b></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>Sales Lines Records</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> - History of the product sold and all details of when the item was sold (including sell price, date etc) 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></b></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>Sales History Records</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"> </span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">- Histories of sales of stock. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></b></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>Stock History Records</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> - Histories of stock inwards, returns and transfers (in/out)
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></b></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>Titles </b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> - Archives titles older than 1 year that are currently have zeros (for onhand, on order, layby, Special Order, Approval, Consignment) and have not been sold/received in 1 year or more. <b>Important Note:</b> Currently there is no way to get these titles back out of this archive, so be careful when using this. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+<img src="archive_maintenance_main.jpg" width="790" height="471" border="0" alt="archive_maintenance_main">
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#7F0000"><b>Archiving 
+<br>
+</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+To archive old lines within a backup storage file, that have past a useful time frame is a good way to keep the system running at it's best. It also shows on the more current information that you need.  
+<br>
+
+<br>
+Select the<b> </b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b>Archive file</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> type. Select from the Archive Records the date you wish to archive on or before. 
+<br>
+Click <span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b>Archive Records</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b> (F12)</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">. Confirm by clicking <span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b>Yes</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> button. 
+<br>
+
+<br>
+<b>Note:</b> If archiving a file type for the first time and wishing to archive many years of data, it is advisable that you do so in 1 year lots (working backwards from the present). 
+<br>
+
+<br>
+This will run for as long as it takes depending on the number of records that need to be moved. When it is done, it will fill the window with records listen, these are the records that have been moved into the archive. If when you first load the window and select a file type, if records are already listed this is because it has been run before and the records shown are being loaded from the archive (This helps if you wish to retrieve records from the archive). 
+<br>
+
+<br>
+<b>Note:</b> After running the archiving, you will need to run a pack (<span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b>Utilities -&gt; Database Utilities -&gt; Pack Tables -&gt; Select All -&gt; Pack</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F">.</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> )
+<br>
+
+<br>
+This works the same for all the options within the <span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b>Archive File</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> menu.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#7F0000"><b>Retrieving sales records</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+This window will also allow you to retrieve back into the main database files records that have been archived previously. 
+<br>
+
+<br>
+Select a <span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b>Archive File</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> type. This will then load records shown in the archive. 
+<br>
+
+<br>
+Select either a date range (to pull back records between two dates) or in the list of records below, hold <span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>Ctrl</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> and click on individual records you wish. 
+<br>
+
+<br>
+Click <span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b>Restore Records</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b> </b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>(F11)</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">. This will then move the old records back. (This may take some time depending on the number of records). 
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#7F0000"><b>Purging sales records</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+You can also purge records that have been archived (so that over the time the archive files themselves do not have data that's too old).
+<br>
+
+<br>
+Select a <span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b>Archive File</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b> </b>type. This will then load records shown in the archive. 
+<br>
+
+<br>
+Select either a date (of which to delete where older than) or in the list of records below, hold <span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>Ctrl</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> and click on individual records you wish. 
+<br>
+
+<br>
+Click <span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F"><b>Purge Records</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b> </b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>(F9)</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">. This will then delete the records permanently. (This may take some time depending on the number of records). 
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#7F0000"><b>Title Archive </b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+</span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"> 
+<br>
+Archiving titles removes them from the title master and stores them in the archive file. Earlier versions of Bookscan only saved selected fields from the title master to the archive. In the present version of the program all fields are retained.
+<br>
+ 
+<br>
+<b>All sales history is retained.
+<br>
+</b>
+<br>
+Archived title can be easily restored to the title master.  Go to <b>Sales / Enquiry / Archive Enquiry</b> and search by Author, Title or ISBN.  You will be shown a list of matches from which you can select
+<br>
+
+<br>
+<img src="archive%20master.jpg" width="443" height="401" border="0" alt="archive master">
+<br>
+
+<br>
+</span><span style="font-family:MS SANS SERIF; font-size:12pt; color:#000000"><span style="font-family:MS SANS SERIF; font-size:12pt; color:#800000"><b>Archiving
+<br>
+</b><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:MS SANS SERIF; font-size:12pt; color:#800000"></span></span></span></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">First <span style="font-family:MS SANS SERIF; font-size:10pt; color:#008000"><a href=cs_081140340200.htm>re-index</a></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"> your master file and do your daily <span style="font-family:MS SANS SERIF; font-size:10pt; color:#008000"><a href=cs_081140340201.htm>backup</a></span></span></span><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Select the date the titles were last sold.   
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Select the date the titles were last purchased
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Select the date the titles were created.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">Only titles with no stock, no special orders and none on order will be archived.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:MS SANS SERIF; font-size:10pt; color:#000000">
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#7F0000"><b>Supplier Purge</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+This functionality will remove suppliers from the Supplier master that are not being used. It determines this by using a supplier and if no products are linked to this, it will delete them (the supplier). 
+<br>
+
+<br>
+Right click in the archive window, then select "<span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F007F"><b>Purge un-used suppliers</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">". This may take some time to run depending on the size of your title master. It is a good idea if you do this following running the Title archive. 
+<br>
+
+<br>
+</span></span></span>
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Creating a Schedule of Shows</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="">
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFE8">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Times New Roman; font-size:16pt; color:#000000"><b>&nbsp;&nbsp;&nbsp;</b><span style="font-family:Times New Roman; font-size:16pt; color:#7F0000"><b>Creating a Schedule of Shows
+<br>
+</b></span></span></span>
+    </td>
+    <td align="right">
+     <font face="Arial" size="2">
+     <a href="ticketmaintenance.htm">Previous</a>&nbsp;
+     <a href="cs_281043020001.htm">Top</a>&nbsp;
+     <a href="ticketsales.htm">Next</a>
+     </font>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Times New Roman; font-size:12pt; color:#000000"><b>Overview
+<br>
+</b>For each movie, show or event (let's call them all 'shows' from now on), you will need to set up a product in the master file. Sales for every session of this show are recorded against this product code. So your ticket sales will be included in your standard Bookscan sales. As well you will be able to print reports showing how well your shows have succeeded.
+<br>
+For each show will you need to set a venue, set up a series of sessions and set the price points. This is done in the Ticket Maintenance windows where there are wizards to speed this up.
+<br>
+Then you are ready to start selling your tickets through the POS.
+<br>
+
+<br>
+<b>Departments and suppliers
+<br>
+</b>Before creating tickets for the first time, you may wish to create an Bookscan department for shows. In the examples that follow, we will use a department called Tickets with a code TIX. You should also create a binding type (e.g. binding code 'MO', name 'Movies') for your show.
+<br>
+
+<br>
+Bookscan requires that you set a supplier against each product. You will need to set up in the supplier master either a dummy supplier for your shows or, for movies, set up your distributor as a supplier.
+<br>
+
+<br>
+<b>Creating a show in the master file
+<br>
+</b>For each show, you will need to set up a product in the master file. Open the Title Master window and click on the New F11 button as you normally would to set up any product.
+<br>
+<span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+<img src="ticknew.jpg" width="721" height="453" border="0" alt="ticknew">
+<br>
+
+<br>
+</span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">You will need to set the following fields:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Product code
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Title. You may also want to enter the director or principal star as the author
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Product type as 'Ticket'.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Binding
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Status
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Department (as 'TIX' in our example).
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Supplier
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+Set these flags to true:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Firm sale (so the program doesn't generate returns to supplier).
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">No discount
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">No special orders
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Generic (turns off standard stock controlling &#150; the ticketing module will control the number of tickets you can sell for each session).
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b>Setting up your show sessions
+<br>
+</b>Setting up your schedule of shows is done in the Ticketed Shows window which is opened from the main menu: Modules/ Tickets/ Ticket Maintenance. The window will show all your current shows in the browser on the left. Current shows are those for which you are now selling tickets. For the show selected in the browser, the schedule, prices and its other settings are displayed.
+<br>
+</span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+<img src="tickshows.jpg" width="786" height="475" border="0" alt="tickshows">
+<br>
+
+<br>
+</span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">To add a show to the schedule, click on the Add Show (F12) button. The Title Master and Title Find windows will open. Find the show you want and press the Select button in the Title Master window to add it to the Ticketed Shows browser
+<br>
+
+<br>
+For each show, you can add or edit a message to display in the tickets, set an audience rating and set the 'no printing' flag if you don't want tickets to print as they are sold at the POS.
+<br>
+
+<br>
+To display both current and non-current shows, untick the 'Show only current' checkbox. The browser will display all shows and will add a third column: 'Cur'. Current shows will show a tick in the column. To toggle the currency of the show, double click the Cur column. Non-current shows will to be available for sale in the POS. 
+<br>
+
+<br>
+You can change the display order of the shows by using the Up (F3) and Down (F4) buttons. Moving your next-to-go show to the top of the list will cause it to be selected as the default in the POS. 
+<br>
+
+<br>
+<b><i>Price Types
+<br>
+</i></b>As you add each show to the browser, it will be allocated the default price points. 
+<br>
+
+<br>
+To add a new price point, click the Add Price (F11) button.
+<br>
+
+<br>
+To edit a price point, double click on it. The Ticket Price window will open:
+<br>
+</span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+<img src="tickprice.jpg" width="406" height="230" border="0" alt="tickprice">
+<br>
+
+<br>
+</span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Overtype any field you want and click the Save (F12) button.
+<br>
+The Short Text and Text fields are what will print on the stub and long side of the ticket respectively.
+<br>
+
+<br>
+You can change the display order of the price points by using the Up (F5) and Down (F6) buttons. Moving your most frequently sold price point to the top will cause it to be selected as the default in the POS. 
+<br>
+
+<br>
+<b><i>Creating a Show Schedule
+<br>
+</i></b>To create individual sessions for the ticket, click on the Build Schedule (F8) button. This will open the Ticketed Shows Schedule Creation window:
+<br>
+
+<br>
+<img src="tickdates.jpg" width="766" height="470" border="0" alt="tickdates">
+<br>
+
+<br>
+In this window you will create a session for performance of your show.  
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Set the first and last dates of your schedule.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Set the days there will be performances:
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Courier New; font-size:12pt; color:#000000">o</span></td><td><span style="font-family:Courier New; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Every day: set this check if there are performances every day in you date range.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Courier New; font-size:12pt; color:#000000">o</span></td><td><span style="font-family:Courier New; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Single day: set this if there are just performances on one day. <i>(This is provided as a short cut).
+&nbsp;<br>
+</i></span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><i></i></span><span style="font-family:Courier New; font-size:12pt; color:#000000">o</span></td><td><span style="font-family:Courier New; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Set the recurring days: you may have performances say, every Wednesday to Friday over your date range.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Courier New; font-size:12pt; color:#000000">o</span></td><td><span style="font-family:Courier New; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Extra dates: click the Add Date (F7) button to add odd extra dates not within the date range or not on a selected recurring day.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Courier New; font-size:12pt; color:#000000">o</span></td><td><span style="font-family:Courier New; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Excluded date: click the Add Date (F8) button to exclude a date in the range. For example, you may have performances every Thursday of the year except Christmas Day.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Next add a session or sessions to the Default Sessions browser. Click the Add Session (F7) button to open the Ticket Session window:
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="51"></td><td><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"><img src="ticksess1.jpg" width="407" height="254" border="0" alt="ticksess1">
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="51"></td><td><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"></span></span></span><span style="font-family:Courier New; font-size:12pt; color:#000000">o</span></td><td><span style="font-family:Courier New; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Select a session from the Session Name combo box and a location from the Location combo.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Courier New; font-size:12pt; color:#000000">o</span></td><td><span style="font-family:Courier New; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">You can alter the start time and the number of available seats.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Courier New; font-size:12pt; color:#000000">o</span></td><td><span style="font-family:Courier New; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Click Save (F12) to add the session. In our example above we will have two sessions a day
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="77"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Now click the Build Schedule (F12) button to add each session to the Schedule browser. Repeat these steps for as many sessions and dates as required to build your schedule. If you get it wrong and want to start again, tick the Overwrite check box before clicking the Build Schedule (F12) button.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000">
+<br>
+<b>Example
+<br>
+</b>An example may be useful here:
+<br>
+Say you want to schedule the play Wind in the Willows through January. There will be matinees on Wednesdays and Fridays in Theatre #1 and evening performances on Thursdays in Theatre #2.
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Select 'Wind in the Willows' in the browser of the Ticketed Shows window
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Click on the Build Schedule (F8) button to open the Ticketed Shows Schedule Creation window.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Set the Date range:  the First Day field to '1/01/2009' and the Last Day field '31/1/ 2009'. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">In the Recurring Days field select Wednesday and Friday.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Click on the Add Session (F7) button. Select the session 'Matinee' and the location 'Theatre #1'. Save the session.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="51"></td><td><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"><img src="ticksession.jpg" width="404" height="247" border="0" alt="ticksession">
+&nbsp;<br>
+</span></span></span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="51"></td><td><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Click the Build Schedule (F12) button. The browser will load with matinee sessions in Theatre #1 for each Wednesday and Friday in January. The Default Sessions browser will clear.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+<img src="tickex1.jpg" width="763" height="397" border="0" alt="tickex1">
+<br>
+
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000"></span></span></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Now change the Recurring days to Thursday and set the default session to 'Evening' in Theatre #2.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Click the Build Schedule (F12) button. The program will add to the schedule evening sessions in Theatre #2 for each Thursday in January. 
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Symbol; font-size:12pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Symbol; font-size:12pt; color:#000000"></span><span style="font-family:Times New Roman; font-size:12pt; color:#000000">Close the Schedule Creation window and you are finished.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Times New Roman; font-size:12pt; color:#000000"></span><span style="font-family:Microsoft Sans Serif; font-size:10pt; color:#000000">
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+</span></span></span>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "folders": [
+    {
+      "name": "BMBooks Workspace",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.hotExit": "openedEditors",
+    "workbench.startupEditor": "none",
+    "explorer.fileNesting.enabled": true
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Start Docusaurus",
+        "type": "shell",
+        "command": "npm start",
+        "options": {
+          "cwd": "${workspaceFolder}/bookkeeper_docs"
+        },
+        "isBackground": true,
+        "presentation": {
+          "reveal": "always",
+          "panel": "dedicated",
+          "group": "servers"
+        },
+        "problemMatcher": {
+          "pattern": {
+            "regexp": "^$"
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "Starting the development server",
+            "endsPattern": "Docusaurus website is running at"
+          }
+        },
+        "group": "build",
+        "runOptions": {
+          "runOn": "folderOpen"
+        }
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": []
+  },
+  "extensions": {
+    "recommendations": [
+      "yzhang.markdown-all-in-one"
+    ]
+  }
+}

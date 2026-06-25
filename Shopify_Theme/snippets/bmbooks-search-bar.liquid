@@ -1,0 +1,129 @@
+<form action="{{ routes.search_url }}" method="get" role="search" class="bmbooks-search-bar">
+  <input
+    name="q"
+    type="search"
+    autocomplete="off"
+    placeholder="Search by title, author or ISBN…"
+    aria-label="Search"
+    class="bmbooks-search-bar__input"
+  >
+  <span class="bmbooks-search-bar__icon svg-wrapper" aria-hidden="true">
+    {{ 'icon-search.svg' | inline_asset_content }}
+  </span>
+  <button type="submit" class="bmbooks-search-bar__submit" aria-label="Submit search">
+    <span class="svg-wrapper">
+      {{ 'icon-search.svg' | inline_asset_content }}
+    </span>
+  </button>
+</form>
+
+{% stylesheet %}
+  .bmbooks-search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Equal sides, centre gets 1.5× — search bar wider but truly centred */
+  .header__columns:has(.header__column--center .bmbooks-search-bar) {
+    --header-left: 1fr;
+    --header-center: 1.5fr;
+    --header-right: 1fr;
+  }
+
+  .bmbooks-search-bar .bmbooks-search-bar__input {
+    width: 100%;
+    padding: 0.5rem 3rem 0.5rem 2.75rem;
+    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    border-radius: var(--style-border-radius-inputs);
+    background-color: #fdf8f3;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .bmbooks-search-bar .bmbooks-search-bar__input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+  }
+
+  .bmbooks-search-bar .bmbooks-search-bar__input::placeholder {
+    color: rgba(0, 0, 0, 0.45);
+    opacity: 1;
+  }
+
+  .bmbooks-search-bar .bmbooks-search-bar__input::-webkit-search-decoration,
+  .bmbooks-search-bar .bmbooks-search-bar__input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+
+  .bmbooks-search-bar__icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--color-foreground);
+    opacity: 0.45;
+    width: 1.125rem;
+    height: 1.125rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .bmbooks-search-bar__submit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0 0.75rem;
+    background-color: var(--color-primary-button-background);
+    color: var(--color-primary-button-text);
+    border: 2px solid #fdf8f3;
+    border-radius: 0 var(--style-border-radius-inputs) var(--style-border-radius-inputs) 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.15s;
+  }
+
+  .bmbooks-search-bar__submit:hover {
+    opacity: 0.85;
+  }
+
+  .bmbooks-search-bar__submit .svg-wrapper {
+    width: 1.125rem;
+    height: 1.125rem;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Desktop: show inline in center column */
+  @media screen and (min-width: 750px) {
+    .header__row--mobile-search {
+      display: none;
+    }
+  }
+
+  /* Mobile: hide in center column, show in dedicated row below logo */
+  @media screen and (max-width: 749px) {
+    .header__columns .bmbooks-search-bar {
+      display: none;
+    }
+
+    .header__row--mobile-search {
+      display: block;
+      padding: 0.5rem var(--padding-md, 1rem) 0.75rem;
+      background-color: var(--color-background);
+    }
+
+    .header__row--mobile-search .bmbooks-search-bar {
+      display: block;
+      max-width: 100%;
+      margin: 0;
+    }
+  }
+{% endstylesheet %}

@@ -1,0 +1,34 @@
+# Secrets and credentials
+.env
+.env.local
+
+# Claude local settings (contains embedded tokens in curl commands)
+.claude/settings.local.json
+
+# Customer PII — never commit
+Reports/BMBooks_WooCommerce_*.csv
+
+# Generated / machine-specific
+Sync/sync_state.json
+Sync/bookscan_sync.log
+Sync/products.csv
+Sync/images/
+
+# Sensitive — local DBF test copies (Bookscan data)
+Sync/SABSSAVE/
+*.dbf
+
+# Shopify CLI
+Theme/.shopify/
+Shopify_Theme/.shopify/
+
+# Docs site
+bookkeeper_docs/node_modules/
+bookkeeper_docs/.docusaurus/
+bookkeeper_docs/build/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log

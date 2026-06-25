@@ -1,0 +1,49 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+/* BookKeeper for Shopify — brand colour #1A0A2E (BMBooks dark purple) */
+:root {
+  --ifm-color-primary: #5c3a8a;
+  --ifm-color-primary-dark: #52337c;
+  --ifm-color-primary-darker: #4e2f75;
+  --ifm-color-primary-darkest: #3d2360;
+  --ifm-color-primary-light: #6a469a;
+  --ifm-color-primary-lighter: #7050a3;
+  --ifm-color-primary-lightest: #8968b5;
+  --ifm-navbar-background-color: #1a0a2e;
+  --ifm-navbar-link-color: #ffffff;
+  --ifm-navbar-link-hover-color: #c9b8e8;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #9b72cf;
+  --ifm-color-primary-dark: #8c62c0;
+  --ifm-color-primary-darker: #845bb8;
+  --ifm-color-primary-darkest: #6c4499;
+  --ifm-color-primary-light: #aa84d8;
+  --ifm-color-primary-lighter: #b28fdc;
+  --ifm-color-primary-lightest: #c8abe8;
+  --ifm-navbar-background-color: #1a0a2e;
+  --ifm-navbar-link-color: #ffffff;
+  --ifm-navbar-link-hover-color: #c9b8e8;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Logo sizing in navbar */
+.navbar__logo img {
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Navbar title spacing when logo present */
+.navbar__brand {
+  gap: 10px;
+}

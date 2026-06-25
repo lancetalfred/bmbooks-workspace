@@ -1,0 +1,80 @@
+Type,Current Handle,Current Title,Product Count,Proposed Handle,Change Needed
+MAIN,fiction,Fiction,11112,fiction,No
+sub,classics,Classics,1843,fiction-classics,Yes
+sub,general-fiction,General Fiction,2519,fiction-general,Yes
+sub,crime-and-thriller,Crime & Thriller,1576,fiction-crime-and-thriller,Yes
+sub,historical-fiction,Historical Fiction,737,fiction-historical,Yes
+sub,science-fiction-and-fantasy,Science Fiction & Fantasy,1338,fiction-sci-fi-and-fantasy,Yes
+sub,graphic-novels,Graphic Novels,1125,fiction-graphic-novels,Yes
+sub,poetry,Poetry,728,fiction-poetry,Yes
+sub,nz-fiction,NZ Fiction,620,fiction-nz,Yes
+sub,young-adult,Young Adult,889,fiction-young-adult,Yes
+sub,plays,Plays,42,fiction-plays,Yes
+sub,romance,Romance,270,fiction-romance,Yes
+sub,horror,Horror,123,fiction-horror,Yes
+sub,manga,Manga,238,fiction-manga,Yes
+sub,thriller,Thriller,528,fiction-thriller,Yes
+sub,translated-fiction,Translated Fiction,29,fiction-translated,Yes
+MAIN,kids,Kids,6926,kids,No
+sub,childrens-fiction,Children's Fiction,2120,kids-fiction,Yes
+sub,picture-books,Picture Books,1622,kids-picture-books,Yes
+sub,nz-picture-books,NZ Picture Books,775,kids-nz-picture-books,Yes
+sub,childrens-non-fiction,Children's Non-Fiction,773,kids-non-fiction,Yes
+sub,books-for-babies,Books for Babies,770,kids-babies,Yes
+sub,activity-books,Activity Books,590,kids-activity,Yes
+sub,study-and-education,Study & Education,269,kids-study-and-education,Yes
+sub,childrens-wellbeing,Children's Wellbeing,178,kids-wellbeing,Yes
+MAIN,history-and-politics,History & Politics,2730,history-and-politics,No
+sub,history,History,1722,history-general,Yes
+sub,nz-history,NZ History,263,history-nz,Yes
+sub,religion,Religion & Spirituality,207,history-religion,Yes
+sub,mythology,Mythology,160,history-mythology,Yes
+sub,true-crime,True Crime,113,history-true-crime,Yes
+MAIN,science-and-nature,Science & Nature,2652,science-and-nature,No
+sub,environment,Environment,721,science-environment,Yes
+sub,general-science,Popular Science,704,science-popular,Yes
+sub,business,Business,535,science-business,Yes
+sub,philosophy,Philosophy,322,science-philosophy,Yes
+sub,economics,Economics,174,science-economics,Yes
+MAIN,new-zealand,New Zealand,3453,new-zealand,No
+sub,maori-studies-and-history,Māori Studies & History,230,nz-maori-studies,Yes
+sub,maori-picture-books,Māori Picture Books,183,nz-maori-picture-books,Yes
+sub,te-reo-maori,Te Reo Māori,134,nz-te-reo,Yes
+sub,manawatu,Manawatū,113,nz-manawatu,Yes
+sub,manawatu-authors,Our Authors — Manawatū,92,nz-manawatu-authors,Yes
+sub,books-about-palmy,Books About Palmy,21,nz-books-about-palmy,Yes
+MAIN,the-arts,The Arts,3460,the-arts,No
+sub,art-books,Art Books,1284,arts-books,Yes
+sub,craft,Craft,855,arts-craft,Yes
+sub,music-and-performing-arts,Music & Performing Arts,589,arts-music,Yes
+sub,fashion,Fashion,252,arts-fashion,Yes
+sub,architecture,Architecture,236,arts-architecture,Yes
+sub,photography,Photography,192,arts-photography,Yes
+sub,design,Design,159,arts-design,Yes
+MAIN,biography,Biography & Memoir,1954,biography,No
+MAIN,health-and-wellbeing,Health & Wellbeing,3431,health-and-wellbeing,No
+sub,food-and-drink,Food & Drink,1199,health-food-and-drink,Yes
+sub,psychology,Psychology,1046,health-psychology,Yes
+sub,health,Health,446,health-general,Yes
+sub,new-age,New Age & Spirituality,189,health-new-age,Yes
+sub,gender,Gender & Identity,168,health-gender,Yes
+sub,family,Family & Parenting,155,health-family,Yes
+sub,humour,Humour,151,health-humour,Yes
+MAIN,travel,Travel,1783,travel,No
+sub,travel-literature,Travel Writing,579,travel-writing,Yes
+sub,travel-guides,Travel Guides,555,travel-guides,No
+sub,languages,Language Learning,321,travel-languages,Yes
+MAIN,gifts-stationery,Gifts & Stationery,2007,gifts-stationery,No
+sub,games-and-puzzles,Games & Puzzles,589,gifts-games-and-puzzles,Yes
+sub,calendars-and-diaries,Calendars & Diaries,39,gifts-calendars,Yes
+MAIN,sport,Sport,510,sport,No
+sub,cycling,Cycling,59,sport-cycling,Yes
+sub,rugby,Rugby,38,sport-rugby,Yes
+MAIN,gardening,Gardening,347,gardening,No
+MAIN,non-fiction,Non-Fiction,13674,non-fiction,No
+MAIN,bestsellers,Bestsellers,54,bestsellers,No
+MAIN,new-releases,New Releases,21,new-releases,No
+MAIN,forthcoming-titles,Forthcoming Titles,20,forthcoming-titles,No
+MAIN,staff-picks,Staff Picks,0,staff-picks,No
+MAIN,nz-authors,NZ Authors,0,nz-authors,No
+MAIN,frontpage,Home page,0,frontpage,No

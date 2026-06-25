@@ -1,0 +1,1047 @@
+{
+  "prerequisites": [
+    {
+      "id": "P01",
+      "title": "Clean out the dev store",
+      "category": "setup",
+      "why": "The dev store still has 20 products left over from the April proof-of-concept run. Starting with an empty store means test results are clear and unambiguous \u2014 you'll know exactly what the script created, not what was already there.",
+      "how": "1. Go to https://admin.shopify.com/store/bmbooks-dev/products\n2. If there are products listed, click the checkbox at the top of the list to select all\n3. Click 'Actions' > 'Delete products'\n4. Confirm deletion in the popup\n5. Repeat until the Products page shows 0 products\n6. Mark complete \u2014 the store is now a clean slate for UAT"
+    },
+    {
+      "id": "P02",
+      "title": "Verify dev store custom app token still works",
+      "category": "setup",
+      "why": "The script uses an access token to talk to Shopify. Tokens don't expire, but it's worth confirming it's still valid before you're mid-test and hit an authentication error.",
+      "how": "1. Open Terminal and navigate to the Sync folder\n2. Run: python3 bookscan_sync.py --test-connection\n   (Or do a quick 1-product test run and check the output for '401 Unauthorized')\n3. If the script runs without auth errors, the token is fine \u2014 mark complete\n4. If you see a 401 error: go to https://admin.shopify.com/store/bmbooks-dev/settings/apps/development, click your app, go to API credentials, and generate a new Admin API access token. Update the SHOPIFY_ACCESS_TOKEN value in bookscan_sync.py."
+    },
+    {
+      "id": "P03",
+      "title": "Confirm 4 metafield definitions exist in dev store",
+      "category": "setup",
+      "why": "The script saves extra book details \u2014 author, ISBN, page count, and publication date \u2014 into custom Shopify fields called metafields. If these fields don't exist in Shopify first, the data saves silently without showing up anywhere.",
+      "how": "1. Go to https://admin.shopify.com/store/bmbooks-dev/settings/custom_data\n2. Click 'Products'\n3. Check the list for these 4 fields under namespace 'bookscan':\n   - bookscan.author\n   - bookscan.isbn\n   - bookscan.pages\n   - bookscan.publication_date\n4. If any are missing: click 'Add definition', set Type to 'Single line text', and enter the exact namespace.key shown above\n5. Once all 4 exist, mark complete"
+    },
+    {
+      "id": "P04",
+      "title": "Delete sync_state.json",
+      "category": "setup",
+      "why": "The state file remembers which books have already been synced. The one on your machine is from previous test runs \u2014 if we don't delete it, the script will think those books are already up to date and skip them, making the first UAT run look like it did nothing.",
+      "how": "Delete the file at Sync/sync_state.json. It will be automatically recreated on the first UAT run."
+    },
+    {
+      "id": "P05",
+      "title": "Enable Shopify Bogus Gateway on dev store",
+      "category": "setup",
+      "why": "The end-to-end purchase tests (S10) require completing a real checkout. Shopify's Bogus Gateway lets you do this with a fake credit card number so no real money changes hands. Without it, you can't test the purchase flow.",
+      "how": "1. Go to https://admin.shopify.com/store/bmbooks-dev/settings/payments\n2. Click 'Manage' next to the active payment provider\n3. Scroll down to find '(for testing) Bogus Gateway'\n4. Click 'Activate' on Bogus Gateway\n5. Save \u2014 mark complete\n   Note: Bogus Gateway only appears in dev/test stores, not production"
+    },
+    {
+      "id": "P06",
+      "title": "Activate at least one product in the dev store",
+      "category": "interim",
+      "why": "Products sync as Draft \u2014 invisible to customers. The purchase and search tests need at least one product to be publicly visible on the storefront. We activate a small batch manually just for UAT.",
+      "how": "After completing the first sync (TC08), go to Shopify Admin (dev store) > Products. Select 5\u201310 products > Actions > Set as active."
+    },
+    {
+      "id": "P07",
+      "title": "Build Phase 2 \u2014 inbound order sync",
+      "category": "build",
+      "why": "TC52 tests what happens when a customer buys online \u2014 does Bookscan's stock reduce? That only works if the inbound order sync has been built. Without it, TC52 can't be tested and online sales won't update Bookscan inventory.",
+      "how": "Build order_sync.py \u2014 a new script that polls Shopify for new orders and deducts stock from MASTER.DBF. See the architecture discussion in the project notes.\n\nBefore building: confirm DBF file locking behaviour on the shop machine. During a Chrome Remote Desktop session, open Bookscan, then try opening one of the DBF files with a second program (Excel works) at the same time. If Bookscan throws an error or crashes, the script will need to run only when Bookscan is closed. If Bookscan carries on fine, concurrent writes are safe and the script can run on its normal 2-hour schedule alongside Bookscan."
+    },
+    {
+      "id": "P08",
+      "title": "Cover image sync \u2014 confirmed and built",
+      "category": "setup",
+      "why": "Book cover images are stored on the shop machine in a folder named by ISBN. The sync script doesn't handle images yet. A bookshop without cover images is a poor experience for customers \u2014 but it's a buildable feature. The question is whether we build it before go-live or launch without images first.",
+      "how": "COMPLETED 28 April 2026.\n\nDecision: build image sync before go-live (Option A chosen).\n\nImage source confirmed: Ebility automatically downloads cover art to Z:\\bookscan\\catalog\\ on the shop machine when a book is mapped to the web list. Files are named <ISBN>.jpg.\n\nResolution order in bookscan_sync.py:\n1. Z:\\bookscan\\catalog\\<ISBN>.jpg (production \u2014 local file, base64 uploaded to Shopify)\n2. bmbooks.co.nz/wp-content/uploads/<ISBN>-1.jpg (fallback during transition / local testing)\n3. bmbooks.co.nz/wp-content/uploads/<ISBN>.jpg (second fallback)\n4. No image found \u2192 Shopify built-in placeholder\n\nFor production: set CATALOG_IMAGE_PATH = r'Z:\\bookscan\\catalog' in bookscan_sync.py.\nFor local testing: leave CATALOG_IMAGE_PATH = None (uses WooCommerce URL fallback).\n\nImages already imported to Shopify are safe after WordPress shutdown \u2014 Shopify copies them to its own CDN on import.\n\nCustom 'no cover' placeholder image: Louisa has one \u2014 upload post-UAT to replace Shopify's generic placeholder."
+    },
+    {
+      "id": "P09",
+      "title": "Plan the production sync window (~26 hours)",
+      "category": "planning",
+      "why": "The full Bookscan sync of 37,998 products takes approximately 26 hours at Shopify's rate limit (~1.6 req/sec with a 0.6s sleep between requests). This needs to be kicked off at a planned time \u2014 ideally overnight or over a weekend \u2014 so the store isn't in a half-synced state during business hours.",
+      "how": "1. Confirm MAX_PRODUCTS is set to None in bookscan_sync.py before the production run\n2. Pick a start time (e.g. Friday evening) so the sync completes before Monday opening\n3. Run on a machine that won't be shut down or put to sleep for 26+ hours \u2014 the shop machine via Chrome Remote Desktop is ideal\n4. Monitor the log output periodically to confirm it's progressing without errors\n5. Mark complete once the full sync finishes and Shopify shows ~38,000 products"
+    }
+  ],
+  "sections": [
+    {
+      "id": "S1",
+      "title": "Dry Run",
+      "tests": [
+        {
+          "id": "TC01",
+          "title": "Dry run executes without errors",
+          "why": "Before we send anything to Shopify, we want to confirm the script can open and read all the Bookscan files without crashing. Think of it as turning the engine on before driving \u2014 nothing moves yet, we're just checking it starts.",
+          "preconditions": "sync_state.json deleted. DBF files present in SABSSAVE/.",
+          "steps": [
+            "Run: python bookscan_sync.py --dry-run"
+          ],
+          "expected": "Script runs to completion with no Python exceptions."
+        },
+        {
+          "id": "TC02",
+          "title": "Correct product count logged",
+          "why": "Bookscan lists around 38,000 books on the website. If the script reads significantly more or fewer than that, something is wrong with how it's filtering the data \u2014 and we'd want to catch that before syncing anything.",
+          "preconditions": "TC01 passed.",
+          "steps": [
+            "Check log output after DBF load completes"
+          ],
+          "expected": "Log shows approximately 38,013 active web ISBNs."
+        },
+        {
+          "id": "TC03",
+          "title": "Deduplication logged if duplicates exist",
+          "why": "Bookscan sometimes has the same book listed twice \u2014 usually one record has real stock and one doesn't. The script should pick the better record and quietly discard the duplicate rather than sending both to Shopify.",
+          "preconditions": "TC01 passed.",
+          "steps": [
+            "Check log output after product load"
+          ],
+          "expected": "Log shows 'Deduped X duplicate ISBN record(s)' if any found, or skips silently if none."
+        },
+        {
+          "id": "TC04",
+          "title": "Product cap applied",
+          "why": "During testing we deliberately limit the sync to 20 books so we don't fill the test store with 38,000 products. This confirms that limit is actually working \u2014 if it wasn't, every test run would take hours.",
+          "preconditions": "MAX_PRODUCTS = 20 in script.",
+          "steps": [
+            "Check log output after cap is applied"
+          ],
+          "expected": "Log shows 'MAX_PRODUCTS=20 \u2014 capping to first 20 products'."
+        },
+        {
+          "id": "TC05",
+          "title": "Products listed in dry run output",
+          "why": "A quick sanity check that the books the script found look like real books \u2014 real titles, real prices, real ISBNs. If something weird shows up here (blank titles, $0 prices across the board) we'd want to investigate before syncing.",
+          "preconditions": "TC01 passed.",
+          "steps": [
+            "Check log output for product listing"
+          ],
+          "expected": "Log lists up to 20 products with ISBN, title, price, and stock."
+        },
+        {
+          "id": "TC06",
+          "title": "No API calls made during dry run",
+          "why": "A dry run should be completely safe \u2014 nothing gets sent to Shopify, nothing changes anywhere. This confirms that safety guarantee. If API calls were somehow being made during a dry run, we'd have a problem.",
+          "preconditions": "TC01 passed.",
+          "steps": [
+            "Review full log output \u2014 check for 'Created' or 'Updated' lines"
+          ],
+          "expected": "No 'Created', 'Updated', or Shopify API activity in the log."
+        },
+        {
+          "id": "TC07",
+          "title": "State file NOT created on dry run",
+          "why": "The state file is what lets the script skip books that haven't changed. If it gets created during a dry run, the script would think all 20 books have already been synced \u2014 and skip them on the real first run.",
+          "preconditions": "sync_state.json did not exist before run.",
+          "steps": [
+            "Check the Sync/ folder after dry run completes"
+          ],
+          "expected": "sync_state.json does not exist."
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "First Sync",
+      "tests": [
+        {
+          "id": "TC08",
+          "title": "First run completes without fatal errors",
+          "why": "This is the first time books are actually sent to Shopify. We're checking the whole pipeline works end to end \u2014 reading the data, transforming it, and writing it to Shopify \u2014 without anything falling over.",
+          "preconditions": "Dev store empty. sync_state.json does not exist. Config points to dev store.",
+          "steps": [
+            "Run: python bookscan_sync.py",
+            "Wait for completion"
+          ],
+          "expected": "Script completes. Summary shows Created: >0, Errors: 0 (or very low)."
+        },
+        {
+          "id": "TC09",
+          "title": "Products appear in dev store",
+          "why": "The most basic check \u2014 did the books actually show up in Shopify? It sounds obvious but there are ways a script can run without errors yet still not create anything.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Open Shopify Admin > Products"
+          ],
+          "expected": "20 products visible in product list."
+        },
+        {
+          "id": "TC10",
+          "title": "Products created as Draft",
+          "why": "Books are created as drafts so customers can't see them yet. We want to review the synced products and do a bulk activation ourselves when we're happy \u2014 not have 38,000 books go live automatically on the first sync.",
+          "preconditions": "TC09 passed.",
+          "steps": [
+            "Open any product in Shopify Admin",
+            "Check the status field"
+          ],
+          "expected": "Status = Draft (not Active)."
+        },
+        {
+          "id": "TC11",
+          "title": "State file created after first run",
+          "why": "The state file remembers which books have been synced and what their data looked like. Without it, every future run would re-send all 38,000 books to Shopify every two hours \u2014 extremely slow and wasteful.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Check Sync/ folder for sync_state.json",
+            "Open the file and inspect contents"
+          ],
+          "expected": "sync_state.json exists with a last_run timestamp and 20 ISBN hash entries."
+        },
+        {
+          "id": "TC12",
+          "title": "Log file created",
+          "why": "The log is the paper trail for every sync \u2014 what ran, when, what was created or updated, and any errors. Essential for troubleshooting if something goes wrong in production.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Check Sync/ folder for bookscan_sync.log"
+          ],
+          "expected": "bookscan_sync.log exists with full run output."
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Product Field Verification",
+      "tests": [
+        {
+          "id": "TC13",
+          "title": "Title maps correctly",
+          "why": "The book title a customer sees on the website must match exactly what's in Bookscan. If titles are getting mangled or cut off during the sync, customers won't be able to find what they're looking for.",
+          "preconditions": "TC08 passed. Note ISBN of a test product.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check the product Title field.",
+            "Compare: Shopify Title should match 'Title' in script output."
+          ],
+          "expected": "Title matches MASTER.TITLE (stripped of whitespace)."
+        },
+        {
+          "id": "TC14",
+          "title": "SKU is the ISBN",
+          "why": "The ISBN is the universal identifier for every book. It's stored as the SKU in Shopify so we can always link a Shopify product back to its Bookscan record \u2014 critical for the stock update and order sync to work correctly.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Open product \u2192 Inventory \u2192 More Details \u2192 SKU"
+          ],
+          "expected": "SKU matches the ISBN exactly."
+        },
+        {
+          "id": "TC15",
+          "title": "Price maps correctly",
+          "why": "The price a customer pays online must match the price in Bookscan. A mismatch here \u2014 even a small one \u2014 is a real problem for the business.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check Pricing \u2192 Price.",
+            "Compare: Shopify Price should match 'Price' in script output (2 decimal places)."
+          ],
+          "expected": "Price matches MASTER.SELL_PRICE to 2 decimal places (e.g. $22.99)."
+        },
+        {
+          "id": "TC16",
+          "title": "Binding maps to human-readable product type",
+          "why": "Bookscan stores book formats as short codes \u2014 'PB' for Paperback, 'HB' for Hardback, and so on. Customers shouldn't see those codes on the website. We convert them to proper labels before syncing.",
+          "preconditions": "TC08 passed. Pick a product with binding code PB or HB.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check Product type.",
+            "Compare: Shopify Product type should match 'Binding (sync)' in script output \u2014 not the raw 2-char code."
+          ],
+          "expected": "Shows 'Paperback' or 'Hardback', not the raw 2-char code."
+        },
+        {
+          "id": "TC17",
+          "title": "Publisher maps to vendor",
+          "why": "The publisher (e.g. Penguin, HarperCollins) should come from Bookscan's data. If a book has no publisher listed, the field should simply be blank \u2014 not filled in with a placeholder like 'BMBooks', which would look unprofessional on the storefront.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check Vendor.",
+            "Compare: Shopify Vendor should match 'Publisher' in script output."
+          ],
+          "expected": "Vendor = publisher name from PUBLISHER.DBF, or blank if missing. NOT 'BMBooks'."
+        },
+        {
+          "id": "TC18",
+          "title": "Description populated from blurb",
+          "why": "A good book description is one of the most important things on a product page \u2014 it's what convinces someone to buy. We need to confirm the blurb from Bookscan is coming through correctly.",
+          "preconditions": "TC08 passed. Pick a product with a known blurb.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check the Description field.",
+            "Compare: Shopify Description should match 'Blurb' in script output. NOTE: will show '(empty \u2014 FPT file not available locally)' when running locally \u2014 this field will populate on the shop machine."
+          ],
+          "expected": "Description matches PUBLISHER.BLURB. Falls back to MASTER.MTABSTRACT if blurb is empty."
+        },
+        {
+          "id": "TC19",
+          "title": "Tags contain main and sub category",
+          "why": "Categories like 'Fiction' and 'Crime Fiction' are added as tags. Shopify uses these tags to automatically build collections (e.g. the Fiction collection) and power the category filters in search. If tags are wrong or missing, the whole browse experience breaks.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check the Tags field.",
+            "Compare: Shopify Tags should contain both categories shown in 'Tags (sync)' in script output."
+          ],
+          "expected": "Two tags: one main category and one sub-category (e.g. 'Fiction, Science Fiction and Fantasy')."
+        },
+        {
+          "id": "TC20",
+          "title": "Weight in grams",
+          "why": "DHL uses each book's weight to calculate international shipping costs at checkout. If weights are wrong, customers get incorrect shipping quotes \u2014 either overcharged or undercharged.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check product \u2192 Inventory \u2192 More Details \u2192 Weight.",
+            "Compare: Shopify Weight (grams) should match 'Weight (g)' in script output."
+          ],
+          "expected": "Weight in grams matches PUBLISHER.WEIGHT."
+        },
+        {
+          "id": "TC21",
+          "title": "Product is not taxable",
+          "why": "Books in New Zealand are GST-exempt \u2014 customers don't pay tax on them. This flag must be set correctly in Shopify or it may add GST on top of the price, which would be wrong and potentially a compliance issue.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Check product > Variants > Taxable checkbox"
+          ],
+          "expected": "Taxable = unchecked (false). NZ books are GST-exempt."
+        },
+        {
+          "id": "TC22",
+          "title": "Author metafield in Title Case",
+          "why": "Author names in Bookscan are stored in ALL CAPS (e.g. BRADBURY RAY). That looks unprofessional on a website. The script converts them to normal Title Case before syncing \u2014 this confirms that's working.",
+          "preconditions": "TC08 passed. Pick a product where AUTHOR is all-caps in Bookscan.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check product \u2192 Metafields \u2192 bookscan.author.",
+            "Compare: Shopify bookscan.author should match 'Author (sync)' in script output (title-cased, e.g. Lewis C S not LEWIS C S)."
+          ],
+          "expected": "Author shows Title Case (e.g. 'Bradbury Ray'), not ALL CAPS."
+        },
+        {
+          "id": "TC23",
+          "title": "ISBN metafield set",
+          "why": "The ISBN is stored separately as a metafield so it can be shown on the product page and searched. Some customers search by ISBN \u2014 particularly schools, libraries, and gift buyers with a specific book in mind.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check product \u2192 Inventory \u2192 More Details \u2192 SKU and Metafields \u2192 bookscan.isbn.",
+            "Compare: Both SKU and bookscan.isbn metafield should match 'ISBN' in script output exactly."
+          ],
+          "expected": "ISBN metafield matches the product SKU."
+        },
+        {
+          "id": "TC24",
+          "title": "Pages metafield set",
+          "why": "Page count is a detail customers often care about \u2014 especially for children's books and gifts where length matters. We store it as a custom field so it can be displayed on the product page.",
+          "preconditions": "TC08 passed. Pick a product with a known page count.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check product \u2192 Metafields \u2192 bookscan.pages.",
+            "Compare: Shopify bookscan.pages should match 'Pages' in script output."
+          ],
+          "expected": "Pages metafield shows correct count as a string, or absent if 0."
+        },
+        {
+          "id": "TC25",
+          "title": "Publication date metafield set",
+          "why": "Publication date helps customers know how current a book is \u2014 important for non-fiction, current affairs, and cookbooks. We store it so it can appear on the product page.",
+          "preconditions": "TC08 passed. Pick a product with a known pub date.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "In Shopify Admin, check product \u2192 Metafields \u2192 bookscan.publication_date.",
+            "Compare: Shopify bookscan.publication_date should match 'Pub date' in script output (DD/MM/YYYY format)."
+          ],
+          "expected": "Date in DD/MM/YYYY format (e.g. '05/10/1998'), or absent if missing."
+        }
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Inventory Verification",
+      "tests": [
+        {
+          "id": "TC26",
+          "title": "In-stock book shows correct quantity",
+          "why": "Stock levels on the website must match what's actually on the shelf. If Shopify shows 5 copies but Bookscan only has 2, staff could sell copies they don't have \u2014 which means disappointing customers and refunding orders.",
+          "preconditions": "TC08 passed. Identify a product with ONHAND > 0.",
+          "steps": [
+            "Open product in Shopify Admin",
+            "Check Inventory tab",
+            "Compare against MASTER.ONHAND"
+          ],
+          "expected": "Inventory quantity matches MASTER.ONHAND."
+        },
+        {
+          "id": "TC27",
+          "title": "Out-of-stock book shows 0 inventory",
+          "why": "Books with no copies in stock should still show on the website \u2014 we can order them in. But the stock level must correctly show as 0 so customers and staff know there's nothing on the shelf right now.",
+          "preconditions": "TC08 passed. Identify a product with ONHAND = 0.",
+          "steps": [
+            "Open product in Shopify Admin",
+            "Check Inventory tab"
+          ],
+          "expected": "Inventory = 0."
+        },
+        {
+          "id": "TC28",
+          "title": "Out-of-stock book still allows purchase",
+          "why": "Unlike a general retailer, a bookshop can order in almost any book. So when stock hits zero, the book shouldn't become unorderable \u2014 it should show 'Available to order'. This matches how the current WooCommerce site works and is important for Louisa's business model.",
+          "preconditions": "TC27 passed.",
+          "steps": [
+            "Check Variants > Inventory policy for the out-of-stock product"
+          ],
+          "expected": "inventory_policy = 'continue'. Storefront shows 'Available to order'."
+        },
+        {
+          "id": "TC29",
+          "title": "Out-of-stock (do not allow) product is hidden from customers",
+          "why": "In WooCommerce, products set to 'Do not allow backorders' are also set to Pending Review \u2014 meaning customers can't find or buy them. Shopify's equivalent is status: draft. We need to confirm our sync handles this correctly so customers aren't presented with products they can't order.",
+          "preconditions": "TC08 passed. Identify a product with ONHAND=0 that should not be purchaseable.",
+          "steps": [
+            "Run: python3 /Users/lalfred/Projects/bmbooks-workspace/Sync/check_isbn.py <ISBN>",
+            "Confirm stock = 0 in script output.",
+            "In Shopify Admin, check the product Status field.",
+            "In Shopify storefront, confirm the product does not appear in /collections/all."
+          ],
+          "expected": "Product with ONHAND=0 and no backorder allowance has status: draft and is not visible to customers. NOTE: This behaviour depends on confirming which Bookscan field drives the backorder setting \u2014 see action item."
+        }
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Idempotency",
+      "tests": [
+        {
+          "id": "TC30",
+          "title": "Second run skips all unchanged products",
+          "why": "If nothing changed in Bookscan between runs, the script should do nothing \u2014 not re-send all 38,000 books to Shopify every two hours. This 'only sync what changed' behaviour is what makes the script efficient enough to run frequently.",
+          "preconditions": "TC08 passed. Run immediately without changing anything in Bookscan.",
+          "steps": [
+            "Run: python bookscan_sync.py",
+            "Check log output"
+          ],
+          "expected": "Log shows 'Delta: 0 changed, 20 unchanged \u2014 skipping unchanged'."
+        },
+        {
+          "id": "TC31",
+          "title": "No creates or updates on second run",
+          "why": "A double-check of TC29 \u2014 we want to see zeros across the board to be absolutely sure no unnecessary Shopify updates happened.",
+          "preconditions": "TC29 passed.",
+          "steps": [
+            "Check log summary line"
+          ],
+          "expected": "Summary shows Created: 0, Updated: 0, Errors: 0."
+        },
+        {
+          "id": "TC32",
+          "title": "State file last_run timestamp updated",
+          "why": "The timestamp tells us when the last sync ran. Louisa can use this to know how fresh the website data is. If the script runs but doesn't update the timestamp, that's a bug.",
+          "preconditions": "TC29 passed.",
+          "steps": [
+            "Open sync_state.json",
+            "Check last_run timestamp"
+          ],
+          "expected": "last_run timestamp is newer than after the first run."
+        }
+      ]
+    },
+    {
+      "id": "S6",
+      "title": "Delta Sync",
+      "tests": [
+        {
+          "id": "TC33",
+          "title": "Only changed product is processed after hash edit",
+          "why": "When a book's price or stock changes in Bookscan, only that book should be updated in Shopify \u2014 not all 38,000. We simulate a change by editing the state file and confirm only the affected book gets re-sent.",
+          "preconditions": "TC08 passed. sync_state.json exists.",
+          "steps": [
+            "Open sync_state.json",
+            "Change the hash value for one ISBN to the string 'changed'",
+            "Save the file",
+            "Run: python bookscan_sync.py"
+          ],
+          "expected": "Log shows 'Delta: 1 changed, 19 unchanged'. Only 1 product updated."
+        },
+        {
+          "id": "TC34",
+          "title": "--full flag processes all products",
+          "why": "Sometimes we need to force a complete refresh \u2014 for example after a major Bookscan data change or if we suspect the state file got out of sync. The --full flag overrides the smart filtering and re-sends everything.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Run: python bookscan_sync.py --full"
+          ],
+          "expected": "Log shows 'Processing all 20 products'. All 20 updated."
+        }
+      ]
+    },
+    {
+      "id": "S7",
+      "title": "Edge Cases",
+      "tests": [
+        {
+          "id": "TC35",
+          "title": "Product with $0 price syncs without error",
+          "why": "Some books in Bookscan may not have a price set yet. The script should handle this gracefully \u2014 sync the book with $0 and move on \u2014 rather than crashing and stopping the entire sync.",
+          "preconditions": "Find an ISBN in SABSSAVE with SELL_PRICE = 0.",
+          "steps": [
+            "Confirm the ISBN is in the WEBLIST",
+            "Run sync and verify the product is created"
+          ],
+          "expected": "Product created with price $0.00. No crash."
+        },
+        {
+          "id": "TC36",
+          "title": "Product with 0 stock syncs and allows ordering",
+          "why": "Many books will have zero stock \u2014 they're available to order but not on the shelf. These should sync successfully and remain orderable on the website.",
+          "preconditions": "Find an ISBN with ONHAND = 0.",
+          "steps": [
+            "Run sync",
+            "Check product in Shopify Admin > Inventory"
+          ],
+          "expected": "Inventory = 0. inventory_policy = continue. No crash."
+        },
+        {
+          "id": "TC37",
+          "title": "Product with no description syncs",
+          "why": "Not every book in Bookscan has a blurb attached. The script should sync these books with an empty description rather than crashing \u2014 a missing description is not a reason to stop the whole sync.",
+          "preconditions": "Find an ISBN where BLURB and MTABSTRACT are both empty.",
+          "steps": [
+            "Run sync",
+            "Check product > Description in Shopify"
+          ],
+          "expected": "Product created with empty description. No crash."
+        },
+        {
+          "id": "TC38",
+          "title": "Product with no publisher syncs",
+          "why": "Some books won't have a publisher linked in Bookscan. The vendor field in Shopify should simply be left blank rather than filled with a placeholder \u2014 a blank is honest, a wrong value misleads customers.",
+          "preconditions": "Find an ISBN not present in PUBLISHER.DBF or with blank PUBLISHER field.",
+          "steps": [
+            "Run sync",
+            "Check product > Vendor in Shopify"
+          ],
+          "expected": "Product created with no crash. Vendor defaults to store name (Shopify behaviour when vendor is blank \u2014 acceptable). Post-UAT: bulk-update all products where vendor = store name to blank."
+        },
+        {
+          "id": "TC39",
+          "title": "Unknown binding code passes through",
+          "why": "Our binding code lookup table covers the most common formats. If Bookscan uses a code we haven't seen before, the script should pass it through as-is rather than crash \u2014 a slightly odd product type label is better than a broken sync.",
+          "preconditions": "Find an ISBN with a binding code not in the BINDING_MAP (if any exist).",
+          "steps": [
+            "Run sync",
+            "Check product > Product type in Shopify"
+          ],
+          "expected": "product_type = raw binding code string. No crash."
+        },
+        {
+          "id": "TC40",
+          "title": "Duplicate ISBN: higher stock record wins",
+          "why": "When Bookscan has two records for the same ISBN, we need to be sure we're keeping the right one \u2014 specifically the one that reflects actual stock. Keeping the wrong one could show zero stock for a book that's actually on the shelf.",
+          "preconditions": "Use BMBooks_Duplicate_ISBNs.csv to identify a known duplicate ISBN.",
+          "steps": [
+            "Find the duplicate ISBN in Shopify after sync",
+            "Check the stock level",
+            "Compare against the two records in MASTER.DBF"
+          ],
+          "expected": "The product reflects the record with the higher ONHAND value."
+        }
+      ]
+    },
+    {
+      "id": "S8",
+      "title": "Error Handling",
+      "tests": [
+        {
+          "id": "TC41",
+          "title": "Inventory 404 is non-fatal",
+          "why": "Shopify sometimes returns a minor error when we try to update stock separately from product details \u2014 particularly in the test store. This is a known quirk that shouldn't stop the sync. It should be logged as a warning so we know it happened, but the sync carries on.",
+          "preconditions": "TC08 completed. Check log from that run.",
+          "steps": [
+            "Search bookscan_sync.log for 'Inventory update non-fatal'"
+          ],
+          "expected": "If any 404s occurred, they appear as warnings only. Sync continued normally.",
+          "status": "pass",
+          "notes": "Log contains 'Inventory update non-fatal' WARNING entries from 13 Apr run. Sync continued processing subsequent products normally (Updated lines follow immediately after warnings). Confirmed non-fatal."
+        },
+        {
+          "id": "TC42",
+          "title": "Individual product error does not stop the batch",
+          "why": "If one book causes a problem \u2014 maybe it has unusual data that Shopify rejects \u2014 the script should log the error and move on to the next book. A single bad record shouldn't prevent thousands of good ones from syncing.",
+          "preconditions": "TC08 completed with at least one error.",
+          "steps": [
+            "Review log for Error lines",
+            "Confirm subsequent products after the error were still processed"
+          ],
+          "expected": "Error logged for the failed product. Sync continued to next product.",
+          "status": "pass",
+          "notes": "Log shows [ERROR] for 'Hiroshige - 2025 Calendar' and 'Half Of A Yellow Sun' (connection aborted). Next line: Updated [9780007201815] Empire Of Silver \u2014 sync continued. Summary: Errors: 1 and Errors: 2 across two runs, batch did not abort."
+        },
+        {
+          "id": "TC43",
+          "title": "State file saved even when errors occur",
+          "why": "If a run has some errors, we still want to save the progress made \u2014 otherwise the next run would re-try every single book including the ones that succeeded. Progress should be preserved even when things partially go wrong.",
+          "preconditions": "TC40 or TC41 \u2014 a run with at least one error.",
+          "steps": [
+            "Open sync_state.json after a run with errors"
+          ],
+          "expected": "File exists and contains hashes for all products that succeeded.",
+          "status": "pass",
+          "notes": "sync_state.json exists after runs with errors. Contains 139 hashes, last_run timestamp 2026-04-30T12:25:31. Progress for all successful products preserved despite errors in same run."
+        }
+      ]
+    },
+    {
+      "id": "S9",
+      "title": "Log File",
+      "tests": [
+        {
+          "id": "TC44",
+          "title": "Log captures full run history across multiple runs",
+          "why": "Each run should add to the log rather than overwrite it. If something goes wrong in production at 3am, the log history is how we figure out what happened and when it started going wrong.",
+          "preconditions": "At least 2 runs completed.",
+          "steps": [
+            "Open bookscan_sync.log"
+          ],
+          "expected": "All runs appended chronologically with timestamps. No overwrites.",
+          "status": "pass",
+          "notes": "bookscan_sync.log contains 49 run blocks from 2026-04-13 through 2026-04-30 \u2014 all appended chronologically, no overwrites. 2,156 lines total."
+        },
+        {
+          "id": "TC45",
+          "title": "Log includes per-product lines with ISBN and title",
+          "why": "If a specific book causes an error, we need to be able to identify it quickly. Logging the ISBN and title against every action means we can search the log and find exactly which book was affected.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Review log for Created/Updated/Error lines"
+          ],
+          "expected": "Each line includes the ISBN and product title.",
+          "status": "pass",
+          "notes": "Every Created/Updated/Error line includes ISBN in brackets and product title. Format: 'Created  [9780007527533] ABC Murders - 13 Poirot'. Consistent across all runs."
+        },
+        {
+          "id": "TC46",
+          "title": "Summary line present at end of each run",
+          "why": "A one-line summary at the end of each run gives a quick health check \u2014 how many books were created, updated, and whether anything errored. Louisa (or Lance) can glance at this without reading through hundreds of individual log lines.",
+          "preconditions": "TC08 passed.",
+          "steps": [
+            "Check the end of each run block in the log"
+          ],
+          "expected": "Each run ends with: 'Sync complete \u2014 Created: X  Updated: X  Errors: X'.",
+          "status": "pass",
+          "notes": "Every run ends with 'Sync complete \u2014 Created: X  Updated: X  Errors: X'. Confirmed across 25 completed runs. Runs with errors show non-zero Errors count (e.g. 'Errors: 1', 'Errors: 2')."
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "title": "End-to-End Purchase",
+      "tests": [
+        {
+          "id": "TC47",
+          "title": "Product is findable via search",
+          "why": "After syncing, customers need to actually be able to find books using the search bar on the website. This tests that the Searchanise search app has picked up the synced data and is returning relevant results.",
+          "preconditions": "At least one product is Active in Shopify. Searchanise force re-indexed.",
+          "steps": [
+            "Open the BMBooks storefront",
+            "Search for a book by title",
+            "Search for a book by author name",
+            "Search for a book by ISBN"
+          ],
+          "expected": "Correct product appears in results for all three search types."
+        },
+        {
+          "id": "TC48",
+          "title": "NZ shipping rates calculate at checkout",
+          "why": "New Zealand customers should see the flat-rate shipping options we've set up \u2014 $7.99 for North Island, $10.99 for South Island, and so on. If these aren't showing, customers can't complete their order.",
+          "preconditions": "Shopify Bogus Gateway enabled (Admin > Settings > Payments > Manage).",
+          "steps": [
+            "Add a book to cart",
+            "Proceed to checkout",
+            "Enter a NZ North Island address",
+            "Check shipping options"
+          ],
+          "expected": "NZ North Island rate ($7.99) appears. Rural options available."
+        },
+        {
+          "id": "TC49",
+          "title": "International DHL rates calculate at checkout",
+          "why": "One of the key improvements in the Shopify migration is fixing international shipping \u2014 the old WooCommerce site just said 'Shipping Costs To Be Advised' which put customers off. DHL should now calculate a real rate automatically based on the book's weight and the customer's address.",
+          "preconditions": "TC47 environment set up.",
+          "steps": [
+            "Add a book to cart",
+            "Proceed to checkout",
+            "Enter an Australian address",
+            "Check shipping options"
+          ],
+          "expected": "DHL Express carrier-calculated rate appears."
+        },
+        {
+          "id": "TC50",
+          "title": "In-store pickup option available at checkout",
+          "why": "Many of BMBooks' customers are local and prefer to collect in store rather than pay for shipping. The free 'Collect in Store' option must show up at checkout for these customers.",
+          "preconditions": "TC47 environment set up.",
+          "steps": [
+            "Add a book to cart",
+            "Proceed to checkout",
+            "Select local pickup option"
+          ],
+          "expected": "'Collect in Store' appears as a free shipping option."
+        },
+        {
+          "id": "TC51",
+          "title": "Test order completes successfully",
+          "why": "A complete run-through of the purchase journey \u2014 from adding to cart to order confirmation. We use Shopify's built-in test payment card so no real money changes hands. This is the most important end-to-end check before going live.",
+          "preconditions": "Bogus Gateway enabled. At least one Active product in store.",
+          "steps": [
+            "Add a book to cart",
+            "Complete checkout using Bogus Gateway test card (4111 1111 1111 1111)",
+            "Submit order"
+          ],
+          "expected": "Order confirmation page shown. Order appears in Shopify Admin > Orders."
+        },
+        {
+          "id": "TC52",
+          "title": "Order confirmation email fires",
+          "why": "Customers expect an order confirmation email straight away. It also needs to look professional and on-brand \u2014 dark purple buttons, BMBooks branding \u2014 not the default Shopify template.",
+          "preconditions": "TC50 passed.",
+          "steps": [
+            "Check the email address used at checkout"
+          ],
+          "expected": "Branded order confirmation email received with #1A0A2E button styling."
+        },
+        {
+          "id": "TC53",
+          "title": "Online purchase reduces Bookscan inventory after sync",
+          "why": "When a customer buys online, staff need to know about it so they don't sell the same copy in-store. The sync should pick up the Shopify order and deduct the stock from Bookscan within the next sync cycle.",
+          "preconditions": "TC50 passed. Note the inventory level before purchase.",
+          "steps": [
+            "Record the inventory level of the purchased product before checkout",
+            "Complete a test purchase (TC50)",
+            "Wait for next sync run (or run manually)",
+            "Check the inventory level in Shopify Admin"
+          ],
+          "expected": "Inventory reduced by quantity purchased after the next sync run."
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "title": "In-Store Sale Inventory",
+      "tests": [
+        {
+          "id": "TC54",
+          "title": "In-store sale reduces Shopify inventory on next sync",
+          "why": "When a customer buys a book over the counter, Bookscan's stock count goes down. The website should reflect this within two hours \u2014 otherwise online customers might try to buy a book that's already sold. This tests that chain of events.",
+          "preconditions": "At least one Active product with stock > 1 in Shopify.",
+          "steps": [
+            "Note current inventory level in Shopify for a specific ISBN",
+            "Open sync_state.json and change that ISBN's hash to 'changed' (simulates stock reduction in Bookscan)",
+            "Reduce the stock value for that ISBN in the local test data",
+            "Run: python bookscan_sync.py",
+            "Check inventory in Shopify Admin"
+          ],
+          "expected": "Shopify inventory updated to reflect the new lower stock level."
+        },
+        {
+          "id": "TC55",
+          "title": "In-store sale of last copy \u2014 product stays orderable",
+          "why": "When the last physical copy is sold in-store, the website shouldn't block customers from ordering more \u2014 we can always source another copy. The book should shift to 'Available to order' rather than appearing sold out or being removed.",
+          "preconditions": "Product with ONHAND = 1 in Bookscan.",
+          "steps": [
+            "Simulate sale of last copy (ONHAND becomes 0)",
+            "Run sync",
+            "Check product on storefront"
+          ],
+          "expected": "Inventory = 0. Product still shows as 'Available to order' on storefront."
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "title": "Searchanise & Collections",
+      "tests": [
+        {
+          "id": "TC56",
+          "title": "Searchanise re-index completes after sync",
+          "why": "Searchanise powers the search bar and filters on the website. After a sync adds thousands of new books, Searchanise needs to re-index before it knows about them. This confirms that process finishes cleanly.",
+          "preconditions": "First sync completed. Products are Active.",
+          "steps": [
+            "Open Shopify Admin > Apps > Searchanise",
+            "Click 'Force re-indexation'",
+            "Wait for completion"
+          ],
+          "expected": "Re-indexation completes without errors. Product count matches synced total."
+        },
+        {
+          "id": "TC57",
+          "title": "Filter by category works",
+          "why": "Customers browsing the website should be able to narrow results by category \u2014 Fiction, Children's Books, NZ Authors, etc. This tests that the category tags from the sync are being picked up correctly by the filter system.",
+          "preconditions": "TC55 passed.",
+          "steps": [
+            "Open storefront search",
+            "Apply a category filter (e.g. Fiction)"
+          ],
+          "expected": "Results filtered to show only Fiction-tagged products."
+        },
+        {
+          "id": "TC58",
+          "title": "Filter by availability works",
+          "why": "Some customers only want to see books that are on the shelf right now. The 'In stock' filter should work correctly and only show books with stock greater than zero.",
+          "preconditions": "TC55 passed. Both in-stock and out-of-stock products exist.",
+          "steps": [
+            "Open storefront search",
+            "Apply the 'In stock' availability filter"
+          ],
+          "expected": "Only products with stock > 0 shown."
+        },
+        {
+          "id": "TC59",
+          "title": "Collection contains correct products",
+          "why": "Collections like 'Fiction' or 'Children's Books' are built automatically from the category tags the sync adds to each product. We need to confirm that only the right books end up in each collection \u2014 not everything, and not the wrong category.",
+          "preconditions": "At least one collection created with a tag condition (e.g. tag = 'Fiction').",
+          "steps": [
+            "Open the Fiction collection on the storefront",
+            "Verify products shown are all tagged 'Fiction'"
+          ],
+          "expected": "All products in the collection have the matching category tag."
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "title": "Production Config",
+      "tests": [
+        {
+          "id": "PC01",
+          "title": "Store URL updated to live store",
+          "why": "During UAT we point the script at a test store. Before going live, this must be changed to the real BMBooks Shopify store. Syncing 38,000 books to the wrong store would be a significant problem.",
+          "preconditions": "All S1\u2013S12 tests passed.",
+          "steps": [
+            "Open bookscan_sync.py",
+            "Check SHOPIFY_STORE_URL on line 36"
+          ],
+          "expected": "SHOPIFY_STORE_URL = 'bruce-mckenzie-booksellers.myshopify.com'"
+        },
+        {
+          "id": "PC02",
+          "title": "Access token is live store token",
+          "why": "The access token is the password the script uses to talk to Shopify. The test store token won't work on the live store \u2014 a new one must be generated from the live store's custom app.",
+          "preconditions": "Custom app created in live store.",
+          "steps": [
+            "Confirm SHOPIFY_ACCESS_TOKEN is the token from the live store custom app"
+          ],
+          "expected": "Token starts with shpat_ and was generated from the live store."
+        },
+        {
+          "id": "PC03",
+          "title": "DBF path points to Z:\\bookscan",
+          "why": "On our test machine, we point the script at a local copy of the Bookscan files. On the shop machine, the real files are on the Z: drive. This must be updated before the first production run or the script will read stale test data.",
+          "preconditions": "Running on shop machine.",
+          "steps": [
+            "Check DBF_BASE_PATH in bookscan_sync.py"
+          ],
+          "expected": "DBF_BASE_PATH = r'Z:\\bookscan'"
+        },
+        {
+          "id": "PC04",
+          "title": "MAX_PRODUCTS set to None",
+          "why": "The 20-book limit exists only for testing. For production, this must be removed so all 38,000 books sync. Forgetting to do this is the kind of easy-to-miss mistake that would mean the website only ever shows 20 books.",
+          "preconditions": "Production config.",
+          "steps": [
+            "Check MAX_PRODUCTS in bookscan_sync.py"
+          ],
+          "expected": "MAX_PRODUCTS = None"
+        },
+        {
+          "id": "PC05",
+          "title": "sync_state.json deleted before first production run",
+          "why": "The state file from our UAT runs contains hashes based on test data. If we carry it over to production, the script will think thousands of books are already synced when they're not \u2014 and skip them. We start fresh.",
+          "preconditions": "Config changes made.",
+          "steps": [
+            "Delete sync_state.json from the script folder on the shop machine"
+          ],
+          "expected": "File does not exist. First production run will be a full sync."
+        },
+        {
+          "id": "PC06",
+          "title": "Metafield definitions exist in live store",
+          "why": "Before the script can store extra book details like author, pages, and publication date in Shopify, the live store needs to know those fields exist. They're like column headers in a spreadsheet \u2014 the data can't go in without them.",
+          "preconditions": "Shopify Admin access to live store.",
+          "steps": [
+            "Go to Shopify Admin > Settings > Custom data > Products",
+            "Check for bookscan.author, bookscan.isbn, bookscan.pages, bookscan.publication_date"
+          ],
+          "expected": "All 4 metafield definitions exist under namespace 'bookscan'."
+        },
+        {
+          "id": "PC07",
+          "title": "Custom app exists in live store with correct scopes",
+          "why": "The custom app is what gives our script permission to read and write data in the live Shopify store. Without the right permissions ('scopes'), the script will get access denied errors when it tries to create or update products.",
+          "preconditions": "Shopify Admin access to live store.",
+          "steps": [
+            "Go to Shopify Admin > Apps > Develop apps",
+            "Open the BookKeeper custom app",
+            "Check API scopes"
+          ],
+          "expected": "Scopes: write_products, read_products, write_inventory, read_inventory, read_locations."
+        },
+        {
+          "id": "PC08",
+          "title": "First production dry run resolves correct location",
+          "why": "A final safety check before we sync 38,000 real books. We run a dry run against the live store to confirm the connection works, the right store location is found, and no errors appear \u2014 before any data is actually sent.",
+          "preconditions": "PC01\u2013PC07 complete.",
+          "steps": [
+            "Run: python bookscan_sync.py --dry-run against live store",
+            "Check log for location resolution"
+          ],
+          "expected": "Location resolves to 'Bruce McKenzie Booksellers'. No errors."
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "title": "Post-Sync 6 \u2014 Production Data Spot-Check",
+      "tests": [
+        {
+          "id": "TC60",
+          "title": "Select 20 diverse products for spot-checking",
+          "why": "A representative sample catches systemic mapping errors that a single product would miss. Diversity across binding type, category, status, and image source gives confidence the whole catalogue synced correctly \u2014 not just one lucky product.",
+          "preconditions": "Post-sync 5 (image_replace.py) complete. Live store has synced products.",
+          "steps": [
+            "Go to Shopify Admin (live store) > Products",
+            "Filter by Status: Draft to see all synced products",
+            "Select 20 products across at least 5 different binding types (e.g. Hardback, Paperback, Board book, Spiral, Unknown)",
+            "Include at least 3 products that had a LargeImages cover, 3 with a catalog cover, and 1 with no_cover.jpg (Status = ACT but no image file)",
+            "Include at least 2 NZ Author products (look for _dept-NZA tag)",
+            "Record the 20 ISBNs in a list \u2014 you\u2019ll cross-reference each against Bookscan"
+          ],
+          "expected": "You have a list of 20 ISBNs spanning diverse binding types, categories, image sources, and at least one NZ Author product."
+        },
+        {
+          "id": "TC61",
+          "title": "SKU matches ISBN-13",
+          "why": "The SKU is how the sync script identifies a product on re-run. If it\u2019s wrong or missing, future syncs will create duplicate products instead of updating the existing one.",
+          "preconditions": "TC60 complete. 20 products selected.",
+          "steps": [
+            "For each of the 20 products, open the product in Shopify Admin",
+            "Click the variant to see its details",
+            "Check the SKU field"
+          ],
+          "expected": "SKU is exactly the 13-digit ISBN (numeric only, no hyphens or spaces). Matches the barcode on the book."
+        },
+        {
+          "id": "TC62",
+          "title": "Title, author, price, and stock match Bookscan",
+          "why": "These are the four fields customers and Louisa rely on most. A mismatch here means the website is showing wrong information \u2014 wrong price is a real problem at point of sale.",
+          "preconditions": "TC60 complete. Bookscan open on shop machine.",
+          "steps": [
+            "For each of the 20 products, find the matching record in Bookscan (use F11 Web Search or browse by ISBN)",
+            "Compare: Product Title vs Bookscan TITLE field",
+            "Compare: Vendor field in Shopify vs Bookscan AUTHOR field",
+            "Compare: Price in Shopify vs Bookscan RETAIL price",
+            "Compare: Inventory quantity in Shopify vs Bookscan QOH (quantity on hand)"
+          ],
+          "expected": "All 4 fields match exactly for all 20 products. Note any mismatches with ISBN and field name for batch investigation."
+        },
+        {
+          "id": "TC63",
+          "title": "Vendor is not 'Bruce McKenzie Booksellers'",
+          "why": "Products without a publisher in Bookscan get 'BMBooks Dev' as a placeholder vendor \u2014 a known issue. 'Bruce McKenzie Booksellers' would indicate a different mapping bug. Either way, the vendor should be the publisher name from Bookscan, not the store name.",
+          "preconditions": "TC60 complete.",
+          "steps": [
+            "For each of the 20 products, check the Vendor field in Shopify Admin",
+            "Flag any product where Vendor = 'Bruce McKenzie Booksellers'"
+          ],
+          "expected": "No product has Vendor = 'Bruce McKenzie Booksellers'. Products with no publisher may show 'BMBooks Dev' \u2014 note count but this is a known issue, not a blocker."
+        },
+        {
+          "id": "TC64",
+          "title": "Product type matches binding code",
+          "why": "The Product type field drives collection filtering. If Hardback books show as Paperback, customers filtering by format get wrong results.",
+          "preconditions": "TC60 complete. 20 products include multiple binding types.",
+          "steps": [
+            "For each of the 20 products, check the Product type field in Shopify Admin",
+            "Cross-reference with BINDING field in Bookscan for the same ISBN",
+            "Check BINDING_MAP in bookscan_sync.py for the expected mapping (e.g. 'BB' \u2192 'Board book', 'H' \u2192 'Hardback')"
+          ],
+          "expected": "Product type matches the mapped binding label for all 20 products. Note any 'Unknown' binding codes \u2014 expected for unmapped codes, collect ISBNs for Louisa\u2019s review."
+        },
+        {
+          "id": "TC65",
+          "title": "Cover image is present and visually sharp",
+          "why": "After image_replace.py, all products with a LargeImages or MediumImages file should now show that image. Products with only a catalog image (64\u00d7100) will look blurry \u2014 expected, not a bug. Products with no local image should show no_cover.jpg.",
+          "preconditions": "TC60 complete. Post-sync 5 image replacement complete.",
+          "steps": [
+            "For each of the 20 products, open the product page in the live storefront (not Shopify Admin)",
+            "Check: does an image appear?",
+            "For products you know had a LargeImages file: does the image look sharp at normal viewing size?",
+            "For products you know had only a catalog image: blurriness is expected \u2014 note the ISBN",
+            "For products with no image file: confirm no_cover.jpg placeholder appears"
+          ],
+          "expected": "All products show an image. LargeImages products look sharp (257\u00d7400). Catalog-only products look soft (expected). no_cover.jpg appears for imageless products."
+        },
+        {
+          "id": "TC66",
+          "title": "All 6 metafields populated",
+          "why": "Metafields power the Searchanise filter facets and the product page detail section. Missing metafields mean missing filter options and blank detail rows \u2014 both visible to customers.",
+          "preconditions": "TC60 complete. Metafield definitions exist in live store (PC06).",
+          "steps": [
+            "For each of the 20 products, open the product in Shopify Admin",
+            "Scroll down to the Metafields section",
+            "Check that all 6 fields have a value:",
+            "  bookscan.isbn \u2014 should match SKU",
+            "  bookscan.author \u2014 should match Bookscan AUTHOR",
+            "  bookscan.pages \u2014 number (0 if not in Bookscan data)",
+            "  bookscan.publication_date \u2014 year (0 if not in Bookscan data)",
+            "  bookscan.cstatus \u2014 e.g. ACT, NOTSTK",
+            "  bookscan.department \u2014 e.g. FIC, NZA, JUV"
+          ],
+          "expected": "All 6 metafields have a value for all 20 products. Blank metafields indicate a sync mapping gap \u2014 note which field and ISBN."
+        },
+        {
+          "id": "TC67",
+          "title": "Tags include status, department, and at least one category",
+          "why": "Tags drive smart collection membership and Searchanise facet filtering. Missing tags = product invisible in the right collection. Wrong tags = product in wrong collection.",
+          "preconditions": "TC60 complete.",
+          "steps": [
+            "For each of the 20 products, open the product in Shopify Admin",
+            "Check the Tags field",
+            "Confirm: tag starting with _cstatus- is present (e.g. _cstatus-ACT)",
+            "Confirm: tag starting with _dept- is present (e.g. _dept-FIC, _dept-NZA)",
+            "Confirm: at least one plain category tag is present (e.g. 'Crime & Thriller', 'Biography')"
+          ],
+          "expected": "All 3 tag types present on all 20 products. Note any product missing a tag type \u2014 record ISBN and which tag is absent."
+        },
+        {
+          "id": "TC68",
+          "title": "Product status is Draft",
+          "why": "Products must not be publicly visible until Louisa gives go-ahead for bulk activation. A product accidentally set to Active is live to customers right now \u2014 before payment, shipping, and search are configured.",
+          "preconditions": "TC60 complete. Bulk activation (Post-sync 7) has NOT been run.",
+          "steps": [
+            "For each of the 20 products, check the Status field in Shopify Admin (top-right of product page)",
+            "Flag any product with Status = Active"
+          ],
+          "expected": "All 20 products show Status = Draft. Any Active product is unexpected \u2014 set back to Draft immediately and investigate."
+        },
+        {
+          "id": "TC69",
+          "title": "Log patterns for batch fixes",
+          "why": "Individual mismatches found in TC61\u2013TC68 are only useful if they\u2019re actioned. This step converts spot-check findings into a triage list so issues get fixed before go-live, not discovered by customers.",
+          "preconditions": "TC61\u2013TC68 complete.",
+          "steps": [
+            "Review all notes taken during TC61\u2013TC68",
+            "Group findings by type: wrong vendor, missing metafield, wrong binding, blurry image, missing tag",
+            "For each group: estimate how many products are likely affected across the full 34k catalogue (extrapolate from the 20-product sample)",
+            "For issues affecting >1% of products: add a fix task to BMBooks_Action_Items.md under Phase B",
+            "For issues affecting <1%: add to a 'known issues' note under the relevant section",
+            "Mark TC69 complete once findings are logged"
+          ],
+          "expected": "All findings from TC61\u2013TC68 are categorised. Systemic issues (>1% hit rate) have a fix task created. One-offs are noted."
+        }
+      ]
+    }
+  ]
+}

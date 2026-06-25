@@ -1,0 +1,243 @@
+<!doctype html>
+<html
+  {% if request.design_mode %}
+    class="shopify-design-mode"
+  {% endif %}
+  lang="{{ request.locale.iso_code }}"
+>
+  <head>
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
+    {%- endif -%}
+
+    {% # theme-check-disable RemoteAsset %}
+    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
+    {% if settings.transition_to_main_product or settings.page_transition_enabled %}
+      <link
+        rel="expect"
+        href="#MainContent"
+        blocking="render"
+        id="view-transition-render-blocker"
+      >
+    {% endif %}
+
+    {%- render 'meta-tags' -%}
+    {%- render 'stylesheets' -%}
+    {%- render 'fonts' -%}
+    {%- render 'scripts' -%}
+    {%- render 'theme-styles-variables' -%}
+    {%- render 'color-schemes' -%}
+
+    {% if request.design_mode %}
+      {%- render 'theme-editor' -%}
+    {% endif %}
+
+    {{ content_for_header }}
+    {% # theme-check-enable RemoteAsset %}
+    {% if request.path == '/collections/all' %}<meta name="robots" content="noindex">{% endif %}
+    <style>
+      .page-width-content h1, .shopify-policy__title h1 { font-weight: 700 !important; font-size: 3rem !important; }
+      .page-width-content h2 { font-weight: 700 !important; font-size: 2rem !important; }
+      .page-width-content h3 { font-weight: 700 !important; font-size: 1.5rem !important; }
+      .shopify-policy__container p { font-size: 1rem !important; line-height: 1.7 !important; }
+      .product-grid-container .card-gallery { max-height: 320px !important; background: #fdf8f3 !important; }
+      .product-grid-container .product-media__image { object-fit: contain !important; object-position: left center !important; max-height: 320px !important; }
+      .product-grid-container a[ref="productTitleLink"] p { overflow: hidden !important; display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; }
+      .product-grid-container .product-card__author, .product-grid-container .product-card__binding { overflow: hidden !important; white-space: nowrap !important; text-overflow: ellipsis !important; }
+      #header-component .header__row--bottom { transition: clip-path 0.3s ease, opacity 0.2s ease; clip-path: inset(0px 0px -1000px 0px); }
+      #header-component.bmbooks-menu-hidden .header__row--bottom { clip-path: inset(0% 0% 100% 0%) !important; opacity: 0; pointer-events: none; }
+      .product-details h1 { font-weight: 700 !important; }
+      .product-details span.price { font-size: 1.6rem !important; }
+      .product-recommendations h3 { font-weight: 700 !important; }
+      .button--button_H9gpTf { text-transform: none !important; letter-spacing: normal !important; }
+      .Vtl-WishlistPage__Title { font-weight: 700 !important; color: #1a0a2e !important; }
+      .Vtl-WishlistPage__Description { font-size: 1.1rem !important; color: rgba(0,0,0,0.6) !important; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BookStore",
+      "name": "Bruce McKenzie Booksellers",
+      "url": "https://bmbooks.co.nz",
+      "telephone": "+64-6-356-9922",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "37 George Street",
+        "addressLocality": "Palmerston North",
+        "addressCountry": "NZ"
+      },
+      "openingHours": ["Mo-Fr 09:00-17:00", "Sa 09:00-16:00", "Su 09:00-16:00"],
+      "foundingDate": "1996"
+    }
+    </script>
+    {% if request.page_type == 'collection' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": {{ shop.url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }},
+          "item": {{ collection.url | prepend: shop.url | json }}
+        }
+      ]
+    }
+    </script>
+    {% endif %}
+    {% if request.page_type == 'product' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": {{ product.title | json }},
+      "isbn": {{ product.metafields.bookscan.isbn | json }},
+      "author": {
+        "@type": "Person",
+        "name": {{ product.metafields.bookscan.author | json }}
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ product.vendor | json }}
+      },
+      "datePublished": {{ product.metafields.bookscan.publication_date | json }},
+      "bookFormat": {{ product.type | json }},
+      "url": {{ product.url | prepend: shop.url | json }},
+      {% assign _bg = "" %}{% for _t in product.tags %}{% unless _t contains "_" %}{% if _bg != "" %}{% assign _bg = _bg | append: "~" %}{% endif %}{% assign _bg = _bg | append: _t %}{% endunless %}{% endfor %}{% if _bg != "" %}"bookGenre": {{ _bg | split: "~" | json }},{% endif %}
+      "image": {{ product.featured_image | image_url: width: 800 | prepend: 'https:' | json }}
+    }
+    </script>
+    {% endif %}
+  </head>
+
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
+    <div id="header-group">
+      {% sections 'header-group' %}
+    </div>
+
+    <script>
+      // Inline header height and menu style calculations to prevent layout shift
+      // Note: Updates in calculateHeaderGroupHeight(), updateTransparentHeaderOffset() and setHeaderMenuStyle() utilities.js should be kept in sync with this function
+      (function setHeaderHeighCustomProperties() {
+        /*
+         * Header calculation functions for maintaining CSS variables
+         * Mimic calculateHeaderGroupHeight() in utilities.js
+         */
+        const header = document.querySelector('header-component');
+        const headerGroup = document.querySelector('#header-group');
+        const hasHeaderSection = headerGroup?.querySelector('.header-section');
+
+        if (!header || !headerGroup) return;
+
+        const headerTopRow = header.querySelector('.header__row--top');
+        const headerHeight = header.offsetHeight;
+
+        // Calculate the total height of the header group
+        let headerGroupHeight = 0;
+        const children = headerGroup.children;
+        for (let i = 0; i < children.length; i++) {
+          const element = children[i];
+          if (element === header || !(element instanceof HTMLElement)) continue;
+          headerGroupHeight += element.offsetHeight;
+        }
+
+        // Check for transparent header special case
+        if (header.hasAttribute('transparent') && header.parentElement?.nextElementSibling) {
+          headerGroupHeight += headerHeight;
+        }
+
+        // Set CSS variables
+        document.body.style.setProperty('--header-height', `${headerHeight}px`);
+        document.body.style.setProperty('--header-group-height', `${headerGroupHeight}px`);
+
+        if (headerTopRow) {
+          window.requestAnimationFrame(function () {
+            document.body.style.setProperty('--top-row-height', `${headerTopRow.offsetHeight}px`);
+          });
+        }
+
+        /**
+         * Updates CSS custom properties for transparent header offset calculation
+         * Mimic updateTransparentHeaderOffset() in utilities.js
+         */
+
+        if (!hasHeaderSection || !header?.hasAttribute('transparent')) {
+          document.body.style.setProperty('--transparent-header-offset-boolean', '0');
+          return;
+        }
+
+        const hasImmediateSection = hasHeaderSection.nextElementSibling?.classList.contains('shopify-section');
+
+        const shouldApplyOffset = !hasImmediateSection ? '1' : '0';
+        document.body.style.setProperty('--transparent-header-offset-boolean', shouldApplyOffset);
+      })();
+
+      (function setHeaderMenuStyle() {
+        const headerComponent = document.querySelector('#header-component');
+        if (headerComponent) {
+          const isTouchDevice = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
+          const overflowList = headerComponent?.querySelector('overflow-list');
+          const hasReachedMinimum = overflowList && overflowList.hasAttribute('minimum-reached');
+          headerComponent.dataset.menuStyle = isTouchDevice || hasReachedMinimum ? 'drawer' : 'menu';
+        }
+      })();
+    </script>
+
+    <main
+      id="MainContent"
+      class="content-for-layout"
+      role="main"
+      data-page-transition-enabled="{{ settings.page_transition_enabled }}"
+      data-product-transition="{{ settings.transition_to_main_product }}"
+      data-template="{{ template }}"
+    >
+      {{ content_for_layout }}
+    </main>
+
+    <footer>
+      {% sections 'footer-group' %}
+    </footer>
+
+    {% render 'search-modal' %}
+
+    {% if settings.quick_add or settings.mobile_quick_add %}
+      {% render 'quick-add-modal' %}
+    {% endif %}
+    <script>
+      (function() {
+        var lastY = 0, ticking = false, THRESHOLD = 8;
+        window.addEventListener('scroll', function() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function() {
+            var header = document.getElementById('header-component');
+            if (header) {
+              var y = window.scrollY;
+              if (y < 80) {
+                header.classList.remove('bmbooks-menu-hidden');
+              } else if (y - lastY > THRESHOLD) {
+                header.classList.add('bmbooks-menu-hidden');
+              } else if (lastY - y > THRESHOLD) {
+                header.classList.remove('bmbooks-menu-hidden');
+              }
+              lastY = y;
+            }
+            ticking = false;
+          });
+        }, { passive: true });
+      })();
+    </script>
+  </body>
+</html>

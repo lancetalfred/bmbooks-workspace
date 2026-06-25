@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMBooks — Category Dashboard</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=DM+Sans:wght@400;500;600&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --purple-900: #1a0a2e;
+  --purple-700: #3d2366;
+  --purple-500: #5c3a8a;
+  --purple-400: #7a52b3;
+  --purple-300: #9b72cf;
+  --purple-200: #c9b8e8;
+  --purple-100: #ede5f7;
+  --purple-50: #f8f5fc;
+
+  --cream: #faf7f2;
+  --cream-dark: #f0ebe3;
+  --warm-white: #fffdf9;
+  --ink: #1c1917;
+  --ink-light: #44403c;
+  --ink-muted: #78716c;
+
+  --green: #166534;
+  --green-bg: #dcfce7;
+  --green-dot: #22c55e;
+  --amber: #92400e;
+  --amber-bg: #fef3c7;
+  --amber-dot: #f59e0b;
+  --grey: #57534e;
+  --grey-bg: #f5f5f4;
+  --grey-dot: #a8a29e;
+  --blue: #1e40af;
+  --blue-bg: #dbeafe;
+  --blue-dot: #3b82f6;
+  --red: #991b1b;
+  --red-bg: #fee2e2;
+
+  --font-display: 'Literata', 'Georgia', serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+
+  --shadow-sm: 0 1px 2px rgba(28,25,23,.06);
+  --shadow-md: 0 2px 8px rgba(28,25,23,.08), 0 1px 2px rgba(28,25,23,.04);
+  --shadow-lg: 0 4px 16px rgba(28,25,23,.1), 0 2px 4px rgba(28,25,23,.04);
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+html { font-size: 15px; }
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════ */
+.header {
+  background: var(--purple-900);
+  color: #fff;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(26,10,46,.3);
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 32px 16px;
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.header-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.header-title span {
+  font-weight: 300;
+  opacity: .7;
+  font-style: italic;
+  margin-left: 8px;
+  font-size: 0.85em;
+}
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* View toggle pills */
+.view-toggle {
+  display: flex;
+  background: rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 3px;
+  gap: 2px;
+}
+.view-toggle button {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 17px;
+  cursor: pointer;
+  transition: all .2s ease;
+  color: rgba(255,255,255,.6);
+  background: transparent;
+}
+.view-toggle button.active {
+  background: var(--purple-500);
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+.view-toggle button:hover:not(.active) {
+  color: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.08);
+}
+
+/* Stats row */
+.stats-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  flex-wrap: wrap;
+}
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.stat-label {
+  font-size: 0.75rem;
+  opacity: .55;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.stat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+/* Fallback banner */
+.fallback-banner {
+  background: var(--amber-bg);
+  color: var(--amber);
+  padding: 10px 32px;
+  font-size: 0.82rem;
+  text-align: center;
+  display: none;
+  font-weight: 500;
+}
+.fallback-banner.visible { display: block; }
+
+/* ═══════════════════════════════════════════
+   TOOLBAR
+   ═══════════════════════════════════════════ */
+.toolbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 32px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.toolbar-actions {
+  display: flex;
+  gap: 8px;
+}
+.toolbar-actions button {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border: 1px solid var(--cream-dark);
+  border-radius: 6px;
+  background: var(--warm-white);
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.toolbar-actions button:hover {
+  border-color: var(--purple-200);
+  color: var(--purple-500);
+  background: var(--purple-50);
+}
+.toolbar-label {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  font-family: var(--font-display);
+}
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.live-indicator::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green-dot);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+
+/* ═══════════════════════════════════════════
+   MAIN CONTENT
+   ═══════════════════════════════════════════ */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 32px 60px;
+}
+
+/* Section headers */
+.section-header {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ink-muted);
+  margin: 32px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--cream-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-header::before {
+  content: '';
+  width: 3px;
+  height: 14px;
+  background: var(--purple-500);
+  border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════
+   CATEGORY CARDS
+   ═══════════════════════════════════════════ */
+.category-card {
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.04);
+  transition: box-shadow .2s ease;
+}
+.category-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  cursor: pointer;
+  user-select: none;
+  gap: 12px;
+  transition: background .15s ease;
+}
+.card-header:hover {
+  background: var(--purple-50);
+}
+
+.card-chevron {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: transform .25s ease;
+  color: var(--ink-muted);
+}
+.category-card.expanded .card-chevron {
+  transform: rotate(90deg);
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  flex: 1;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.card-count {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--purple-500);
+  padding: 3px 10px;
+  background: var(--purple-100);
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.card-handle {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  background: var(--grey-bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-dot.done { background: var(--green-dot); }
+.status-dot.deferred { background: var(--amber-dot); }
+.status-dot.skipped { background: var(--grey-dot); }
+.status-dot.no-change { background: var(--blue-dot); }
+.status-dot.resolved { background: var(--green-dot); }
+
+/* ═══════════════════════════════════════════
+   SUB-CATEGORY TABLE
+   ═══════════════════════════════════════════ */
+.card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+}
+.category-card.expanded .card-body {
+  max-height: 2000px;
+}
+
+.sub-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.sub-table thead th {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-muted);
+  text-align: left;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--cream-dark);
+  background: var(--cream);
+  position: sticky;
+  top: 0;
+}
+.sub-table tbody tr {
+  border-bottom: 1px solid rgba(0,0,0,.03);
+  transition: background .1s ease;
+}
+.sub-table tbody tr:hover {
+  background: var(--purple-50);
+}
+.sub-table tbody tr:last-child {
+  border-bottom: none;
+}
+.sub-table td {
+  padding: 10px 16px;
+  vertical-align: middle;
+}
+.sub-table td:first-child {
+  font-weight: 500;
+}
+
+.sub-name {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sub-name-main {
+  font-weight: 500;
+  color: var(--ink);
+}
+.sub-name-collection {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.sub-count {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--ink-light);
+  font-variant-numeric: tabular-nums;
+}
+.sub-count.no-collection {
+  color: var(--ink-muted);
+  font-style: italic;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+}
+
+.sub-handle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--purple-400);
+}
+
+.sub-tag-rule {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  max-width: 200px;
+}
+
+.sub-alignment {
+  font-size: 0.72rem;
+  line-height: 1.4;
+  max-width: 220px;
+}
+.sub-alignment.misaligned {
+  color: var(--amber);
+}
+.sub-alignment.aligned {
+  color: var(--green);
+}
+
+.sub-notes {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  max-width: 200px;
+  line-height: 1.4;
+}
+
+/* Status badges (Lance view) */
+.status-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.status-badge.done { background: var(--green-bg); color: var(--green); }
+.status-badge.deferred { background: var(--amber-bg); color: var(--amber); }
+.status-badge.skipped { background: var(--grey-bg); color: var(--grey); }
+.status-badge.no-change { background: var(--blue-bg); color: var(--blue); }
+.status-badge.resolved { background: var(--green-bg); color: var(--green); }
+
+/* Row highlights */
+.sub-table tbody tr.row-misaligned {
+  border-left: 3px solid var(--amber-dot);
+}
+.sub-table tbody tr.row-deferred {
+  background: rgba(254,243,199,.3);
+}
+
+/* ═══════════════════════════════════════════
+   UMBRELLA / MANUAL CARDS
+   ═══════════════════════════════════════════ */
+.umbrella-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+.umbrella-card {
+  background: var(--warm-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,.04);
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: box-shadow .15s ease;
+}
+.umbrella-card:hover { box-shadow: var(--shadow-md); }
+.umbrella-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.umbrella-meta {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════
+   LANCE-ONLY VISIBILITY
+   ═══════════════════════════════════════════ */
+body.view-louisa .lance-only { display: none !important; }
+body.view-louisa .sub-table th.lance-only { display: none !important; }
+body.view-louisa .sub-table td.lance-only { display: none !important; }
+body.view-louisa .status-badge { display: none; }
+body.view-lance .status-dot-wrap { display: none; }
+
+/* ═══════════════════════════════════════════
+   LOADING STATE
+   ═══════════════════════════════════════════ */
+.loading {
+  text-align: center;
+  padding: 60px 32px;
+  color: var(--ink-muted);
+  font-family: var(--font-display);
+  font-style: italic;
+}
+.loading-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--purple-100);
+  border-top-color: var(--purple-500);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin: 0 auto 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .header-inner, .toolbar, .main { padding-left: 16px; padding-right: 16px; }
+  .header-top { flex-direction: column; }
+  .stats-row { gap: 16px; }
+  .sub-table { font-size: 0.8rem; }
+  .umbrella-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body class="view-louisa">
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <h1 class="header-title">
+        BMBooks<span>Category Dashboard</span>
+      </h1>
+      <div class="header-controls">
+        <div class="view-toggle">
+          <button id="btn-louisa" class="active" onclick="setView('louisa')">Louisa</button>
+          <button id="btn-lance" onclick="setView('lance')">Lance</button>
+        </div>
+      </div>
+    </div>
+    <div class="stats-row" id="stats-row"></div>
+  </div>
+</header>
+
+<div class="fallback-banner" id="fallback-banner">
+  Live counts unavailable — run <code>python3 Tools/category_dashboard.py</code> for live Shopify data
+</div>
+
+<div class="toolbar">
+  <div>
+    <span class="live-indicator" id="live-indicator" style="display:none">Live</span>
+    <span class="toolbar-label" id="snapshot-label" style="display:none">Showing audit snapshot</span>
+  </div>
+  <div class="toolbar-actions">
+    <button onclick="expandAll()">Expand all</button>
+    <button onclick="collapseAll()">Collapse all</button>
+  </div>
+</div>
+
+<main class="main" id="main-content">
+  <div class="loading">
+    <div class="loading-spinner"></div>
+    Loading category data&hellip;
+  </div>
+</main>
+
+<script>
+const MAIN_CATEGORIES = [
+  'Fiction', 'Children', 'Well Being', 'The Arts', 'History And Politics',
+  'Sciences', 'Stationery Puzzles And Gifts', 'Biographies', 'Travel',
+  'Sport', 'Te Ao Maori', 'The Garden', 'The Manawatu', 'Reference',
+  'Audio', 'Motoring', 'Featured', 'Christmas', 'Vouchers'
+];
+
+const SPECIAL_MAIN = ['—', '(orphan maincat=0)'];
+
+let auditData = [];
+let liveCollections = new Map();
+let isLive = false;
+
+// ── Data fetching ──────────────────────────────
+
+async function fetchData() {
+  let audit = null, live = null;
+
+  try {
+    const [auditRes, liveRes] = await Promise.all([
+      fetch('/api/audit'),
+      fetch('/api/collections')
+    ]);
+    audit = await auditRes.json();
+    const liveData = await liveRes.json();
+
+    if (liveData?.data?.collections?.edges) {
+      for (const edge of liveData.data.collections.edges) {
+        const node = edge.node;
+        liveCollections.set(node.handle, {
+          title: node.title,
+          handle: node.handle,
+          count: node.productsCount.count,
+          rules: node.ruleSet?.rules || []
+        });
+      }
+      isLive = true;
+    }
+  } catch (e) {
+    document.getElementById('fallback-banner').classList.add('visible');
+  }
+
+  if (!audit) {
+    document.getElementById('main-content').innerHTML =
+      '<div class="loading" style="font-style:normal;color:var(--red)">Could not load data. Ensure category_dashboard.py is running.</div>';
+    return;
+  }
+
+  auditData = audit;
+  mergeData();
+  render();
+}
+
+function mergeData() {
+  for (const row of auditData) {
+    const handle = row['Handle'];
+    if (handle && handle !== '—' && liveCollections.has(handle)) {
+      const live = liveCollections.get(handle);
+      row._liveCount = live.count;
+      row._rules = live.rules;
+    }
+  }
+}
+
+// ── Rendering ──────────────────────────────────
+
+function render() {
+  const grouped = groupByMainCategory();
+  const main = document.getElementById('main-content');
+
+  if (isLive) {
+    document.getElementById('live-indicator').style.display = 'inline-flex';
+  } else {
+    document.getElementById('snapshot-label').style.display = 'inline';
+  }
+
+  renderStats();
+
+  let html = '';
+
+  // Main category cards
+  html += '<div class="section-header">Categories</div>';
+  const sortedMains = Object.entries(grouped.categories)
+    .sort((a, b) => getMainCount(b[1]) - getMainCount(a[1]));
+
+  for (const [mainCat, rows] of sortedMains) {
+    html += renderCategoryCard(mainCat, rows);
+  }
+
+  // Umbrella collections
+  if (grouped.umbrellas.length > 0) {
+    html += '<div class="section-header">Umbrella Collections</div>';
+    html += '<div class="umbrella-grid">';
+    for (const row of grouped.umbrellas) {
+      html += renderUmbrellaCard(row);
+    }
+    html += '</div>';
+  }
+
+  // Manual / Shopify-only
+  if (grouped.manual.length > 0) {
+    html += '<div class="section-header">Manual &amp; System Collections</div>';
+    html += '<div class="umbrella-grid">';
+    for (const row of grouped.manual) {
+      html += renderUmbrellaCard(row);
+    }
+    html += '</div>';
+  }
+
+  // Orphans
+  if (grouped.orphans.length > 0) {
+    html += '<div class="section-header">Data Issues</div>';
+    for (const row of grouped.orphans) {
+      html += renderOrphanCard(row);
+    }
+  }
+
+  main.innerHTML = html;
+}
+
+function groupByMainCategory() {
+  const categories = {};
+  const umbrellas = [];
+  const manual = [];
+  const orphans = [];
+
+  for (const row of auditData) {
+    const mainCat = row['BookScan Main Category'];
+    const subCat = row['BookScan Sub Category'];
+    const source = row['Source'];
+    const collName = row['Shopify Collection Name'] || '';
+
+    if (mainCat === '—') {
+      if (collName.includes('umbrella') || collName.includes('(umbrella)')) {
+        umbrellas.push(row);
+      } else {
+        manual.push(row);
+      }
+      continue;
+    }
+
+    if (mainCat === '(orphan maincat=0)') {
+      orphans.push(row);
+      continue;
+    }
+
+    if (!categories[mainCat]) categories[mainCat] = [];
+    categories[mainCat].push(row);
+  }
+
+  return { categories, umbrellas, manual, orphans };
+}
+
+function getMainCount(rows) {
+  const mainRow = rows.find(r => !r['BookScan Sub Category']);
+  if (!mainRow) return 0;
+  if (mainRow._liveCount != null) return mainRow._liveCount;
+  const pc = mainRow['Product Count'];
+  return pc && pc !== '—' ? parseInt(pc) || 0 : 0;
+}
+
+function getCount(row) {
+  if (row._liveCount != null) return row._liveCount;
+  const pc = row['Product Count'];
+  return pc && pc !== '—' ? parseInt(pc) || 0 : null;
+}
+
+function formatCount(n) {
+  if (n == null) return null;
+  return n.toLocaleString();
+}
+
+function statusClass(status) {
+  if (!status) return 'no-change';
+  const s = status.toLowerCase();
+  if (s.includes('done')) return 'done';
+  if (s.includes('deferred')) return 'deferred';
+  if (s.includes('skipped')) return 'skipped';
+  if (s.includes('resolved')) return 'resolved';
+  return 'no-change';
+}
+
+function renderCategoryCard(mainCat, rows) {
+  const mainRow = rows.find(r => !r['BookScan Sub Category']);
+  const subs = rows.filter(r => r['BookScan Sub Category']);
+  const count = getMainCount(rows);
+  const countStr = formatCount(count);
+  const handle = mainRow?.Handle || '';
+  const status = mainRow?.Status || '';
+  const alignment = mainRow?.['Industry Alignment'] || '';
+  const sc = statusClass(status);
+  const id = mainCat.replace(/\s+/g, '-').toLowerCase();
+
+  let html = `<div class="category-card" id="card-${id}">`;
+  html += `<div class="card-header" onclick="toggleCard('${id}')">`;
+  html += `<svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+  html += `<div class="card-name">${esc(mainRow?.['Shopify Collection Name'] || mainCat)}</div>`;
+  if (handle && handle !== '—') {
+    html += `<span class="card-handle lance-only">${esc(handle)}</span>`;
+  }
+  html += `<span class="status-dot ${sc}" title="${esc(status)}"></span>`;
+  if (countStr) {
+    html += `<span class="card-count">${countStr}</span>`;
+  }
+  html += `</div>`;
+
+  // Sub-table
+  if (subs.length > 0) {
+    html += `<div class="card-body">`;
+    html += `<table class="sub-table">`;
+    html += `<thead><tr>`;
+    html += `<th>Sub-category</th>`;
+    html += `<th class="lance-only">Handle</th>`;
+    html += `<th>Products</th>`;
+    html += `<th class="lance-only">Tag Rule</th>`;
+    html += `<th>Status</th>`;
+    html += `<th class="lance-only">Industry</th>`;
+    html += `<th class="lance-only">Notes</th>`;
+    html += `</tr></thead><tbody>`;
+
+    for (const sub of subs) {
+      const subCount = getCount(sub);
+      const subCountStr = formatCount(subCount);
+      const subHandle = sub['Handle'] || '';
+      const subStatus = sub['Status'] || '';
+      const subSc = statusClass(subStatus);
+      const subAlignment = sub['Industry Alignment'] || '';
+      const isMisaligned = subAlignment.toUpperCase().includes('MISALIGNED');
+      const isDeferred = subSc === 'deferred';
+      const collName = sub['Shopify Collection Name'] || '';
+      const subName = sub['BookScan Sub Category'] || '';
+      const notes = sub['Notes'] || '';
+      const hasCollection = sub['Has Standalone Collection'] || '';
+
+      // Build tag rule string from live data or from tag info
+      let tagRule = '';
+      if (sub._rules && sub._rules.length > 0) {
+        tagRule = sub._rules.map(r => `tag = "${r.condition}"`).join(', ');
+      }
+
+      let rowClass = '';
+      if (isMisaligned) rowClass += ' row-misaligned';
+      if (isDeferred) rowClass += ' row-deferred';
+
+      html += `<tr class="${rowClass}">`;
+
+      // Name column
+      html += `<td><div class="sub-name">`;
+      html += `<span class="sub-name-main">${esc(collName || subName)}</span>`;
+      if (collName && collName !== subName && subName) {
+        html += `<span class="sub-name-collection">${esc(subName)}</span>`;
+      }
+      if (!collName || collName === '—') {
+        html += `<span class="sub-name-collection">No collection</span>`;
+      }
+      html += `</div></td>`;
+
+      // Handle
+      html += `<td class="lance-only"><span class="sub-handle">${subHandle && subHandle !== '—' ? esc(subHandle) : '—'}</span></td>`;
+
+      // Product count
+      if (subCountStr != null) {
+        html += `<td><span class="sub-count">${subCountStr}</span></td>`;
+      } else {
+        html += `<td><span class="sub-count no-collection">—</span></td>`;
+      }
+
+      // Tag rule (lance only)
+      html += `<td class="lance-only"><span class="sub-tag-rule">${esc(tagRule)}</span></td>`;
+
+      // Status
+      html += `<td>`;
+      html += `<span class="status-dot-wrap"><span class="status-dot ${subSc}" title="${esc(subStatus)}"></span></span>`;
+      html += `<span class="status-badge ${subSc}">${esc(subStatus || 'No change')}</span>`;
+      html += `</td>`;
+
+      // Industry alignment (lance only)
+      const alignClass = isMisaligned ? 'misaligned' : (subAlignment.toLowerCase().includes('aligned') ? 'aligned' : '');
+      html += `<td class="lance-only"><span class="sub-alignment ${alignClass}">${esc(subAlignment)}</span></td>`;
+
+      // Notes (lance only)
+      html += `<td class="lance-only"><span class="sub-notes">${esc(notes)}</span></td>`;
+
+      html += `</tr>`;
+    }
+
+    html += `</tbody></table></div>`;
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+function renderUmbrellaCard(row) {
+  const name = row['Shopify Collection Name'] || row['BookScan Sub Category'] || '';
+  const count = getCount(row);
+  const countStr = formatCount(count);
+  const handle = row['Handle'] || '';
+  const status = row['Status'] || '';
+  const sc = statusClass(status);
+
+  let html = `<div class="umbrella-card">`;
+  html += `<div>`;
+  html += `<div class="umbrella-name">${esc(name.replace(' (umbrella)', ''))}</div>`;
+  if (handle && handle !== '—') {
+    html += `<div class="umbrella-meta lance-only">${esc(handle)}</div>`;
+  }
+  html += `</div>`;
+  html += `<div style="display:flex;align-items:center;gap:8px;">`;
+  html += `<span class="status-dot ${sc}"></span>`;
+  if (countStr) {
+    html += `<span class="card-count">${countStr}</span>`;
+  }
+  html += `</div>`;
+  html += `</div>`;
+  return html;
+}
+
+function renderOrphanCard(row) {
+  const subName = row['BookScan Sub Category'] || '';
+  const count = getCount(row);
+  const notes = row['Notes'] || '';
+
+  let html = `<div class="umbrella-card" style="border-left:3px solid var(--amber-dot);">`;
+  html += `<div>`;
+  html += `<div class="umbrella-name">${esc(subName)}</div>`;
+  html += `<div class="umbrella-meta" style="color:var(--amber)">Orphan — maincat=0 (data error)</div>`;
+  if (notes) html += `<div class="umbrella-meta lance-only">${esc(notes)}</div>`;
+  html += `</div>`;
+  if (count != null) {
+    html += `<span class="card-count">${formatCount(count)}</span>`;
+  }
+  html += `</div>`;
+  return html;
+}
+
+function renderStats() {
+  const statsRow = document.getElementById('stats-row');
+  const counts = { done: 0, deferred: 0, skipped: 0, 'no change': 0, resolved: 0 };
+  let totalProducts = 0;
+  let totalCollections = 0;
+
+  for (const row of auditData) {
+    const status = (row['Status'] || '').toLowerCase();
+    const hasCollection = row['Has Standalone Collection'] || '';
+    if (hasCollection.startsWith('Yes')) totalCollections++;
+
+    // Count main category products (avoid double-counting subs)
+    if (!row['BookScan Sub Category'] || row['BookScan Sub Category'] === '—') {
+      const c = getCount(row);
+      if (c != null) totalProducts += c;
+    }
+
+    if (status.includes('done')) counts.done++;
+    else if (status.includes('deferred')) counts.deferred++;
+    else if (status.includes('skipped')) counts.skipped++;
+    else if (status.includes('resolved')) counts.resolved++;
+    else counts['no change']++;
+  }
+
+  statsRow.innerHTML = `
+    <div class="stat">
+      <span class="stat-value">${totalCollections}</span>
+      <span class="stat-label">Collections</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">${totalProducts.toLocaleString()}</span>
+      <span class="stat-label">Products</span>
+    </div>
+    <div class="stat">
+      <span class="stat-dot" style="background:var(--green-dot)"></span>
+      <span class="stat-value">${counts.done + counts.resolved}</span>
+      <span class="stat-label">Done</span>
+    </div>
+    <div class="stat">
+      <span class="stat-dot" style="background:var(--amber-dot)"></span>
+      <span class="stat-value">${counts.deferred}</span>
+      <span class="stat-label">Deferred</span>
+    </div>
+    <div class="stat">
+      <span class="stat-dot" style="background:var(--grey-dot)"></span>
+      <span class="stat-value">${counts.skipped}</span>
+      <span class="stat-label">Skipped</span>
+    </div>
+  `;
+}
+
+// ── Interactions ────────────────────────────────
+
+function toggleCard(id) {
+  const card = document.getElementById('card-' + id);
+  if (card) card.classList.toggle('expanded');
+}
+
+function expandAll() {
+  document.querySelectorAll('.category-card').forEach(c => c.classList.add('expanded'));
+}
+
+function collapseAll() {
+  document.querySelectorAll('.category-card').forEach(c => c.classList.remove('expanded'));
+}
+
+function setView(view) {
+  document.body.className = 'view-' + view;
+  document.getElementById('btn-louisa').classList.toggle('active', view === 'louisa');
+  document.getElementById('btn-lance').classList.toggle('active', view === 'lance');
+  localStorage.setItem('bmbooks-dash-view', view);
+}
+
+function esc(str) {
+  if (!str) return '';
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+// ── Init ────────────────────────────────────────
+
+(function init() {
+  const saved = localStorage.getItem('bmbooks-dash-view');
+  if (saved === 'lance') setView('lance');
+  fetchData();
+})();
+</script>
+</body>
+</html>

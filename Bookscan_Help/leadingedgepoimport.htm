@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+   <title>Leading Edge: PO Import</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Leading Edge Orders,Creating Leading Edge Purchase Orders">
+<object id=hhpopuplink type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11"></object>
+<script language=JavaScript src="PopupTopics.js"></script></head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFE8">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Times New Roman; font-size:16pt; color:#000000"><span style="font-family:Times New Roman; font-size:16pt; color:#7F0000"><b>&nbsp;&nbsp;&nbsp;Leading Edge: Purchase Order Import</b></span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>
+<br>
+</b></span></span></span>
+    </td>
+    <td align="right">
+     <font face="Arial" size="2">
+     <a href="cs_081140340210.htm">Previous</a>&nbsp;
+     <a href="cs_281043020001.htm">Top</a>&nbsp;
+     <a href="purchaseorderenquiry.htm">Next</a>
+     </font>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Times New Roman; font-size:12pt; color:#000000">This section is for members of Leading Edge group who place their orders through the Leading Edge system and then <span class="popuplink"><a href=JavaScript:hhpopuplink.TextPopup(popid_leadingedgehowtodownload,FontFace,-1,-1,-1,-1)>download an import file</a></span> from it's web/FTP site to then import that order (without having to re-key it) 
+<br>
+
+<br>
+Note: It is assumed that you have downloaded the Leading Edge Purchase Order file (e.g. Lonley_Planet_1234.Lee) from the leading Edge website and have saved it to an accessible place on your computer such as C:\e-Bilitydata\EDI\LeadEdge\. 
+<br>
+
+<br>
+Open the Purchase Order Import window from the main menu: Purchasing /Draft Order/Web PO Import. 
+<br>
+
+<br>
+<img src="leadedge02.jpg" width="789" height="370" border="0" alt="leadedge02">
+<br>
+
+<br>
+<b>Importing a Leading Edge file
+<br>
+</b>Click the Import File (F11) button and navigate to the folder holding your Leading Edge import files.
+<br>
+
+<br>
+<img src="leadedge01.jpg" width="560" height="418" border="0" alt="leadedge01">
+<br>
+
+<br>
+Select the required file and click the Open button. The file will update two Bookscan tables:  webpoline.dbf and webpohead.dbf. The order will be displayed in the browsers of the Purchase Order Import window.
+<br>
+
+<br>
+<b>Suppliers and SANs
+<br>
+</b>Leading Edge orders files link to the suppliers in Bookscan using the supplier's SAN. So you need to have SANs set up for each supplier in the Address tab of your supplier master.
+<br>
+If you don't have a SAN set for a supplier, the Purchase Order Import window will display '????' in the code column of the upper browser. For an example see the second line in the PO Import window diagram above. SAN 9012826 needs to be added to the supplier's SAN field. You will need to fix this before proceeding. Open the supplier master and enter the missing SANs. Then, back in the PO Import window use the right mouse to open the context menu and select 'Update suppliers'. The browser will now display correctly.
+<br>
+
+<br>
+<b>Products not on file
+<br>
+</b>If any lines in the lower browser are shown in yellow, it means that the product is not in Bookscan. To add products to the master file, highlight them in the browser and open the context menu (by right clicking the mouse) and select 'Add selected ISBNs'. The products will be added to the master with these fields completed: ISBN, title, author, sell price, RRP and supplier.
+<br>
+All items must be in the title master before you can create an Bookscan purchase order.
+<br>
+
+<br>
+<b>Select a purchase order number
+<br>
+</b>The Next PO number field will display the next available PO number. You can change the PO sequence here if you wish, and set a budget month if you use the budgeting functionality. Tick the check box to print the purchase order as it is created.
+<br>
+
+<br>
+<b>Creating the purchase order
+<br>
+</b>In the upper browser, highlight the order you wish to process into Bookscan.
+<br>
+Click the Save PO (F12) button to process it. 
+<br>
+The purchase order will be created and will be displayed like any other purchase in the Purchasing Order Enquiry window.
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+
+<br>
+</span></span></span>
+
+</body>
+</html>
