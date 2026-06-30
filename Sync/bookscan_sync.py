@@ -822,7 +822,8 @@ def to_shopify_product(p, image=None, is_new=False, variant_id=None, prev_booksc
     if force_status:
         payload["status"] = force_status          # zero-price hide or 0→>0 auto-publish
     elif is_new:
-        payload["status"] = "active" if (AUTO_PUBLISH and p["price"] > 0) else "draft"
+        ready_to_publish = AUTO_PUBLISH and p["price"] > 0 and bool(p["title"].strip())
+        payload["status"] = "active" if ready_to_publish else "draft"
 
     if image:
         payload["images"] = [image]
@@ -951,7 +952,7 @@ def _run_sync_inner():
             prev_price = prev_fields.get(isbn, {}).get("price", -1)
             if p["price"] == 0:
                 force_status = "draft"                    # always hide zero-price products
-            elif AUTO_PUBLISH and existing and prev_price == 0 and p["price"] > 0:
+            elif AUTO_PUBLISH and existing and prev_price == 0 and p["price"] > 0 and p["title"].strip():
                 force_status = "active"                   # was zero-price draft, now priced → publish
             else:
                 force_status = None                       # preserve existing Shopify status
