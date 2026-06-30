@@ -10,28 +10,16 @@ const cards = [
     to: '/louisa-guide',
   },
   {
-    icon: '⚙️',
-    title: 'Setup',
-    description: 'Requirements, configuration, and the shop machine installation guide.',
-    to: '/setup/requirements',
-  },
-  {
-    icon: '🏗️',
-    title: 'Architecture',
-    description: 'How the sync works under the hood — DBF files, field mapping, delta logic.',
-    to: '/architecture/overview',
-  },
-  {
     icon: '🔄',
-    title: 'Sync',
-    description: 'Outbound product sync and the inbound order sync (Phase 2).',
+    title: 'What syncs',
+    description: 'What products appear on the website, what fields sync, and how often.',
     to: '/sync/outbound',
   },
   {
-    icon: '✅',
-    title: 'UAT Plan',
-    description: '58 test cases covering every aspect of the integration before go-live.',
-    to: '/uat/uat-plan',
+    icon: '📦',
+    title: 'Order Fulfillment',
+    description: 'How to process online orders in Shopify and enter them in Bookscan.',
+    to: '/sync/order-fulfillment',
   },
   {
     icon: '🔧',
@@ -39,40 +27,20 @@ const cards = [
     description: 'Quick fixes for the most common problems.',
     to: '/troubleshooting',
   },
-];
-
-const phases = [
   {
-    phase: 'Phase 1',
-    label: 'Outbound product sync',
-    description: 'Bookscan → Shopify. Products, prices, stock, metafields.',
-    status: 'done',
+    icon: '🚀',
+    title: 'Go-Live Day',
+    description: 'Steps for the day the site goes live.',
+    to: '/go-live-checklist',
   },
   {
-    phase: 'Phase 2',
-    label: 'Inbound order sync',
-    description: 'Shopify orders → Bookscan stock deduction.',
-    status: 'building',
-  },
-  {
-    phase: 'Phase 2',
-    label: 'Desktop GUI',
-    description: 'Sync Now button, live log, summary stats.',
-    status: 'planned',
-  },
-  {
-    phase: 'Phase 2',
-    label: 'Cover images',
-    description: 'Local server folder + Open Library fallback.',
-    status: 'planned',
+    icon: '🖥️',
+    title: 'Shop Machine',
+    description: 'How to restart the sync, deploy updates, and recover from errors.',
+    to: '/setup/shop-machine',
   },
 ];
 
-const statusMeta = {
-  done:     { label: 'Complete',    className: styles.statusDone },
-  building: { label: 'Building',   className: styles.statusBuilding },
-  planned:  { label: 'Planned',    className: styles.statusPlanned },
-};
 
 export default function Home() {
   return (
@@ -108,7 +76,7 @@ export default function Home() {
               </div>
               <div className={styles.syncArrow}>
                 <div className={styles.syncArrowLine}/>
-                <div className={styles.syncArrowLabel}>every 2 hrs</div>
+                <div className={styles.syncArrowLabel}>every hour</div>
                 <div className={styles.syncArrowLine}/>
               </div>
               <div className={styles.syncBox}>
@@ -137,27 +105,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── PHASE STATUS ── */}
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Project status</h2>
-          <div className={styles.phaseList}>
-            {phases.map((p, i) => {
-              const meta = statusMeta[p.status];
-              return (
-                <div key={i} className={styles.phaseItem}>
-                  <div className={styles.phaseLeft}>
-                    <span className={styles.phaseTag}>{p.phase}</span>
-                    <div>
-                      <div className={styles.phaseLabel}>{p.label}</div>
-                      <div className={styles.phaseDesc}>{p.description}</div>
-                    </div>
-                  </div>
-                  <span className={`${styles.statusBadge} ${meta.className}`}>{meta.label}</span>
-                </div>
-              );
-            })}
-          </div>
-        </section>
 
       </main>
     </Layout>
