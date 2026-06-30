@@ -24,7 +24,7 @@ def inspect(path):
     for f in db.fields:
         print(f"  {f.name:<20} type={f.type}  length={f.length}")
 
-    print(f"\nFirst 3 records:")
+    print("\nFirst 3 records:")
     for i, record in enumerate(db):
         if i >= 3:
             break

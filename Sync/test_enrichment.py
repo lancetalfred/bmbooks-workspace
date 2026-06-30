@@ -15,7 +15,7 @@ Run from the Sync/ directory:
   export GOOGLE_BOOKS_API_KEY=YOUR_KEY && python3 test_enrichment.py
 """
 
-import csv, os, sys, time, requests
+import os, sys, time, requests
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genre_enrichment import query_google_books, map_google_category, SHOPIFY_STORE_URL, SHOPIFY_ACCESS_TOKEN
 
@@ -57,7 +57,7 @@ def fetch_isbns_by_tag(tag, limit=20):
             for e in edges if e["node"]["sku"]]
 
 print(f"\n{'='*80}")
-print(f"BMBooks Genre Enrichment — Targeted Segment Validation")
+print("BMBooks Genre Enrichment — Targeted Segment Validation")
 print(f"API key: {'provided ✅' if API_KEY else 'MISSING ⚠️'}")
 print(f"{'='*80}\n")
 
@@ -108,30 +108,30 @@ for segment_name, shopify_tag, should_reclassify in SEGMENTS:
     # Validate behaviour
     if should_reclassify:
         if counts["RECLASSIFY"] > 0:
-            print(f"  ✅ PASS — correctly reclassifying vague books")
+            print("  ✅ PASS — correctly reclassifying vague books")
             for d in reclassify_detail[:5]:
                 print(d)
             passed += 1
         elif total_with_data == 0:
-            print(f"  ⚠️  INCONCLUSIVE — no Google data for any books in this segment")
+            print("  ⚠️  INCONCLUSIVE — no Google data for any books in this segment")
         else:
-            print(f"  ⚠️  INCONCLUSIVE — Google data found but nothing to reclassify (may be correct)")
+            print("  ⚠️  INCONCLUSIVE — Google data found but nothing to reclassify (may be correct)")
             passed += 1
     else:
         if counts["RECLASSIFY"] > 0:
-            print(f"  ❌ FAIL — script is reclassifying books that should NOT change:")
+            print("  ❌ FAIL — script is reclassifying books that should NOT change:")
             for d in reclassify_detail:
                 print(d)
             issues.append(f"FAIL: {segment_name} — {counts['RECLASSIFY']} unexpected reclassification(s)")
             failed += 1
         elif total_with_data == 0:
-            print(f"  ⚠️  INCONCLUSIVE — no Google data returned (check API key / rate limit)")
+            print("  ⚠️  INCONCLUSIVE — no Google data returned (check API key / rate limit)")
         else:
-            print(f"  ✅ PASS — no unexpected reclassifications")
+            print("  ✅ PASS — no unexpected reclassifications")
             passed += 1
 
     if mismatch_detail and not should_reclassify:
-        print(f"  ℹ️  Mismatches (logged only, no changes):")
+        print("  ℹ️  Mismatches (logged only, no changes):")
         for d in mismatch_detail[:3]:
             print(d)
 
@@ -140,9 +140,9 @@ for segment_name, shopify_tag, should_reclassify in SEGMENTS:
 print(f"{'='*80}")
 print(f"RESULTS: {passed} passed  |  {failed} failed")
 if issues:
-    print(f"\n⚠️  ISSUES — fix before running full audit:")
+    print("\n⚠️  ISSUES — fix before running full audit:")
     for issue in issues:
         print(f"  {issue}")
 else:
-    print(f"\n✅ All segments behaved correctly. Safe to run full audit.")
+    print("\n✅ All segments behaved correctly. Safe to run full audit.")
 print(f"{'='*80}")

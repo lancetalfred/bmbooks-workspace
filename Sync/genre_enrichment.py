@@ -28,7 +28,6 @@ import random
 import sys
 import time
 import requests
-from datetime import datetime
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 _BASE_DIR      = os.path.dirname(os.path.abspath(__file__))
@@ -174,7 +173,7 @@ def save_progress(progress):
 
 def run_audit(args):
     print(f"\n{'='*60}")
-    print(f"BMBooks Genre Enrichment — Audit Mode")
+    print("BMBooks Genre Enrichment — Audit Mode")
     print(f"{'='*60}")
 
     # Load ISBNs
@@ -215,7 +214,7 @@ def run_audit(args):
         title, categories = query_google_books(isbn, api_key)
 
         if title == "RATE_LIMIT":
-            print(f"  Rate limited — pausing 60s...")
+            print("  Rate limited — pausing 60s...")
             time.sleep(60)
             title, categories = query_google_books(isbn, api_key)
 
@@ -317,15 +316,15 @@ def run_audit(args):
     print(f"  🔄 Reclassify (out of General Fic): {reclassify:,} ({reclassify*100//total}%)")
     print(f"  ⚠️  Mismatch (wrong category):       {mismatch:,} ({mismatch*100//total}%)")
     print(f"  ❓ No Google data:                  {no_data:,} ({no_data*100//total}%)")
-    print(f"\nTag breakdown for books to change:")
+    print("\nTag breakdown for books to change:")
     for tag in sorted(by_tag.keys()):
         print(f"  {len(by_tag[tag]):>4}  → {tag}")
-    print(f"\nReports written to Reports/:")
+    print("\nReports written to Reports/:")
     print(f"  genre_audit_full.csv    — all {total:,} books")
     print(f"  genre_audit_changes.csv — {len(changes):,} books with recommended changes")
-    print(f"  genre_audit_louisa.csv  — same, grouped by genre for Louisa's review")
-    print(f"\nNext step: review genre_audit_changes.csv, then run:")
-    print(f"  python genre_enrichment.py --apply --input Reports/genre_audit_changes.csv")
+    print("  genre_audit_louisa.csv  — same, grouped by genre for Louisa's review")
+    print("\nNext step: review genre_audit_changes.csv, then run:")
+    print("  python genre_enrichment.py --apply --input Reports/genre_audit_changes.csv")
 
 
 def _fetch_shopify_tags(isbns):
@@ -373,7 +372,7 @@ def _fetch_shopify_tags(isbns):
 
 def run_apply(args):
     print(f"\n{'='*60}")
-    print(f"BMBooks Genre Enrichment — Apply Mode")
+    print("BMBooks Genre Enrichment — Apply Mode")
     if args.dry_run:
         print("DRY RUN — no changes will be made to Shopify")
     print(f"{'='*60}\n")
@@ -463,7 +462,7 @@ def run_apply(args):
         time.sleep(0.1)
 
     print(f"\n{'='*60}")
-    print(f"Apply complete")
+    print("Apply complete")
     print(f"  Applied:  {applied:,}")
     print(f"  Skipped:  {skipped:,} (already tagged or not found)")
     print(f"  Errors:   {errors:,}")

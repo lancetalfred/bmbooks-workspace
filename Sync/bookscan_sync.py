@@ -845,7 +845,7 @@ def run_sync():
 
 def _run_sync_inner():
     log.info("=" * 60)
-    log.info(f"BMBooks Bookscan -> Shopify sync")
+    log.info("BMBooks Bookscan -> Shopify sync")
     log.info(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     mode_label = "DRY RUN — " if DRY_RUN else ""
     sync_label = "FULL sync" if FULL_SYNC else "delta sync"
@@ -914,7 +914,7 @@ def _run_sync_inner():
             log.info(f"  Hash:      {product_hash(p)}")
             prev_hash = prev_hashes.get(p['isbn'])
             if prev_hash == product_hash(p):
-                log.info(f"  Status:    UNCHANGED (would be skipped in delta sync)")
+                log.info("  Status:    UNCHANGED (would be skipped in delta sync)")
             else:
                 log.info(f"  Status:    CHANGED — would {'create' if not prev_hash else 'update'}")
         else:

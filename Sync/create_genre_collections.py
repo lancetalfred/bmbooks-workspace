@@ -14,8 +14,6 @@ Usage:
 
 import argparse
 import os
-import json
-import sys
 import requests
 
 SHOPIFY_STORE_URL    = os.environ.get("SHOPIFY_STORE_URL", "bruce-mckenzie-booksellers.myshopify.com")
