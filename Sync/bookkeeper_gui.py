@@ -85,7 +85,6 @@ class BookKeeperApp:
 
     def _build_ui(self):
         BG = "white"
-        FG = "black"
         self.root.configure(bg=BG)
         pad = {"padx": 12, "pady": 6}
 
