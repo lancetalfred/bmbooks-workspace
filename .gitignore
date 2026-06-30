@@ -30,5 +30,8 @@ bookkeeper_docs/build/
 # macOS
 .DS_Store
 
+# Lint cache
+.ruff_cache/
+
 # Logs
 *.log
