@@ -495,6 +495,55 @@ def product_hash(p):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# DBF SCHEMA VALIDATION
+# Checks required files and fields exist before any processing begins.
+# Franz Technologies acquired BookScan (formerly Shanti) — future releases
+# may rename fields or change file structure without notice. This catches
+# schema changes early and fails loudly rather than silently corrupting data.
+# ─────────────────────────────────────────────────────────────────────────────
+
+DBF_SCHEMA = {
+    DBF_MASTER_PATH:  {"ISBN", "TITLE", "AUTHOR", "SELL_PRICE", "ONHAND", "BINDING", "CSTATUS", "DEPARTMENT"},
+    DBF_PUBLISH_PATH: {"ISBN", "PUBLISHER", "PAGES", "PUB_DATE", "WEIGHT", "BLURB"},
+    DBF_WEBLIST_PATH: {"ISBN", "MAINCAT", "SUBCAT", "INACTIVE"},
+    DBF_MAINCAT_PATH: {"MAINCAT", "CATNAME"},
+    DBF_SUBCAT_PATH:  {"SUBCAT", "CATNAME", "MAINCAT"},
+}
+
+def validate_dbf_schema():
+    """
+    Verify each required DBF file exists and contains the expected fields.
+    Raises RuntimeError with a clear message if anything is wrong, so the
+    sync fails immediately rather than silently producing bad Shopify data.
+    """
+    errors = []
+    for path, required_fields in DBF_SCHEMA.items():
+        if not os.path.exists(path):
+            errors.append(f"MISSING FILE: {path}")
+            continue
+        try:
+            db = DBF(path, ignore_missing_memofile=True)
+            actual_fields = {f.name for f in db.fields}
+            missing = required_fields - actual_fields
+            if missing:
+                errors.append(
+                    f"SCHEMA CHANGE in {os.path.basename(path)}: "
+                    f"missing fields {sorted(missing)} — "
+                    f"Franz may have renamed or removed these. "
+                    f"Update field mappings in bookscan_sync.py before re-running."
+                )
+        except Exception as e:
+            errors.append(f"CANNOT READ {os.path.basename(path)}: {e}")
+
+    if errors:
+        msg = "DBF schema validation failed — halting before any Shopify changes:\n" + \
+              "\n".join(f"  • {e}" for e in errors)
+        raise RuntimeError(msg)
+
+    log.info("DBF schema validation passed (%d files, all required fields present)", len(DBF_SCHEMA))
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # BOOKSCAN READER
 # Reads MASTER.DBF, PUBLISHER.DBF, and WEBLIST.DBF
 # Joins on ISBN to build a complete product record
@@ -850,6 +899,7 @@ def _run_sync_inner():
     mode_label = "DRY RUN — " if DRY_RUN else ""
     sync_label = "FULL sync" if FULL_SYNC else "delta sync"
     log.info(f"Mode: {mode_label}{sync_label}")
+    validate_dbf_schema()
     log.info("=" * 60)
 
     if DRY_RUN:
