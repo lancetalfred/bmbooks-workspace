@@ -31,7 +31,7 @@ Sync: hourly bookscan_sync.py on shop machine (Windows, Chrome Remote Desktop).
 3. **Changes to sync scripts** (`bookscan_sync.py`, `genre_enrichment_v2.py`, `bookkeeper_gui.py`) require deployment to the shop machine and testing before marking done.
 
 ## GitHub workflow
-- Branches: `feature/<short-desc>` off `main`, PR back to `main`. No staging branch — Shopify staging/production are separate via theme IDs, not git branches.
+- Branches: `<type>/<short-desc>` off `main`, PR back to `main` — every change goes through a branch+PR regardless of size, including small low-risk additions (consistency over convenience, also the point of this being a real-team-practice exercise). Type prefix matches the commit-type taxonomy: `feature/`, `fix/`, `chore/`, `docs/`, `refactor/`. No staging branch — Shopify staging/production are separate via theme IDs, not git branches.
 - PR template auto-applies (`.github/PULL_REQUEST_TEMPLATE.md`) — summary + test plan checklist, matches native PR-creation behavior.
 - CI runs on every PR: secret scan (gitleaks) + Python lint (`ruff check Sync Tools UAT`, scoped — not the whole repo). Treat as discipline, not a hard gate.
 - **Branch protection is NOT enforced** — private repo on GitHub's free plan returns 403 on protection rules (`Upgrade to GitHub Pro or make this repository public`). Revisit if Pro is ever purchased for other reasons. Until then, PR-before-merge is a convention, not a platform-enforced rule.
