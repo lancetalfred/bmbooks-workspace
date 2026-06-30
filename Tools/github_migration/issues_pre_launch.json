@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Bug: Collection pages show only a handful of products despite thousands assigned",
+    "body": "**Root cause (2026-06-17):** Products were `active` but not published to the Online Store sales channel. The sync script creates products with `published_scope: \"web\"` + `status: \"draft\"` — draft products don't get published to any channel regardless of `published_scope`. Bulk-activating to \"active\" in admin changed status but didn't retroactively publish to Online Store.\n\n**Fix:** Selected all products in admin → added to Online Store sales channel. After bulk publish, Crime & Thriller went from 9 → 77 products visible; Shopify still propagating — check full count 2026-06-18.\n\n**Prevention:** New products created with `AUTO_PUBLISH = True` (since 2026-06-15) are created as `active` with `published_scope: \"web\"`, which should correctly publish to Online Store. Monitor next sync cycle to confirm new products appear on storefront.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Pre-Launch",
+    "labels": ["bug", "owner:lance"]
+  },
+  {
+    "title": "Verify AUTO_PUBLISH = True on shop machine + test",
+    "body": "Local copy updated to `True` (2026-06-15). Confirm shop machine copy also shows `True` via Chrome Remote Desktop. Ask Louisa to add a test product in Bookscan with a price set, then verify it appears in Shopify as `active` (not `draft`) within the next hourly sync run.\n\n**Also verify** the new product is published to the Online Store sales channel and appears on the storefront — if not, the sync script needs a `publishablePublish` GraphQL mutation added (see collection page bug fix).\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Pre-Launch",
+    "labels": ["task", "owner:lance", "owner:louisa"]
+  },
+  {
+    "title": "Verify BookHub integration works post-migration",
+    "body": "BookHub (bookhub.co.nz) shows BMBooks on every product page with: map link, price, suburb, stock count, and \"Go to Store\" link to the product page. Key risk: \"Go to Store\" links point to WooCommerce URLs — these will 404 after migration if BookHub doesn't update them.\n\nSteps:\n1. Contact BookHub to understand how they source product data and build \"Go to Store\" links — ISBN-based or URL-based?\n2. Provide Shopify store URL and confirm they can update links before go-live.\n3. Confirm price and stock data feed still reaches BookHub from the new platform.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Pre-Launch",
+    "labels": ["task", "owner:lance"]
+  },
+  {
+    "title": "Gift cards / vouchers — map physical workflow to Shopify",
+    "body": "BMBooks has two voucher types:\n1. Own vouchers — physical card, customer buys online or in store, staff create physical voucher, post or hold for collection.\n2. Industry book tokens (TOK dept) — redeemable at any participating bookseller.\n\nNeed to figure out: how customer redeems a physical voucher against an online Shopify order, and whether to keep TOK products on the website or exclude. Follow up with Louisa once she's had time in admin.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Pre-Launch",
+    "labels": ["task", "owner:lance", "owner:louisa"]
+  },
+  {
+    "title": "Confirm founding year",
+    "body": "GBP shows December 1996 — ~29 years old, NOT 65. Confirm with Louisa. Audit: About page, marketing copy, LinkedIn, social bios.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Pre-Launch",
+    "labels": ["task", "owner:lance", "owner:louisa"]
+  },
+  {
+    "title": "Domain connection",
+    "body": "Coordinate with Black Sheep Design.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Go-Live Day",
+    "labels": ["task", "owner:lance", "owner:abbey"]
+  },
+  {
+    "title": "Featured images for new collections",
+    "body": "Shopify admin → each collection → Collection image. Pick one strong cover per genre (Romance, Horror, Manga, Crime & Thriller, Translated Fiction).\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Go-Live Day",
+    "labels": ["task", "owner:lance"]
+  },
+  {
+    "title": "Submit sitemap to Bing",
+    "body": "Bing Webmaster Tools (bmbooksellers@gmail.com) → Sitemaps → `https://bmbooks.co.nz/sitemap.xml`. AFTER domain pointed to Shopify. Also check AI Performance (BETA) tab.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Go-Live Day",
+    "labels": ["task", "owner:lance"]
+  },
+  {
+    "title": "Submit sitemap to Google Search Console",
+    "body": "After domain switch: GSC → Sitemaps → confirm sitemap submitted. Check Coverage report — indexed count should climb to ~34k pages within days.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Go-Live Day",
+    "labels": ["task", "owner:lance"]
+  },
+  {
+    "title": "Verify schema markup with Rich Results Test",
+    "body": "After domain live: search.google.com/test/rich-results → test any product URL. Confirm BookStore + Book + bookGenre schemas detected.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Go-Live Day",
+    "labels": ["task", "owner:lance"]
+  },
+  {
+    "title": "Remove store password",
+    "body": "Remove password protection once domain is live.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Go-Live Day",
+    "labels": ["task", "owner:lance"]
+  },
+  {
+    "title": "Activate Searchanise collection filters",
+    "body": "Re-indexation complete (2026-06-17). Enable filters: Genre (tags), Format (product type), Price slider, Availability. Exclude `_` prefix system tags from filter display.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Post-Activation",
+    "labels": ["task", "owner:lance"]
+  },
+  {
+    "title": "Review collections after sync goes live",
+    "body": "Review collection assignments, confirm product counts look right.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Post-Activation",
+    "labels": ["task", "owner:lance", "owner:louisa"]
+  },
+  {
+    "title": "Review remaining unknown binding codes",
+    "body": "26 unknown codes remaining (~360 products). Map to human-readable labels and add to BINDING_MAP in bookscan_sync.py.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Post-Activation",
+    "labels": ["task", "owner:lance", "owner:louisa"]
+  },
+  {
+    "title": "Fix blank-publisher vendor on no-publisher products",
+    "body": "2,512 products show \"Bruce McKenzie Booksellers\" as vendor. Theme Liquid already hides this. Sync script fix pending.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Post-Activation",
+    "labels": ["bug", "owner:lance"]
+  },
+  {
+    "title": "Improve collections directory page",
+    "body": "Set featured images on main nav collections, consider \"Browse by Genre\" grid on homepage.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Post-Activation",
+    "labels": ["task", "owner:lance"]
+  },
+  {
+    "title": "Bug: BookKeeper UI — \"changed\" column blank on updated product link",
+    "body": "Clicking the changed/updated link correctly identifies the product that changed, but the column showing *what* changed is blank. Should highlight the specific field(s) that differ from the previous sync (e.g. price, title, binding). Investigate what data is available at the point the link is rendered and wire it through to the display.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Post-Activation",
+    "labels": ["bug", "owner:lance"]
+  },
+  {
+    "title": "BookKeeper UI — add View Log button",
+    "body": "Currently pressing \"Sync Now\" wipes the previous sync info from the UI. To see the log you have to navigate to the BookKeeper folder and open the file manually. Add a View Log button that opens the current log in a read-only pane in the UI. Log must be read-only — no editing or clearing from the UI.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Post-Activation",
+    "labels": ["task", "owner:lance"]
+  },
+  {
+    "title": "Publish new products as active (not draft) in bookscan_sync.py",
+    "body": "Currently all newly created products sync in draft state. Change default to `published`. Guard logic required before publishing: (1) price must be present and > 0; (2) title must not be blank. Define any additional \"ready to publish\" criteria with Louisa before implementing.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Post-Activation",
+    "labels": ["task", "owner:lance", "owner:louisa"]
+  },
+  {
+    "title": "BookKeeper UI — draft status alert for Louisa",
+    "body": "Add a view in the BookKeeper GUI showing products currently sitting in draft status (count + list). Lets Louisa identify books that failed the publish-ready check and take action. Backend: query Shopify for products where `status = draft` and `vendor` matches sync source.\n\n_Migrated from BMBooks_Action_Items.md, 2026-06-30_",
+    "milestone": "Post-Activation",
+    "labels": ["task", "owner:lance", "owner:louisa"]
+  }
+]

@@ -1,47 +1,24 @@
 # BMBooks Action Items
 
-**Last updated:** June 17, 2026
+**Last updated:** June 30, 2026
 
 ---
 
 ## 🚨 Pre-Launch (must do before go-live)
 
-| Task | Owner | Status | Notes |
-| --- | --- | --- | --- |
-| **Bug: Collection pages show only a handful of products despite thousands assigned** | Lance | ⏳ Verifying | **Root cause (2026-06-17):** Products were `active` but not published to the Online Store sales channel. The sync script creates products with `published_scope: "web"` + `status: "draft"` — draft products don't get published to any channel regardless of `published_scope`. Bulk-activating to "active" in admin changed status but didn't retroactively publish to Online Store. **Fix:** Selected all products in admin → added to Online Store sales channel. After bulk publish, Crime & Thriller went from 9 → 77 products visible; Shopify still propagating — check full count 2026-06-18. **Prevention:** New products created with `AUTO_PUBLISH = True` (since 2026-06-15) are created as `active` with `published_scope: "web"`, which should correctly publish to Online Store. Monitor next sync cycle to confirm new products appear on storefront. |
-| **Verify AUTO_PUBLISH = True on shop machine + test** | Lance + Louisa | ⏳ Louisa to test | Local copy updated to `True` (2026-06-15). Confirm shop machine copy also shows `True` via Chrome Remote Desktop. Ask Louisa to add a test product in Bookscan with a price set, then verify it appears in Shopify as `active` (not `draft`) within the next hourly sync run. **Also verify** the new product is published to the Online Store sales channel and appears on the storefront — if not, the sync script needs a `publishablePublish` GraphQL mutation added (see collection page bug fix 2026-06-17). |
-| Verify BookHub integration works post-migration | Lance | ⏳ Pre-launch | BookHub (bookhub.co.nz) shows BMBooks on every product page with: map link, price, suburb, stock count, and "Go to Store" link to the product page. Key risk: "Go to Store" links point to WooCommerce URLs — these will 404 after migration if BookHub doesn't update them. Steps: (1) Contact BookHub to understand how they source product data and build "Go to Store" links — ISBN-based or URL-based? (2) Provide Shopify store URL and confirm they can update links before go-live. (3) Confirm price and stock data feed still reaches BookHub from the new platform. |
-| Gift cards / vouchers — map physical workflow to Shopify | Lance + Louisa | ⏳ Pending | BMBooks has two voucher types: (1) Own vouchers — physical card, customer buys online or in store, staff create physical voucher, post or hold for collection. (2) Industry book tokens (TOK dept) — redeemable at any participating bookseller. Need to figure out: how customer redeems a physical voucher against an online Shopify order, and whether to keep TOK products on the website or exclude. Follow up with Louisa once she's had time in admin. |
-| Confirm founding year | Lance + Louisa | ⏳ Next Louisa session | GBP shows December 1996 — ~29 years old, NOT 65. Confirm with Louisa. Audit: About page, marketing copy, LinkedIn, social bios. |
+*(Migrated to GitHub Issues — see milestone ["Pre-Launch"](https://github.com/lancetalfred/bmbooks-workspace/milestone/1), 5 issues)*
 
 ---
 
 ## 🟡 Go-Live Day
 
-| Task | Owner | Status | Notes |
-| --- | --- | --- | --- |
-| Domain connection | Lance + Abbey | ⏳ Planned | Coordinate with Black Sheep Design |
-| Featured images for new collections | Lance | ⏳ Go-live day | Shopify admin → each collection → Collection image. Pick one strong cover per genre (Romance, Horror, Manga, Crime & Thriller, Translated Fiction). |
-| Submit sitemap to Bing | Lance | ⏳ Go-live day | Bing Webmaster Tools (bmbooksellers@gmail.com) → Sitemaps → `https://bmbooks.co.nz/sitemap.xml`. AFTER domain pointed to Shopify. Also check AI Performance (BETA) tab. |
-| Submit sitemap to Google Search Console | Lance | ⏳ Go-live day | After domain switch: GSC → Sitemaps → confirm sitemap submitted. Check Coverage report — indexed count should climb to ~34k pages within days. |
-| Verify schema markup with Rich Results Test | Lance | ⏳ Go-live day | After domain live: search.google.com/test/rich-results → test any product URL. Confirm BookStore + Book + bookGenre schemas detected. |
-| Remove store password | Lance | ⏳ Go-live day | Remove password protection once domain is live. |
+*(Migrated to GitHub Issues — see milestone ["Go-Live Day"](https://github.com/lancetalfred/bmbooks-workspace/milestone/2), 6 issues)*
 
 ---
 
 ## 🟢 Post-Activation
 
-| Task | Owner | Status | Notes |
-| --- | --- | --- | --- |
-| Activate Searchanise collection filters | Lance | ⏳ Ready | Re-indexation complete (2026-06-17). Enable filters: Genre (tags), Format (product type), Price slider, Availability. Exclude `_` prefix system tags from filter display. |
-| Review collections after sync goes live | Lance + Louisa | ⏳ Post-activation | Review collection assignments, confirm product counts look right. |
-| Review remaining unknown binding codes | Lance + Louisa | ⏳ Post-activation | 26 unknown codes remaining (~360 products). Map to human-readable labels and add to BINDING_MAP in bookscan_sync.py. |
-| Fix blank-publisher vendor on no-publisher products | Lance | ⏳ Post-activation | 2,512 products show "Bruce McKenzie Booksellers" as vendor. Theme Liquid already hides this. Sync script fix pending. |
-| Improve collections directory page | Lance | ⏳ Post-activation | Set featured images on main nav collections, consider "Browse by Genre" grid on homepage. |
-| **Bug: BookKeeper UI — "changed" column blank on updated product link** | Lance | 🐛 Bug | Clicking the changed/updated link correctly identifies the product that changed, but the column showing *what* changed is blank. Should highlight the specific field(s) that differ from the previous sync (e.g. price, title, binding). Investigate what data is available at the point the link is rendered and wire it through to the display. |
-| **BookKeeper UI — add View Log button** | Lance | ⏳ Post-activation | Currently pressing "Sync Now" wipes the previous sync info from the UI. To see the log you have to navigate to the BookKeeper folder and open the file manually. Add a View Log button that opens the current log in a read-only pane in the UI. Log must be read-only — no editing or clearing from the UI. |
-| Publish new products as `active` (not `draft`) in bookscan_sync.py | Lance | ⏳ Post-activation | Currently all newly created products sync in draft state. Change default to `published`. Guard logic required before publishing: (1) price must be present and > 0; (2) title must not be blank. Define any additional "ready to publish" criteria with Louisa before implementing. |
-| BookKeeper UI — draft status alert for Louisa | Lance | ⏳ Post-activation | Add a view in the BookKeeper GUI showing products currently sitting in draft status (count + list). Lets Louisa identify books that failed the publish-ready check and take action. Backend: query Shopify for products where `status = draft` and `vendor` matches sync source. |
+*(Migrated to GitHub Issues — see milestone ["Post-Activation"](https://github.com/lancetalfred/bmbooks-workspace/milestone/3), 9 issues)*
 
 ---
 
@@ -66,6 +43,7 @@
 | Build Browse by Genre directory page | Lance | ⏳ Post go-live | `/pages/browse-genres` with H1, grid of ~20 collections + descriptions. |
 | Standardise tag taxonomy | Lance | ⏳ Post go-live | Document naming convention before adding more smart collections. |
 | Category management dashboard | Lance | ⏳ In progress | Standalone HTML + Python proxy dashboard showing main categories → sub-categories with live Shopify product counts, audit status, and industry alignment. Two views: Louisa (clean) and Lance (technical). Files: `Tools/category_dashboard.py` + `Tools/category_dashboard.html`. Token via env var `SHOPIFY_ACCESS_TOKEN`. Created during category audit 2026-06-20. |
+| **Shift to PR-based workflow** | Lance | ⏳ Planned | Move from direct commits to working through pull requests for future changes. Reason: mirrors real company engineering practice, good portfolio/learning value. Decided 2026-06-30 during ECC research. Once started, ECC's `/code-review` PR mode (fetches via `gh`, posts inline comments, can approve/request-changes) becomes relevant — currently skipped since no PR workflow existed. |
 | Romance sub-genres Level 3 | Lance | ⏳ Post go-live (3mo) | Contemporary Romance 167 (`FRD`), Historical Romance 53 (`FRH`). Create as L3 sub-collections. |
 | Science Fiction standalone collection | Lance | ⏳ Post go-live (6mo) | 334 Sci-Fi + 564 Fantasy currently combined. Split once enrichment data is stable. |
 | Investigate AU calculated shipping (plan upgrade) | Lance | ⏳ Post go-live | AU customers pay $0 then get manual invoice — sometimes cancel, losing commission. Carrier-calculated rates require plan upgrade. |
