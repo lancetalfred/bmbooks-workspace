@@ -58,7 +58,7 @@ export default function Home() {
             <div className={styles.heroStats}>
               <div className={styles.stat}><span className={styles.statNum}>38,013</span><span className={styles.statLabel}>products</span></div>
               <div className={styles.statDivider}/>
-              <div className={styles.stat}><span className={styles.statNum}>2 hr</span><span className={styles.statLabel}>sync cycle</span></div>
+              <div className={styles.stat}><span className={styles.statNum}>1 hr</span><span className={styles.statLabel}>sync cycle</span></div>
               <div className={styles.statDivider}/>
               <div className={styles.stat}><span className={styles.statNum}>Delta</span><span className={styles.statLabel}>only changed</span></div>
             </div>
