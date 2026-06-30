@@ -100,14 +100,16 @@
 
 ## 🚀 Post-Migration — Lance's Next Chapter
 
+**Portfolio framing (decided 2026-07-01):** Position as a **PM who builds** — not a developer who manages, not a PM who delegates. The BMBooks story proves both sides: stakeholder management with Louisa (non-technical business owner), architecture and technical decisions, and hands-on shipping of real production code. Audience is talent recruiters; target roles are PM positions where technical credibility matters. Wait for post-go-live to write the case study — real numbers (products live, sync reliability, before/after) make the story dramatically stronger than pre-go-live screenshots.
+
 | Task | Status | Notes |
 | --- | --- | --- |
 | Convert CVs to PDF | ⏳ Pending | Both markdown files ready |
 | Write cover letters | ⏳ Pending | Need specific role + company |
-| Get Louisa's permission to use BMBooks as case study | ⏳ Post go-live | Ask once migration confirmed stable |
-| Write BMBooks case study | ⏳ Post go-live | Wait until 1 month of Shopify data available |
-| Publish LinkedIn post | ⏳ Post go-live | Migration journey — real problems, real numbers |
+| Get Louisa's permission to use BMBooks as case study | ⏳ Post go-live | Ask once migration confirmed stable. Without this, can only show the GitHub repo (scrubbed), not the live store or business context. |
+| Write BMBooks case study | ⏳ Post go-live | Wait until ~1 month of Shopify data. Story: problem (WooCommerce failing, manual workflows), solution (BookScan→Shopify sync, category audit, CI pipeline), impact (real numbers — products, uptime, orders). Format: short visual deck for recruiters, not a wall of text. |
+| Publish LinkedIn post | ⏳ Post go-live | Migration journey — real problems, real numbers. Hook: "I'm a PM who built a production e-commerce sync system for an indie bookstore using AI as a coding partner." |
 | Workspace audit + next project setup | ⏳ Post go-live | Full audit of bmbooks-workspace structure, memory files, Claude skills, and tools used. |
-| Upload BMBooks project to personal GitHub (portfolio) | ⏳ Post go-live | **Must scrub before upload:** Move API token to `.env`, exclude log/CSV/DBF files, get Louisa's permission. |
+| Upload BMBooks project to personal GitHub (portfolio) | ⏳ Post go-live | Already done (private). Decision: make public once Louisa approves. Scrubbing is complete (tokens in .env, PII excluded). |
 | Define service offering | ⏳ Future | "E-commerce consultant for independent retailers" |
-| Build simple landing page | ⏳ Future | Who you help, what you do, case study link |
+| Build simple landing page | ⏳ Future | Who you help, what you do, case study link. Keep it minimal until post-go-live story is ready. |

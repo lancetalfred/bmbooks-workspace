@@ -1,177 +1,114 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
-# Shop Machine Setup
+# Shop Machine Operations
 
-This is the one-time setup guide for getting BookKeeper running on the shop machine. You'll need Chrome Remote Desktop access to the shop machine to complete this — roughly 20 minutes start to finish.
+Runbook for Lance — what to do when something needs attention on the shop machine.
 
-:::info Current status — May 25, 2026
-Steps 1–6 complete. Python 3.14.4 installed, ~34,500 products synced to Shopify (Draft). Files currently at `C:\BookKeeper\` — move to `Z:\BookKeeper\` before deploying GUI (Step 7). Steps 7 and 8 pending.
-:::
-
----
-
-## What you'll need
-
-- Chrome Remote Desktop access to the shop machine (coordinate with Belinda)
-- The `bookscan_sync.py` script and `requirements.txt`
-- The Shopify live store access token (from Shopify Admin → Apps → Develop apps → BookKeeper)
+**Access:** Chrome Remote Desktop → shop machine (Windows, `Z:\BookKeeper`)
 
 ---
 
-## Step 1 — Install Python
+## Checking the sync ran
 
-1. On the shop machine, open a web browser and go to **python.org/downloads**
-2. Click **Download Python 3.x** (the big yellow button — latest stable version)
-3. Run the installer
-4. **Important:** On the first screen of the installer, tick **"Add Python to PATH"** before clicking Install
-5. Click **Install Now**
-6. When it finishes, click **Close**
+The sync runs automatically every hour via Windows Task Scheduler. To confirm it ran:
 
-**Verify it worked:** Open Command Prompt (search "cmd" in the Start menu) and type:
-```
-python --version
-```
-You should see something like `Python 3.12.x`. If you see an error, the PATH wasn't set — reinstall and make sure to tick that box.
+1. Open `Z:\BookKeeper\bookscan_sync.log` in Notepad
+2. Look for the most recent entry — should show today's date/time
+3. Check for `Sync complete` near the bottom and an error count of 0
+
+Alternatively, open the BookKeeper GUI shortcut on the desktop — the **Last sync** timestamp tells you when it last ran.
 
 ---
 
-## Step 2 — Copy the script files
+## Manually triggering a sync
 
-Create the BookKeeper folder on the **Z: drive** (the same drive Bookscan uses) so files are preserved if the PC is replaced:
-```
-Z:\BookKeeper\
-```
-
-Copy these files into that folder:
-- `bookscan_sync.py`
-- `bookkeeper_gui.py`
-- `requirements.txt`
-
-:::tip Why Z: and not C:?
-Z: is a mapped network drive connected to the Bookscan server. Files there survive a PC failure or replacement. C: is local to the shop PC.
-:::
-
----
-
-## Step 3 — Install dependencies
-
-1. Open Command Prompt
-2. Navigate to the BookKeeper folder:
-```
-cd C:\BookKeeper
-```
-3. Install the required packages:
-```
-pip install -r requirements.txt
-```
-This downloads and installs three small packages (`dbfread`, `requests`, `schedule`). It only needs to be done once.
-
----
-
-## Step 4 — Update the script configuration
-
-Open `bookscan_sync.py` in Notepad (right-click → Open with → Notepad) and update these lines near the top of the file:
-
-| Line | Change to |
-|---|---|
-| `SHOPIFY_STORE_URL` | `"bruce-mckenzie-booksellers.myshopify.com"` |
-| `SHOPIFY_ACCESS_TOKEN` | The live store token from Shopify Admin |
-| `MAX_PRODUCTS` | `None` |
-
-`DBF_BASE_PATH` auto-detects `Z:\bookscan` — no change needed if the Z: drive is mapped.
-
-Save the file.
-
----
-
-## Step 5 — Run a dry run to verify everything works
-
-In Command Prompt, run:
-```
-python C:\BookKeeper\bookscan_sync.py --dry-run
-```
-
-You should see the script load the Bookscan files and list the first 20 books it would sync. If it says approximately 38,000 products found, everything is working correctly.
-
-If you see any errors at this point, check the [Troubleshooting](../troubleshooting) guide before going further.
-
----
-
-## Step 6 — Run the first full sync
-
-This will sync all ~38,000 books to the live Shopify store. It will take several hours on the first run — that's normal.
+If Louisa needs an immediate update (e.g. after a large stock change):
 
 ```
-python C:\BookKeeper\bookscan_sync.py
-```
-
-You can watch the progress in the Command Prompt window. When it finishes, check Shopify Admin → Products to confirm the books are there.
-
-:::tip
-The first sync can be run overnight. You don't need to watch it.
-:::
-
----
-
-## Step 7 — Set up the BookKeeper GUI
-
-The BookKeeper GUI (`bookkeeper_gui.py`) replaces the old `Sync Now.bat` command-line approach. It gives Louisa a simple window showing sync status, progress, and a Sync Now button — no terminal required.
-
-**7a — Copy `Sync Now.bat` to Louisa's desktop**
-
-The file is already in `Z:\BookKeeper\Sync Now.bat`. Right-click it → **Create shortcut** → move the shortcut to the Desktop. (Or copy `Sync Now.bat` directly to the Desktop — either works.)
-
-Contents of `Sync Now.bat`:
-```batch
-@echo off
 cd /d Z:\BookKeeper
-python bookkeeper_gui.py
-pause
+python bookscan_sync.py --once
 ```
 
-**7b — Verify it opens**
+This runs one delta sync and exits. The hourly scheduled task continues as normal.
 
-Double-click `Sync Now` on the desktop. The BookKeeper window should open showing:
-- Status dot (grey = idle, green = running)
-- Sync mode label ("Delta sync — only changed products")
-- Progress bar
-- Created / Updated / Errors counts (click any to see the full ISBN list)
-- **Sync Now** button
+For a full sync of all products (slower, ~2–3 hours):
 
-**7c — Test Sync Now**
-
-Click **Sync Now**. The status dot should turn green and the progress bar should begin moving. Click it again while running — it should show "Sync already in progress."
+```
+python bookscan_sync.py --full --once
+```
 
 ---
 
-## Step 8 — Set up automatic 2-hour syncs via Task Scheduler
+## If the sync has stopped
 
-This makes the sync run automatically every 2 hours in the background, without anyone needing to do anything.
+**Step 1:** Check whether the scheduled task is still active.
+- Open Task Scheduler (search in Start menu)
+- Find the BookKeeper task
+- Check its status — if it shows **Disabled** or **Ready** with an old Last Run time, right-click → Run
 
-1. Open **Task Scheduler** (search for it in the Start menu)
-2. Click **Create Basic Task** in the right panel
-3. Name it: `BookKeeper Sync`
-4. Description: `Syncs Bookscan products to Shopify every 2 hours`
-5. Click Next → choose **Daily**
-6. Set start time to a convenient time (e.g. 8:00 AM)
-7. Click Next → choose **Repeat task every: 2 hours** for a duration of **Indefinitely**
-8. Click Next → choose **Start a program**
-9. Program/script: `python`
-10. Add arguments: `Z:\BookKeeper\bookscan_sync.py --once`
-11. Click Finish
+**Step 2:** Check the environment variable is still set.
 
-**Verify it's working:** Right-click the task → Run. Check `C:\BookKeeper\bookscan_sync.log` to confirm a run was triggered.
+```
+python -c "import os; t=os.environ.get('SHOPIFY_ACCESS_TOKEN','NOT SET'); print(f'Starts with: {t[:6]}, length: {len(t)}')"
+```
+
+Expected: `Starts with: shpat_, length: 38`
+
+If it shows `NOT SET`, the environment variable was lost (can happen after a Windows update or profile reset). Re-run:
+
+```
+setx SHOPIFY_ACCESS_TOKEN "<token>"
+```
+
+Then close the terminal, open a new one, and confirm it shows `shpat_` again before restarting the scheduled task.
+
+**Step 3:** Check the log for errors.
+
+```
+type Z:\BookKeeper\bookscan_sync.log | more
+```
+
+Look for `ERROR` or `RuntimeError` lines near the end. Common causes are in the [Troubleshooting](../troubleshooting) doc.
 
 ---
 
-## What runs automatically vs manually
+## Deploying an updated script
 
-| Action | How it runs |
-|---|---|
-| Regular sync (every 2 hours) | Automatic via Task Scheduler |
-| Force full refresh | Manual: `python bookscan_sync.py --full` |
-| Dry run / check | Manual: `python bookscan_sync.py --dry-run` |
-| Check last run time | Open `Z:\BookKeeper\sync_state.json` |
-| Check for errors | Open `Z:\BookKeeper\bookscan_sync.log` (or click Errors count in the GUI) |
+When `bookscan_sync.py` or another script is updated via GitHub:
+
+1. On your Mac: `git pull` on `main` to get the latest
+2. Copy the updated file from your Mac's `Sync/` folder to `Z:\BookKeeper\` on the shop machine via Chrome Remote Desktop drag-and-drop (or copy-paste)
+3. Run a dry-run to confirm it starts cleanly:
+
+```
+cd /d Z:\BookKeeper
+python bookscan_sync.py --dry-run --once
+```
+
+4. If the dry-run passes, the next scheduled hourly run will use the new version
+
+---
+
+## DBF schema alert
+
+If a sync fails with a message like:
+
+```
+RuntimeError: DBF schema validation failed — halting before any Shopify changes:
+  • SCHEMA CHANGE in MASTER.DBF: missing fields ['SELL_PRICE'] — Franz may have renamed...
+```
+
+This means Franz Technologies released a BookScan update that changed a field name. **Do not attempt a workaround.** The sync is intentionally stopped to prevent corrupt data reaching Shopify. Contact Lance — the field mapping in `bookscan_sync.py` needs updating before the sync can run again.
+
+---
+
+## Key file locations
+
+| File | Path | Purpose |
+|---|---|---|
+| Main sync script | `Z:\BookKeeper\bookscan_sync.py` | Hourly sync |
+| Sync log | `Z:\BookKeeper\bookscan_sync.log` | Check what ran |
+| State file | `Z:\BookKeeper\sync_state.json` | Delta sync hashes — do not edit |
+| Bookscan data | `\\Server\c\bookscan\*.DBF` | Source data (read-only) |
