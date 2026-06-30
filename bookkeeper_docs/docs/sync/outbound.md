@@ -13,8 +13,18 @@ A quick reference for what BookKeeper does and doesn't send to Shopify.
 A product appears on the website if it meets **all three** of these conditions in Bookscan:
 
 1. It is web-listed (marked in WEBLIST)
-2. Its status code is not excluded (e.g. not OP, RP, RUC, NLA, OSI)
+2. Its status code is not excluded — see table below
 3. Its department is a book department (not Audio, Magazines, Gifts, etc.)
+
+Excluded status codes:
+
+| Code | Meaning |
+|---|---|
+| OP | Out of Print |
+| RP | Reprinting |
+| RUC | Remainder Under Cover |
+| NLA | No Longer Available |
+| OSI | Out of Stock Indefinitely |
 
 ---
 
@@ -25,7 +35,7 @@ A product appears on the website if it meets **all three** of these conditions i
 | Title present + price > $0 | **Active** — visible to customers |
 | Price = $0 (no price set yet) | **Draft** — hidden until price is added |
 | Title missing | **Draft** — hidden until title is added |
-| Status changed to OP / RP / RUC / NLA / OSI | **Draft** — hidden automatically |
+| Status changed to OP / RP / RUC / NLA / OSI (see above) | **Draft** — hidden automatically |
 | Marked inactive in WEBLIST | Removed from sync entirely |
 
 Once a hidden product gets its missing information (title or price) in Bookscan, the next hourly sync will automatically make it visible. No action needed in Shopify.
@@ -52,7 +62,7 @@ Every time a product is created or updated, BookKeeper sends:
 
 ## What doesn't sync
 
-- Customer orders — these must be entered manually in Bookscan until Phase 2 is built
+- Customer orders — these must be entered manually in Bookscan (see Louisa's Guide for the process)
 - Shopify-specific content (banners, promotional text, collection images) — managed directly in Shopify
 - Manually curated collections (Staff Picks, NZ Authors) — managed directly in Shopify
 

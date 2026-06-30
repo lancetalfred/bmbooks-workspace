@@ -21,7 +21,7 @@ BookKeeper runs quietly in the background on the shop computer. Every hour it re
 | You add a new book with a title and a price | It appears on the website within 1 hour, set to **Active** |
 | A book sells in-store | The stock count on the website updates within 1 hour |
 | You change a price | The new price shows on the website within 1 hour |
-| You change a book's status to **OP**, **RP**, or **RUC** | It disappears from the website within 1 hour |
+| You change a book's status to **OP** (Out of Print), **RP** (Reprinting), or **RUC** (Remainder Under Cover) | It disappears from the website within 1 hour |
 | You change a book back to **ACT** (active) | It reappears on the website within 1 hour |
 
 ---
@@ -58,7 +58,8 @@ When you open BookKeeper via the desktop shortcut, you'll see:
 |---|---|
 | 🟢 **Running** | A sync is in progress — leave it to finish |
 | ⚫ **Idle** | No sync running — everything is up to date |
-| 🔴 **Idle** (red dot) | Last sync had errors — contact Lance |
+| 🟡 **Warning** | Sync ran but skipped some books — contact Lance if this persists |
+| 🔴 **Idle** (red dot) | Last sync failed — contact Lance |
 | **Last sync:** date/time | When the most recent sync ran |
 | **Mode: Delta sync** | Only changed products were processed (normal) |
 | **Created: 9** | New books added to the website this sync |
@@ -104,6 +105,7 @@ When a customer buys online, Shopify records the order. At the moment, you'll ne
 1. Open the order in Shopify Admin (Orders)
 2. Enter it as a web sale in Bookscan — customer details, delivery address, and each line item (ISBN, title, quantity, price)
 3. Bookscan will deduct the stock and record the sale correctly
+4. Back in Shopify, mark the order as **Fulfilled** — and add a tracking number if you're posting it
 
 ---
 
@@ -122,7 +124,9 @@ If a book is showing the wrong price, wrong stock, or isn't appearing at all:
 Signs that something might be wrong:
 - Stock levels on the website haven't changed after in-store sales
 - A book you added to Bookscan yesterday still isn't on the website
-- The BookKeeper window shows a red dot
+- The BookKeeper window shows a red dot or yellow warning
+
+You might also see an error message that mentions "DBF schema validation failed" — this means a Bookscan update changed something the sync depends on, and it has stopped deliberately to prevent incorrect data reaching the website.
 
 **What to do:** Contact Lance. He'll check the log file on the shop computer and fix it. You don't need to do anything technical yourself.
 
