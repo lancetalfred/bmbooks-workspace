@@ -65,7 +65,7 @@ def audit():
 
     # ── Output ─────────────────────────────────────────────────────────────────
     print(f"\n{'═'*60}")
-    print(f"  BMBooks Sub-category Audit")
+    print("  BMBooks Sub-category Audit")
     print(f"  DBF path: {DBF_BASE_PATH}")
     print(f"  Min products filter: {MIN_PRODUCTS}")
     print(f"{'═'*60}\n")

@@ -412,7 +412,7 @@ def _lookup_product(isbn):
 def run_compare(args):
     n = args.sample
     print(f"\n{'='*60}")
-    print(f"Genre Enrichment v2 — 3-Way Comparison Test")
+    print("Genre Enrichment v2 — 3-Way Comparison Test")
     print(f"Sample: {n} books per subcategory")
     print(f"{'='*60}")
 
@@ -523,18 +523,18 @@ def run_compare(args):
     print(f"  ❓ NO_DATA:     {counts['NO_DATA']:>4}")
     print(f"  ⏭️  SKIP:        {counts['SKIP']:>4}")
     if reclassify:
-        print(f"\nProposed reclassifications:")
+        print("\nProposed reclassifications:")
         for tag in sorted(by_tag):
             print(f"  {len(by_tag[tag]):>3}  → {tag}")
-    print(f"\nOutput: Reports/genre_comparison_test.csv")
-    print(f"\nCheck pass criteria in Project/BMBooks_Genre_Enrichment_Plan.md before proceeding.")
+    print("\nOutput: Reports/genre_comparison_test.csv")
+    print("\nCheck pass criteria in Project/BMBooks_Genre_Enrichment_Plan.md before proceeding.")
 
 
 # ── Mode: Audit (BIC pass) ─────────────────────────────────────────────────────
 
 def run_audit(args):
     print(f"\n{'='*60}")
-    print(f"Genre Enrichment v2 — Full BIC Audit (local, no API calls)")
+    print("Genre Enrichment v2 — Full BIC Audit (local, no API calls)")
     print(f"{'='*60}")
 
     books, _ = load_catalogue()
@@ -610,22 +610,22 @@ def run_audit(args):
         print(f"\nProposed tag changes ({len(changes):,} books):")
         for tag, cnt in sorted(by_tag.items(), key=lambda x: -x[1]):
             print(f"  {cnt:>5,}  → {tag}")
-    print(f"\nReports written to Reports/:")
+    print("\nReports written to Reports/:")
     print(f"  genre_audit_full.csv        — all {len(rows):,} books")
     print(f"  genre_audit_changes.csv     — {len(changes):,} books to reclassify")
     print(f"  genre_audit_no_bic.csv      — {len(no_bic):,} books for Google fallback")
     print(f"  genre_audit_mismatches.csv  — {len(mismatches):,} BIC/Bookscan disagreements (review manually)")
-    print(f"\nNext steps:")
-    print(f"  1. Review genre_audit_changes.csv")
-    print(f"  2. Optionally: python genre_enrichment_v2.py --audit-fallback --api-key KEY")
-    print(f"  3. python genre_enrichment_v2.py --apply --dry-run")
+    print("\nNext steps:")
+    print("  1. Review genre_audit_changes.csv")
+    print("  2. Optionally: python genre_enrichment_v2.py --audit-fallback --api-key KEY")
+    print("  3. python genre_enrichment_v2.py --apply --dry-run")
 
 
 # ── Mode: Audit Fallback (Google Books) ───────────────────────────────────────
 
 def run_audit_fallback(args):
     print(f"\n{'='*60}")
-    print(f"Genre Enrichment v2 — Google Books Fallback")
+    print("Genre Enrichment v2 — Google Books Fallback")
     print(f"{'='*60}")
 
     if not os.path.exists(OUT_NO_DATA):
@@ -696,7 +696,7 @@ def run_audit_fallback(args):
         for tag, cnt in sorted(by_tag.items(), key=lambda x: -x[1]):
             print(f"  {cnt:>4}  → {tag}")
     print(f"\nTotal in genre_audit_changes.csv: {len(all_changes):,}")
-    print(f"\nNext: python genre_enrichment_v2.py --apply --dry-run")
+    print("\nNext: python genre_enrichment_v2.py --apply --dry-run")
 
 
 # ── Mode: Apply ───────────────────────────────────────────────────────────────
@@ -705,7 +705,7 @@ def run_apply(args):
     input_file = args.input or OUT_CHANGES
 
     print(f"\n{'='*60}")
-    print(f"Genre Enrichment v2 — Apply Tags to Shopify")
+    print("Genre Enrichment v2 — Apply Tags to Shopify")
     if args.dry_run:
         print("DRY RUN — no changes will be made to Shopify")
     print(f"{'='*60}\n")
@@ -774,12 +774,12 @@ def run_apply(args):
     if args.dry_run:
         print(f"Dry run complete — {applied:,} books would be tagged")
     else:
-        print(f"Apply complete")
+        print("Apply complete")
         print(f"  Applied:  {applied:,}")
         print(f"  Skipped:  {skipped:,}  (not found or already tagged)")
         print(f"  Errors:   {errors:,}")
         if applied:
-            print(f"\nNext: verify collections in Shopify admin, then create smart collections for new tags.")
+            print("\nNext: verify collections in Shopify admin, then create smart collections for new tags.")
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
