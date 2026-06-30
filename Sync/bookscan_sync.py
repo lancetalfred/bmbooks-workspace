@@ -950,10 +950,13 @@ def _run_sync_inner():
 
             # Determine status override for this product
             prev_price = prev_fields.get(isbn, {}).get("price", -1)
+            prev_title = prev_fields.get(isbn, {}).get("title", "")
+            was_ready  = prev_price > 0 and bool(prev_title.strip())
+            is_ready   = p["price"] > 0 and bool(p["title"].strip())
             if p["price"] == 0:
                 force_status = "draft"                    # always hide zero-price products
-            elif AUTO_PUBLISH and existing and prev_price == 0 and p["price"] > 0 and p["title"].strip():
-                force_status = "active"                   # was zero-price draft, now priced → publish
+            elif AUTO_PUBLISH and existing and is_ready and not was_ready:
+                force_status = "active"                   # just became publish-ready (price and/or title fixed since last sync)
             else:
                 force_status = None                       # preserve existing Shopify status
 
