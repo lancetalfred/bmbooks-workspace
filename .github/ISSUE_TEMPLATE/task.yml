@@ -1,0 +1,11 @@
+name: Task
+description: General work item
+labels: ["task"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to happen, and why
+    validations:
+      required: true
