@@ -5,7 +5,7 @@ sidebar_position: 3
 # Order Fulfillment — Manual Process
 
 :::caution Temporary workflow
-This manual process is required until the [Inbound Sync](./inbound) (Phase 2) is live. Once Phase 2 is deployed, Shopify orders will flow into Bookscan automatically — no manual entry required.
+This manual process is required until the inbound sync is built. Once live, Shopify orders will flow into Bookscan automatically — no manual entry required.
 :::
 
 ## Overview
@@ -97,6 +97,6 @@ Same workflow as above with two differences:
 
 ---
 
-## Phase 2 — What changes
+## What changes when the inbound sync is built
 
-Once [Inbound Sync](./inbound) is live, BookKeeper will poll Shopify's Orders API and write each order directly into Bookscan's `WEBORDHD` (header) and `WEBORDLN` (line items) tables. The entire manual Part 2 process above is eliminated. Shopify fulfillment (Part 1) remains unchanged.
+Once live, BookKeeper will poll Shopify's Orders API and write each order directly into Bookscan automatically. The entire manual Part 2 process above is eliminated. Shopify fulfillment (Part 1) remains unchanged.

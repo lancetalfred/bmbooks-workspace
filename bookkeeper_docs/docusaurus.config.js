@@ -16,11 +16,11 @@ const config = {
     v4: true,
   },
 
-  url: 'https://your-site.example.com',
+  url: 'https://bookkeeper-bmbooks.netlify.app',
   baseUrl: '/',
 
-  organizationName: 'bmbooks',
-  projectName: 'bookkeeper-for-shopify',
+  organizationName: 'lancetalfred',
+  projectName: 'bmbooks-workspace',
 
   onBrokenLinks: 'throw',
 
@@ -88,11 +88,11 @@ const config = {
           {
             title: 'Docs',
             items: [
-              { label: 'Overview',       to: '/intro' },
-              { label: 'Architecture',   to: '/architecture/overview' },
-              { label: 'Setup',          to: '/setup/requirements' },
-              { label: 'UAT Plan',       to: '/uat/uat-plan' },
-              { label: 'Changelog',      to: '/changelog' },
+              { label: "Louisa's Guide",     to: '/louisa-guide' },
+              { label: 'What syncs',         to: '/sync/outbound' },
+              { label: 'Troubleshooting',    to: '/troubleshooting' },
+              { label: 'Go-Live Day',        to: '/go-live-checklist' },
+              { label: 'Changelog',          to: '/changelog' },
             ],
           },
           {

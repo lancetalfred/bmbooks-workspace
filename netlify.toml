@@ -1,0 +1,7 @@
+[build]
+  base    = "bookkeeper_docs"
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "20"
