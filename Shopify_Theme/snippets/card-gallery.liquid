@@ -135,8 +135,10 @@
           endif
 
           if forloop.first
-            assign loading = 'eager'
             assign sizes = image_sizes
+            if section.type != 'carousel'
+              assign loading = 'eager'
+            endif
           endif
 
           assign class = 'product-media-container media-fit product-media-container--[media_type]' | replace: '[media_type]', media.media_type
