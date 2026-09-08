@@ -8,6 +8,9 @@
 # Generated audit output — never commit (see CLAUDE.md)
 Reports/
 
+# Personal/narrative material — not for the public repo
+Project/Archive/BMBooks_The_Story.md
+
 # Generated / machine-specific
 Sync/sync_state.json
 Sync/bookscan_sync.log
