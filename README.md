@@ -4,7 +4,7 @@ WooCommerce → Shopify migration for Bruce McKenzie Booksellers — my mother�
 
 **Status:** Pre‑go‑live. Storefront is built, themed, and syncing hourly; launch pending the owner's window.
 
-## Highlights (skim in 10 seconds)
+## Highlights
 
 - ~38K products synced from a 133K‑record DBF source via custom Python + Shopify GraphQL; dry run 37,998 with 0 errors
 - Six book metafields (author, ISBN, pages, publication_date, status, department) defined via Admin API; fixed 422s by changing page‑count type
