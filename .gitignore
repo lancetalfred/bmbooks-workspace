@@ -5,8 +5,8 @@
 # Claude local settings (contains embedded tokens in curl commands)
 .claude/settings.local.json
 
-# Customer PII — never commit
-Reports/BMBooks_WooCommerce_*.csv
+# Generated audit output — never commit (see CLAUDE.md)
+Reports/
 
 # Generated / machine-specific
 Sync/sync_state.json
